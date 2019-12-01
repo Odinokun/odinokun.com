@@ -11,7 +11,7 @@ require('./modules/menu')();
 // require('./modules/moreWorks')();
 
 // begin contacts map
-// require('./modules/map')();
+require('./modules/map')();
 
 // begin contacts GSAP
 // require('./modules/gsap')();

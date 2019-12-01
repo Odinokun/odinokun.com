@@ -7,38 +7,50 @@ block variables
   - var ogimage     = 'assets/img/social.jpg'
 
 block content
-  .main-wrap.works-wrap
-    include ../elements/burger
+  .main-wrap
     include ../sections/aside
 
     //begin content
     section.main.contacts
+      include ../elements/burger
+
       //begin contacts-map
       .contacts-map#contacts-map
       //end contacts-map
 
       //begin contacts-item
       .contacts-item#contacts-item
-        h1.contacts-item__title Contacts
-        a(href="mailto:odinokun@gmail.com").contacts-item__mail
-          +svg('mail')
-          span odinokun@gmail.com
+        h1.contacts-item__title.page-title Contacts
 
-        ul.contacts-item__links
-          li
-            a(href="https://github.com/Odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--git
-              +svg('git')
-          li
-            a(href="https://www.linkedin.com/in/dmytro-gordiienko/" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--in
-              +svg('in')
-          li
-            a(href="https://t.me/odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--teleg
-              +svg('telegram')
-          li
-            a(href="https://www.facebook.com/odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--fb
-              +svg('fb')
-          li
-            a(href="https://twitter.com/odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--tw
-              +svg('tw')
+        .contacts-item__links.contact-links
+          //begin contact-links__item
+          .contact-links__item
+            h3.contact-links__title My profiles
+            ul.contact-links__list.contacts-list
+              li
+                a(href="https://www.linkedin.com/in/dmytro-gordiienko/" target="_blank" rel="nofollow noopener noreferrer").contact-links__link.contact-links__link--in
+                  +svg('in')
+                  span LinkedIn
+              li
+                a(href="https://github.com/Odinokun" target="_blank" rel="nofollow noopener noreferrer").contact-links__link.contact-links__link--git
+                  +svg('git')
+                  span Github
+          //end contact-links__item
+          //begin contact-links__item
+          .contact-links__item
+            h3.contact-links__title Get in touch with me
+            ul.contact-links__list
+              li
+                a(href="https://t.me/odinokun" target="_blank" rel="nofollow noopener noreferrer").contact-links__link.contact-links__link--teleg
+                  +svg('telegram')
+                  span My telegram
+              li
+                a(href="mailto:odinokun@gmail.com").contact-links__link.contact-links__link--mail
+                  +svg('mail')
+                  span odinokun@gmail.com
+          //end contact-links__item
+
+        .contacts-item__btn
+          a(href="#").btn.btn--dark Download CV
       //end contacts-item
     //end content
