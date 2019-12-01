@@ -1,0 +1,21 @@
+// core
+@import 'core/variables';
+@import 'core/mixins';
+@import 'core/keyframes';
+@import 'core/base';
+
+//elements
+@import 'elements/burger';
+@import 'elements/menu';
+
+//section
+@import 'sections/aside';
+//@import 'sections/page-header';
+//@import 'sections/page-footer';
+
+//pages
+@import 'pages/index';
+//@import 'pages/works';
+//@import 'pages/contacts';
+//@import 'pages/blog';
+//@import 'pages/article';

@@ -1,0 +1,68 @@
+.index {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark;
+  .burger__line {
+    background-color: $light;
+  }
+}
+
+.index__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  pointer-events: none;
+  svg {
+    fill: $light;
+    width: 60vw;
+    height: 90vh;
+    opacity: .08;
+  }
+}
+
+.index__block {
+  position: relative;
+  z-index: 1;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.index__title {
+  font-family: $teko;
+  font-size: 10.5vw;
+  line-height: 1;
+  margin-bottom: 0;
+  user-select: none;
+  letter-spacing: 3px;
+  color: $light;
+
+  @include max(1020) {
+    font-size: 12vw;
+  }
+}
+
+.index__subtitle {
+  font-family: $kaushan;
+  font-size: 3vw;
+  margin-bottom: 50px;
+  user-select: none;
+  text-align: center;
+  color: $light;
+
+  @include max(1020) {
+    font-size: 5vw;
+  }
+}
+
+.index__btn {
+  display: flex;
+  justify-content: center;
+}

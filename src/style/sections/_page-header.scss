@@ -1,0 +1,22 @@
+.page-header {
+  border-bottom: 1px solid $dark;
+  background-color: $light;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    text-align: center;
+  }
+}
+
+.page-header__title {
+  font-family: $font-subtitle;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  user-select: none;
+  text-align: center;
+  color: $dark;
+}

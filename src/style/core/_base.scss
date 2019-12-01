@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $roboto;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.38;
+  letter-spacing: .25px;
+  color: #1e1e1e;
+
+  //@include max(768) {
+  //  font-size: 18px;
+  //}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  margin: 0;
+}
+
+h1 {
+  font-size: 70px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+h3 {
+  font-size: 50px;
+}
+
+h4 {
+  font-size: 40px;
+}
+
+h5 {
+  font-size: 30px;
+}
+
+h6 {
+  font-size: 25px;
+}
+
+p {
+  strong {
+    font-weight: 700;
+  }
+}
+
+a {
+  color: $highlight;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+ol,
+ul {
+  li {
+    padding: 0;
+  }
+}
+
+button {
+  border-radius: 0 !important;
+}
+
+svg {
+  display: block;
+  overflow: visible;
+}
+
+////изменяем цвет выделения текста мышью
+::selection {
+  color: $dark;
+  background-color: $highlight;
+  text-shadow: none;
+}
+
+.main-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: $light;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 90px;
+
+  @include max(500) {
+    margin-left: 0;
+  }
+}
+
+//.page-body {
+//  flex-grow: 1;
+//}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+
+  //@include max(768) {
+  //  padding: 0 20px;
+  //}
+}
+
+//
+//.date {
+//  display: flex;
+//  align-items: baseline;
+//  margin-bottom: 5px;
+//  pointer-events: none;
+//  svg {
+//    flex: none;
+//    fill: $dark;
+//    width: 20px;
+//    height: 20px;
+//    margin-right: 10px;
+//  }
+//  time {
+//    font-size: 16px;
+//    font-weight: 700;
+//    display: block;
+//    margin: 0;
+//    color: $dark;
+//  }
+//}
+.btn {
+  font-size: 16px;
+  line-height: 46px;
+  height: 50px;
+  padding: 0 40px;
+  user-select: none;
+  transition: all .5s;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $light;
+  white-space: nowrap;
+  border-radius: 25px;
+  @include max(767) {
+    height: 44px;
+    line-height: 40px;
+    font-size: 15px;
+  }
+}
+
+.btn--light {
+  border: 2px solid $light;
+  background-color: transparent;
+  &:hover {
+    color: #1e1e1e;
+    background-color: $light;
+  }
+}

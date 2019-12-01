@@ -1,0 +1,24 @@
+extends ../_template
+
+block variables
+  - var title       = 'Odinokun.com'
+  - var description = 'Odinokun.com'
+  - var ogtitle     = 'Odinokun.com'
+  - var ogimage     = 'assets/img/social.jpg'
+
+block content
+  .main-wrap
+    include ../sections/aside
+
+    //begin content
+    section.main.index
+      include ../elements/burger
+
+      .index__bg
+        +svg('logo')
+      .index__block
+        h1.index__title Dmitry Gordienko
+        h2.index__subtitle front-end developer
+        .index__btn
+          a(href="#").btn.btn--light Download CV
+    //end content

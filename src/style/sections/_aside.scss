@@ -1,0 +1,64 @@
+.aside {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  height: 100vh;
+  padding-top: 25px;
+  border-right: 1px solid $light;
+  background-color: $dark;
+
+  @include max(500) {
+    right: 0;
+    width: 100%;
+    padding-top: 100px;
+    transition: transform .5s;
+    transform: translateX(-100%);
+    border-right: none;
+
+    will-change: transform;
+    &.active {
+      transform: translateX(0);
+    }
+  }
+}
+
+.aside__logo {
+  display: block;
+  margin-bottom: 70px;
+
+  @include max(500) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    pointer-events: none;
+    opacity: .06;
+  }
+  &:hover {
+    svg {
+      fill: $highlight;
+    }
+  }
+  svg {
+    fill: $light;
+    width: 50px;
+    height: 80px;
+    transition: fill .5s;
+
+    @include max(500) {
+      width: 250px;
+      height: 400px;
+      margin-top: 60px;
+    }
+  }
+}

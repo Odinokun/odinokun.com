@@ -1,0 +1,44 @@
+extends ../_template
+
+block variables
+  - var title       = 'Contacts | Odinokun.com'
+  - var description = 'Contacts | Odinokun.com'
+  - var ogtitle     = 'Contacts | Odinokun.com'
+  - var ogimage     = 'assets/img/social.jpg'
+
+block content
+  .main-wrap.works-wrap
+    include ../elements/burger
+    include ../sections/aside
+
+    //begin content
+    section.main.contacts
+      //begin contacts-map
+      .contacts-map#contacts-map
+      //end contacts-map
+
+      //begin contacts-item
+      .contacts-item#contacts-item
+        h1.contacts-item__title Contacts
+        a(href="mailto:odinokun@gmail.com").contacts-item__mail
+          +svg('mail')
+          span odinokun@gmail.com
+
+        ul.contacts-item__links
+          li
+            a(href="https://github.com/Odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--git
+              +svg('git')
+          li
+            a(href="https://www.linkedin.com/in/dmytro-gordiienko/" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--in
+              +svg('in')
+          li
+            a(href="https://t.me/odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--teleg
+              +svg('telegram')
+          li
+            a(href="https://www.facebook.com/odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--fb
+              +svg('fb')
+          li
+            a(href="https://twitter.com/odinokun" target="_blank" rel="nofollow noopener noreferrer").contacts-item__link.contacts-item__link--tw
+              +svg('tw')
+      //end contacts-item
+    //end content
