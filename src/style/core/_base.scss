@@ -33,6 +33,7 @@ h5,
 h6 {
   font-weight: 400;
   margin: 0;
+  font-family:$oswald;
 }
 
 h1 {
@@ -98,7 +99,7 @@ svg {
 .main-wrap {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: $light;
 }
 
@@ -150,31 +151,74 @@ svg {
 //    color: $dark;
 //  }
 //}
+
+.page-title {
+  font-family: $kaushan;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  user-select: none;
+  text-align: center;
+  color: $dark;
+  @include max(767) {
+    font-size: 60px;
+  }
+  &::before {
+    position: absolute;
+    z-index: -1;
+    bottom: 15px;
+    left: 0;
+    width: calc(100% + 10px);
+    height: 10px;
+    content: '';
+    background-color: $highlight;
+    @include max(767) {
+      height: 5px;
+      bottom: 10px;
+    }
+  }
+}
+
 .btn {
   font-size: 16px;
   line-height: 46px;
   height: 50px;
-  padding: 0 40px;
+  padding: 3px 40px 0 40px;
   user-select: none;
   transition: all .5s;
+  white-space: nowrap;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: $light;
-  white-space: nowrap;
   border-radius: 25px;
+
   @include max(767) {
-    height: 44px;
-    line-height: 40px;
     font-size: 15px;
+    line-height: 40px;
+    height: 44px;
   }
 }
 
 .btn--light {
   border: 2px solid $light;
   background-color: transparent;
+  color: $light;
   &:hover {
-    color: #1e1e1e;
+  color: $dark;
     background-color: $light;
+  }
+}
+
+.btn--dark {
+  color: $dark;
+  border: 2px solid $dark;
+  background-color: transparent;
+  &:hover {
+    color: $light;
+    background-color: $dark;
   }
 }
