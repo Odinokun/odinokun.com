@@ -1,0 +1,199 @@
+.cv {
+  padding-bottom: 50px;
+  .container {
+    display: flex;
+    align-items: flex-start;
+
+    @include print-or-max(1020) {
+      flex-direction: column;
+    }
+    @include print() {
+      padding: 0;
+    }
+  }
+}
+
+//begin #TOP_LEFT
+.cv__left {
+  overflow: hidden;
+  flex: none;
+  width: 370px;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 5px rgba(30, 30, 30, .05);
+
+  @include print-or-max(1020) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-right: 0;
+    padding: 40px;
+  }
+}
+
+.cv__info {
+  padding: 0 35px;
+
+  @include print-or-max(1020) {
+    padding: 0;
+  }
+  @include max(425) {
+    width: 100%;
+  }
+}
+
+.cv__ava {
+  width: 100%;
+  margin-bottom: 30px;
+
+  @include print-or-max(1020) {
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.cv-info__row {
+  display: flex;
+  margin-bottom: 15px;
+
+  @include max(425) {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn {
+    width: 200px;
+    margin: 10px auto 0 auto;
+  }
+}
+
+.cv-info__row--socials {
+  justify-content: center;
+  align-items: flex-end;
+
+  @include max(425) {
+    flex-direction: row;
+  }
+  svg {
+    fill: $dark;
+    width: 30px;
+    height: 25px;
+    margin: 15px;
+    transition: fill .5s;
+    &:hover {
+      fill: $highlight;
+    }
+  }
+}
+
+.cv-info__title {
+  display: inline-block;
+  flex: none;
+  width: 125px;
+  padding-right: 10px;
+}
+
+.cv-info__descr {
+  font-weight: 400;
+  display: inline-block;
+}
+
+//end #TOP_LEFT
+
+//begin #TOP_RIGHT
+.cv__right {
+  flex: 1;
+  margin-bottom: 50px;
+  padding: 50px 40px 150px 40px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 5px rgba(30, 30, 30, .05);
+}
+
+.cv__title {
+  font-family: $oswald;
+  font-size: 34px;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 20px;
+
+  @include print() {
+    font-size: 20px;
+  }
+  &::before {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    content: '';
+    background-color: $highlight;
+
+    @include print() {
+      display: none;
+    }
+  }
+}
+
+.cv__descr {
+  padding-bottom: 35px;
+
+  @include print() {
+    padding-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 0 0 5px 0;
+
+    @include print() {
+      font-size: 16px;
+    }
+  }
+}
+
+.cv__list {
+  margin: 0;
+  padding: 0;
+  li {
+    font-size: 20px;
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    list-style: none;
+
+    @include print() {
+      font-size: 14px;
+    }
+    strong {
+      font-size: 24px;
+
+      @include print() {
+        font-size: 16px;
+      }
+    }
+    &::before {
+      position: absolute;
+      top: 14px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      content: '';
+      border-radius: 50%;
+      background-color: $highlight;
+    }
+  }
+}

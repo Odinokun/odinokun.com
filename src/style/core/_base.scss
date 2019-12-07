@@ -31,9 +31,9 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: $oswald;
   font-weight: 400;
   margin: 0;
-  font-family:$oswald;
 }
 
 h1 {
@@ -108,26 +108,25 @@ svg {
   flex-direction: column;
   flex-grow: 1;
   margin-left: 90px;
+  @include print() {
+    margin-left: 0;
+  }
 
   @include max(500) {
     margin-left: 0;
   }
 }
 
-//.page-body {
-//  flex-grow: 1;
-//}
-
 .container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 50px;
 
-  //@include max(768) {
-  //  padding: 0 20px;
-  //}
+  @include max(500) {
+    padding: 0 20px;
+  }
 }
 
 //
@@ -152,15 +151,30 @@ svg {
 //  }
 //}
 
+.page-header {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 45px;
+  text-align: center;
+
+  @include print {
+    display: none;
+  }
+}
+
 .page-title {
   font-family: $kaushan;
   font-size: 90px;
   font-weight: 700;
   line-height: 1;
   position: relative;
+  z-index: 1;
+  display: inline-block;
   user-select: none;
   text-align: center;
   color: $dark;
+
   @include max(767) {
     font-size: 60px;
   }
@@ -168,30 +182,32 @@ svg {
     position: absolute;
     z-index: -1;
     bottom: 15px;
-    left: 0;
-    width: calc(100% + 10px);
+    left: -5px;
+    width: calc(100% + 20px);
     height: 10px;
     content: '';
     background-color: $highlight;
+
     @include max(767) {
-      height: 5px;
       bottom: 10px;
+      height: 5px;
     }
   }
 }
 
 .btn {
   font-size: 16px;
+  font-weight: 400;
   line-height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50px;
   padding: 3px 40px 0 40px;
   user-select: none;
   transition: all .5s;
   white-space: nowrap;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   letter-spacing: 1px;
   text-transform: uppercase;
   border-radius: 25px;
@@ -204,11 +220,11 @@ svg {
 }
 
 .btn--light {
+  color: $light;
   border: 2px solid $light;
   background-color: transparent;
-  color: $light;
   &:hover {
-  color: $dark;
+    color: $dark;
     background-color: $light;
   }
 }
