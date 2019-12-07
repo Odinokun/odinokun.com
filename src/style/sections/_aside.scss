@@ -26,6 +26,9 @@
       transform: translateX(0);
     }
   }
+  @include print {
+    display: none;
+  }
 }
 
 .aside__logo {

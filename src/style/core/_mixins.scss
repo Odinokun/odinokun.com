@@ -15,8 +15,14 @@
     @content;
   }
 }
-@mixin min($width) {
-  @media screen and (min-width: $width + 'px') {
+@mixin print-or-max($width) {
+  @media screen and (max-width: $width + 'px'), print {
+    @content;
+  }
+}
+
+@mixin print() {
+  @media print {
     @content;
   }
 }

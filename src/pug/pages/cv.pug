@@ -1,0 +1,174 @@
+extends ../_template
+
+block variables
+  - var title       = 'My CV | Odinokun.com'
+  - var description = 'My CV | Odinokun.com'
+  - var ogtitle     = 'My CV | Odinokun.com'
+  - var ogimage     = 'assets/img/social.jpg'
+
+block content
+  .main-wrap
+    include ../sections/aside
+
+    //begin content
+    section.main.cv-page
+      include ../elements/burger
+
+      //begin page-header
+      .page-header
+        .container
+          .page-header__title
+            h1.page-header__title.page-title My CV
+      //end page-header
+
+      .cv
+        .container
+          //begin cv__left
+          article.cv__left
+            .cv__ava
+              img(src="assets/img/ava.jpg" alt="Dmitry Gordienko")
+            .cv__info.cv-info
+              .cv-info__row
+                span.cv-info__title Name
+                span.cv-info__descr Dmitry Gordienko
+              .cv-info__row
+                span.cv-info__title Position
+                span.cv-info__descr front-end developer
+              .cv-info__row
+                span.cv-info__title Employment
+                span.cv-info__descr full-time, part-time, freelance
+              .cv-info__row
+                span.cv-info__title Location
+                span.cv-info__descr Kyiv, Ukraine
+              .cv-info__row
+                span.cv-info__title Date of birth
+                span.cv-info__descr 19-10-2019
+              .cv-info__row
+                span.cv-info__title Experience
+                span.cv-info__descr work from 2014
+              .cv-info__row
+                span.cv-info__title Email
+                span.cv-info__descr
+                  a(href="mailto:odinokun@gmail.com") odinokun@gmail.com
+              .cv-info__row
+                span.cv-info__title Website
+                span.cv-info__descr
+                  a(href="http://odinokun.com/" target="_blank") http://odinokun.com
+              .cv-info__row.cv-info__row--socials
+                a(href="https://t.me/odinokun" target="_blank" rel="nofollow noopener noreferrer").cv-info__link
+                  +svg('telegram')
+                a(href="https://www.linkedin.com/in/dmytro-gordiienko/" target="_blank" rel="nofollow noopener noreferrer").cv-info__link
+                  +svg('in')
+                a(href="https://github.com/Odinokun" target="_blank" rel="nofollow noopener noreferrer").cv-info__link
+                  +svg('git')
+              .cv-info__row
+                a(href="#").btn.btn--dark Download CV
+          //end cv__left
+
+          //begin cv__right
+          article.cv__right
+            //begin ABOUT
+            h2.cv__title Dmitry Gordienko
+            .cv__descr
+              p Занимаюсь версткой адаптивных сайтов, оптимизацией и поддержкой уже существующих проектов.
+              p Результаты свое работы обязательно проверяю на предмет кроссбраузерности, скорости и валидности.
+              p
+                |На счету более сотни сданных проектов различного уровня сложности. Подробнее с некоторыми из них можно ознакомиться на странице
+                =' '
+                a(href="portfolio.html") портфолио,
+                =' '
+                |а также на моей странице
+                =' '
+                a(href="https://github.com/Odinokun" target="_blank" rel="nofollow noopener noreferrer") Github.
+              p
+                i Рассматриваю как фуллтайм, так и удаленное сотрудничество на постоянной основе, приветствуется частичное посещение офиса.
+            //end ABOUT
+
+            //begin SKILLS
+            h2.cv__title Skills
+            .cv__descr
+              ul.cv__list
+                li
+                  strong HTML5
+                  =' '
+                  |with
+                  =' '
+                  strong Pug
+                  |(ex-Jade)
+                li
+                  strong Css3
+                  =' '
+                  | with
+                  =' '
+                  strong Scss
+                li
+                  strong JS
+                  =' '
+                  |with
+                  =' '
+                  strong Jquery
+                li
+                  strong React
+                  =' '
+                  |(beginner level)
+            //end SKILLS
+
+            //begin TOOLS
+            h2.cv__title Tools that i use
+            .cv__descr
+              ul.cv__list
+                li
+                  strong Gulp
+                  =' '
+                  |and
+                  =' '
+                  strong Webpack
+                li
+                  strong Git
+                  =' '
+                  |and
+                  =' '
+                  strong Github
+                li
+                  strong Photoshop, Figma, Avocode, Adobe Illustrator
+            //end TOOLS
+
+            //begin LANGUAGES
+            h2.cv__title Languages
+            .cv__descr
+              ul.cv__list
+                li
+                  strong Ukrainian
+                  =' '
+                  |(native)
+                li
+                  strong Russian
+                  =' '
+                  |(native)
+                li
+                  strong English
+                  =' '
+                  |(beginner)
+            //end LANGUAGES
+
+            //begin EDUCATION
+            h2.cv__title Education
+            p
+              strong 2012
+              =' '
+              |- высшее юридическое КУТЕП
+            p
+              strong 2016
+              =' '
+              |- Loftschool -
+              =' '
+              a(href="#" target='_blank') Продвинутый курс по вебразработке
+            p
+              strong 2018
+              =' '
+              |- Loftschool -
+              =' '
+              a(href="#" target='_blank') Комплексное обучение JavaScript
+            //end EDUCATION
+          //end cv__right
+    //end content

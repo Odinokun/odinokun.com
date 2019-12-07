@@ -24,6 +24,7 @@
   padding: 50px 20px;
   transform: translate(-50%, -50%);
   border: 2px solid $dark;
+  border-radius: 4px;
   background-color: $light;
 }
 
@@ -114,6 +115,7 @@
   }
   span {
     font-size: 18px;
+    font-weight: 400;
     line-height: 18px;
     display: inline-block;
     transition: color .5s;
@@ -128,7 +130,8 @@
 
 .contact-links__link--in {
   svg {
-    transform: translateY(-5px);
+    height: 32px;
+    padding-bottom: 5px;
   }
 }
 
