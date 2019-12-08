@@ -11,7 +11,7 @@ mixin works__item()
       h3.works-item__title Privat notary site
       .works-item__date
         +svg('calendar')
-        span november 2017
+        time(pubdate datetime='2017-10') november 2017
       a(href="#" target="_blank" rel="nofollow noopener noreferrer").works-item__link
         +svg('link')
         span http://notary-office.kiev.ua/
@@ -20,7 +20,6 @@ mixin works__item()
         .works-item__btn css
         .works-item__btn js
         .works-item__btn react
-
 
 block variables
   - var title       = 'Last works | Odinokun.com'
@@ -53,5 +52,4 @@ block content
           +works__item
           +works__item
         //end works__gallery
-
     //end content
