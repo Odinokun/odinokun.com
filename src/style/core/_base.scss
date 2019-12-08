@@ -129,33 +129,11 @@ svg {
   }
 }
 
-//
-//.date {
-//  display: flex;
-//  align-items: baseline;
-//  margin-bottom: 5px;
-//  pointer-events: none;
-//  svg {
-//    flex: none;
-//    fill: $dark;
-//    width: 20px;
-//    height: 20px;
-//    margin-right: 10px;
-//  }
-//  time {
-//    font-size: 16px;
-//    font-weight: 700;
-//    display: block;
-//    margin: 0;
-//    color: $dark;
-//  }
-//}
-
 .page-header {
   display: flex;
   justify-content: center;
   padding-top: 80px;
-  padding-bottom: 45px;
+  padding-bottom: 80px;
   text-align: center;
 
   @include print {
