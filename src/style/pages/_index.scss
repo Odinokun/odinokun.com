@@ -41,7 +41,9 @@
   line-height: 1;
   margin-bottom: 0;
   user-select: none;
+  animation: .7s fadeIn ease .5s forwards;
   letter-spacing: 3px;
+  opacity: 0;
   color: $light;
 
   @include max(1020) {
@@ -54,7 +56,9 @@
   font-size: 3vw;
   margin-bottom: 50px;
   user-select: none;
+  animation: .7s fadeIn ease .7s forwards;
   text-align: center;
+  opacity: 0;
   color: $light;
 
   @include max(1020) {
@@ -65,4 +69,6 @@
 .index__btn {
   display: flex;
   justify-content: center;
+  animation: .7s fadeIn ease .9s forwards;
+  opacity: 0;
 }
