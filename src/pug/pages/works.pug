@@ -1,26 +1,5 @@
 extends ../_template
 
-mixin works__item()
-  .works__item.works-item
-    .works-item__img
-      img(src="assets/img/works/work-01.jpg" alt="picture")
-      a(href="#").works-item__img-more
-        +svg('magnific')
-        span view site
-    .works-item__info
-      h3.works-item__title Privat notary site
-      .works-item__date
-        +svg('calendar')
-        time(datetime='2017-10') november 2017
-      a(href="#" target="_blank" rel="nofollow noopener noreferrer").works-item__link
-        +svg('link')
-        span http://notary-office.kiev.ua/
-      .works-item__btns
-        .works-item__btn html
-        .works-item__btn css
-        .works-item__btn js
-        .works-item__btn react
-
 block variables
   - var title       = 'Last works | Odinokun.com'
   - var description = 'Last works | Odinokun.com'
@@ -45,11 +24,15 @@ block content
       .container
         //begin works__gallery
         .works__gallery
-          +works__item
-          +works__item
-          +works__item
-          +works__item
-          +works__item
-          +works__item
+          include ../elements/works/work-01
+          include ../elements/works/work-04
+          include ../elements/works/work-07
+          include ../elements/works/work-03
+          include ../elements/works/work-10
+          include ../elements/works/work-08
+          include ../elements/works/work-06
+          include ../elements/works/work-02
+          include ../elements/works/work-05
+          include ../elements/works/work-09
         //end works__gallery
     //end content
