@@ -41,7 +41,15 @@ html(lang="en")
   body
     block content
 
-    // это ключ без ограничений - удалить перед продакшеном
+    //begin Google Analitics
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-148530681-1")
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-148530681-1');
+    //end Google Analitics
+
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOCsBWLmb8s4eo6cltyZG2HRu99sG3RnE")
     script(src='assets/js/foundation.js')
     script(src='assets/js/app.js')
