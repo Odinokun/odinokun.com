@@ -23,7 +23,7 @@
   padding-bottom: 50px;
   border-radius: 4px;
   background-color: #fff;
-  box-shadow: 0 0 10px 5px rgba(30, 30, 30, .05);
+  box-shadow: $box-shadow;
 
   @include print-or-max(1020) {
     display: flex;
@@ -115,7 +115,7 @@
   padding: 50px 40px 150px 40px;
   border-radius: 4px;
   background-color: #fff;
-  box-shadow: 0 0 10px 5px rgba(30, 30, 30, .05);
+  box-shadow: $box-shadow;
 }
 
 .cv__title {

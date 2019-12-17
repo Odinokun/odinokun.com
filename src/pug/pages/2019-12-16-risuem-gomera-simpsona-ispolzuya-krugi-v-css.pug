@@ -1,0 +1,150 @@
+extends ../_template
+
+block variables
+  - var title       = 'Рисуем Гомера Симпсона используя круги в CSS | Odinokun.com'
+  - var description = 'Рисуем Гомера Симпсона используя круги в CSS | Odinokun.com'
+  - var ogtitle     = 'Рисуем Гомера Симпсона используя круги в CSS | Odinokun.com'
+  - var ogimage     = 'assets/img/social.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2019-12-16/homer-top.jpg'
+  - var imgAlt              = 'Homer Simpson'
+
+  - var articleTitle        = 'Рисуем Гомера Симпсона используя круги в CSS'
+  - var articleDate         = '2019-12-11'
+
+  - var originArticleTitle  = 'Drawing Homer Simpson using circles in CSS'
+  - var originArticleLink   = 'https://dev.to/alvaromontoro/drawing-homer-simpson-using-circles-in-css-4gc1'
+
+  - var articleWriter       = 'Alvaro Montoro'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag drawing
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Css рисунки, обычно, являются набором фигур, из которых в итоге составляют изображение. Мультипликационный персонаж, такой как Гомер Симпсон, не вписывается в эту категорию, из-за чего рисовать его на CSS - настоящий вызов.
+            p Более того, этот изображение было сделано как часть <a href="https://blog.codepen.io/2019/02/04/codepenchallenge-shapes/" target="_blank" rel="nofollow noopener noreferrer")>CodePen challenge</a> который состоял в построении чего-либо ограничивая себя только одной фигурой - кругом, что добавило интереса к рисованию.
+            p Поэтому это будет не простая статья о том, как рисовать на CSS. Это также не указание на самый верный способ для создания картинки, особенно, если существует более простой способ, но в тоже время это очень интересный вариант для решения этой проблемы.
+            p И теперь вы можете спросить меня: <i>“Как же ты собираешься рисовать Гомера Симпсона используя только круги?”</i> - и это будет отличный вопрос.
+            p В первую очередь мы подберем изображение. Я не рисовал Гомера Симпсона по памяти, у меня было изображение которым я руководствовался для наложения на него контуров.
+            p Хитрость заключается в <strong><i>использовании двух кругов для каждой линии:</i></strong> одним кругом рисуем линию, а вторым кругом обрезаем ее. Один круг внутри другого:
+            ul
+              li Внутренний круг используется для рисования линии. У него есть граница, и он спозиционирован абсолютно внутри второго круга;
+              li Наружный круг мы используем для обрезания внутреннего круга. У него нет границ, заливки (фона), нет ничего кроме свойства <strong><i>overflow: hidden;</i></strong>
+            p Что-то вроде этого:
+
+            .article-body__img
+              img(src="assets/img/articles/2019-12-16/circles.jpg" alt="circles")
+
+            p Если перевести это в код, то он будет выглядеть вот так:
+
+            pre
+              code.language-html.
+                &lt;div id='part-of-Homer-face'>
+                  &lt;div>&lt;/div>
+                &lt;/div>
+
+            pre
+              code.language-css.
+                div {
+                  border: 0;
+                  border-radius: 50%;
+                  box-sizing: border-box;
+                  margin: 0;
+                  padding: 0;
+                  position: absolute;
+                }
+
+                div > div {
+                  border: 3px solid black;
+                }
+
+                /* exterior circle*/
+                #part-of-Homer-face {
+                  top: ...px;
+                  left: ...px;
+                }
+
+                /* interior circle */
+                #part-of-Homer-face > div {
+                  top: ...px;
+                  left: ...px;
+                }
+
+            p <strong><i>Следующим шагом будет разделение изображения на фигуры.</i></strong> Я помню, что мы используем только круги, так что нужно разбить его на круглые и не очень круглые фигуры.
+            p Итак, давайте сосредоточимся на тех частях Гомера Симпсона которые по большей части круглые: глаза, уши, кончик носа, верхняя часть головы и так далее. Я буду использовать глаза как  стартовую точку для рисования, потому что они очень просты в реализации и они сразу придают рисунку <i>индивидуальность.</i>
+            p Добавление первых обрезающих кругов позволяет нам достичь чего-то вроде этого:
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2019-12-16/homer-01.jpg" alt="homer")
+              span <i>Это еще не готовый рисунок, но Гомер уже просматривается.</i>
+
+            p Ваша следующая мысль скорее всего будет: <i>“Этот рисунок уже супер-крутой</i> - Спасибо! - <i>но как насчет прямых линий? Гомер не полностью состоит из кривых, и пока что это просто кучка кружков”.</i>
+            p Отвечаю на вопрос: прямые линии немного сложнее, но на самом деле, не такие уж и сложные.  Если у вас есть действительно огромный круг, но вы видите лишь небольшую его часть, то будет ли он выглядеть как круг?
+            p <strong><i>Если вы сделаете круг достаточно большим и отобразите только часть его, то вы сможете увидеть небольшую кривизну, но в основном, это будет выглядеть как прямая линия.</i></strong></br> И вот то, что получилось.
+            p После добавления тех “прямых” линий, наш Гомер выглядит намного больше похожим на Гомера:
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2019-12-16/homer-02.jpg" alt="homer")
+              span <i>Это больше похоже на рисунок, отсутствуют только финальные штрихи.</i>
+
+            p Наконец, <strong><i>нам надо добавить линии, чтобы соединить все элементы.</i></strong> Это может быть самой трудной частью, потому что линии в CSS не будут идеально совпадать, оставляя пропуски между собой.
+            p Если вы все сделаете правильно, то вы не заметите соединения и при 100% увеличении, но если увеличить масштаб, то будет видно, что соединения далеки от совершенства. Также вы заметите, что рисунки на CSS отлично масштабируются.
+            p Итоговый результат вы можете посмотреть здесь (при наведении мыши показываются все линии, но будьте осторожны, так как это выглядит жутковато):
+
+            .article-body__img
+              iframe(src="https://codepen.io/alvaromontoro/embed/wvBoEyr?height=600&amp;default-tab=result&amp;embed-version=2" scrolling="no" frameborder="no" allowtransparency="true" loading="lazy" height="500" style="width: 100%;")
+              span <i>Или посмотрите <a href='https://codepen.io/alvaromontoro/pen/JxMPqa' target="_blank" rel="nofollow noopener noreferrer">анимационную версию создания портрета нашего Гомера Симпсона</a></i>
+
+            p Повторюсь, что это не лучший вариант для рисования на CSS, но у него есть некоторые преимущества: это самый простой HTML и CSS. Ни трансформаций, ни  clip-path, ни градиентов, ни причудливого CSS3… только границы и <strong><i>overflow:hidden.</i></strong> А это значит, что изображение будет выглядеть одинаково в большинстве браузеров:
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2019-12-16/homer-in-browsers.jpg" alt="homer")
+
+            p ...ураааа!
+            p Если вам нравится рисовать на CSS и/или Симпсоны, здесь есть коллекция <a href='https://codepen.io/collection/DrwLdN/' target="_blank" rel="nofollow noopener noreferrer">разных персонажей из Симпсонов, которые нарисованы с помощью CSS и HTML.</a> Я начал рисовать Гомера Симпсона пару месяцев назад и кто-то посоветовал мне написать статью, про то, как я это сделал. Это заняло у меня много времени и вероятно это не та статья, которую они имели в виду, но я надеюсь, что она вам понравилась.
+            br
+
+            .article-body__small-text
+              p
+                i Примечание: Персонаж и изображение Гомера Симпсона защищены авторским правом и используются в этом посте только в исследовательских и образовательных целях.
+          //end article__body
+    //end content

@@ -18,13 +18,13 @@
 }
 
 .blog-article__img {
-  width: calc(45% - 15px);
+  width: calc(50% - 15px);
+  box-shadow: $box-shadow;
 
   @include max(1020) {
     width: 100%;
     margin-bottom: 25px;
   }
-
   img {
     display: block;
     width: 100%;
@@ -42,7 +42,7 @@
 .blog-article__info {
   display: flex;
   flex-direction: column;
-  width: calc(55% - 15px);
+  width: calc(50% - 15px);
 
   @include max(1020) {
     width: 100%;
@@ -61,12 +61,6 @@
   &:hover {
     color: $highlight;
   }
-}
-
-.blog-article__info-header {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .blog-article__date {
