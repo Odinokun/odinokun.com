@@ -1,27 +1,5 @@
 extends ../_template
 
-mixin blog-article(title)
-  .blog__article.blog-article
-    a(href="article.html").blog-article__img
-      img(src="assets/img/articles/article-01.jpg" alt="picture")
-    .blog-article__info
-      a(href="article.html").blog-article__title #{title}
-      .blog-article__info-header
-        .blog-article__date
-          +svg('calendar')
-          time(datetime='2019-08-27') 2019-08-27
-        .blog-article__author
-          +svg('writer')
-          span John Ronald Reuel Tolkien
-      a(href="#").blog-article__preview
-        p Юзабилити полей можно улучшить, если предложить пользователю выбрать заданное значение из списка готовых через атрибут list и дополняющий его элемент datalist. Отличие от традиционного select заключается в том, что поле доступно для редактирования и ввода любых значений, а предлагаемые варианты — элементы option — показываются либо по желанию пользователя, либо во время ввода при условии частичного совпадения по первым (и далее) символам. Это отличное решение в тех случаях, когда вводимые данные можно предугадать засчёт ограниченного количества вариантов.
-      .blog-article__tags
-        .blog-article__tag #разработка
-        .blog-article__tag #js
-        .blog-article__tag #react
-        .blog-article__tag #дизайн
-
-
 block variables
   - var title       = 'Blog | Odinokun.com'
   - var description = 'Blog | Odinokun.com'
@@ -46,13 +24,6 @@ block content
       .container
         //begin blog-articles
         .blog__articles
-          +blog-article('Как писать Go-пакеты')
-          +blog-article('Современного учебник JavaScript')
-          +blog-article('Ищем баги в PHP коде без статических анализаторов')
-          +blog-article('Примеры использования некоторых новых возможностей JavaScript')
-          +blog-article('Amazon Prime Day 2019 – Powered by AWS')
-          +blog-article('Ищем баги в PHP коде без статических анализаторов')
-          +blog-article('Примеры использования некоторых новых возможностей JavaScript')
-          +blog-article('Amazon Prime Day 2019 – Powered by AWS')
+          include ../sections/articles-preview/2019-12-16-risuem-gomera-simpsona-ispolzuya-krugi-v-css
         //end blog-articles
     //end content

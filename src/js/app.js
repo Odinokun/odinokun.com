@@ -1,14 +1,11 @@
 // begin SVG for IE
 require('./modules/svg4everybody')();
 
+// begin code example highlighter
+require('./modules/prism')();
+
 // begin menu
 require('./modules/menu')();
-
-// begin hide footers
-// require('./modules/hideFooter')();
-
-// begin more works
-// require('./modules/moreWorks')();
 
 // begin contacts map
 require('./modules/map')();
