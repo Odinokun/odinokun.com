@@ -1,0 +1,220 @@
+extends ../_template
+
+block variables
+  - var title       = 'Семь примеров использования кастомных CSS-свойств | odinokun.com'
+  - var description = 'Семь примеров использования кастомных CSS-свойств | odinokun.com'
+  - var ogtitle     = 'Семь примеров использования кастомных CSS-свойств | odinokun.com'
+  - var ogimage     = 'assets/img/articles/2019-12-18/top-picture.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2019-12-18/top-picture.jpg'
+  - var imgAlt              = 'Custom properties'
+
+  - var articleTitle        = 'Семь примеров использования кастомных CSS-свойств'
+  - var articleDate         = '2019-12-09'
+
+  - var originArticleTitle  = '7 Uses for CSS Custom Properties'
+  - var originArticleLink   = 'https://css-irl.info/7-uses-for-css-custom-properties'
+
+  - var articleWriter       = 'Michelle Barker'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag custom properties
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties' target="_blank" rel="nofollow noopener noreferrer">Кастомные свойства</a> (которые также известны как CSS переменные) позволяют нам хранить значения свойств для их последующего переиспользования в наших таблицах стилей. Если вы недавно узнали про них, то можете задаваться вопросом, а чем они лучше обычных переменных препроцессора (если вы конечно используете какой-либо препроцессор). На данный момент я часто использую кастомные свойства в работе и решила собрать здесь несколько вариантов их применения.
+            p Это не углубленная инструкция по работе с кастомными свойствами, но если вам нужна минимальная информация чтобы начать их использовать, то рекомендую посмотреть на следующие примеры:
+
+            h2.article-body__title Цветовые функции
+            p Кастомные свойства не просто содержат полные значения свойств, но и могут использоваться для хранения лишь части этих значений. Обычно в пример приводят способ применения в цветовых функциях CSS. <br> <a href='https://tympanus.net/codrops/css_reference/hsla/'  target="_blank" rel="nofollow noopener noreferrer">HSLA</a> особенно хорошо подходит для кастомных свойств, предоставляя нам, как разработчикам, беспрецедентный уровень контроля, когда дело доходит до смешивания цветов.
+            pre
+              code.language-css.
+                .some-element {
+                  background-color: hsla(
+                    var(--h, 120),
+                    var(--s, 50),
+                    var(--l, 50),
+                    var(--a, 1)
+                  );
+                }
+
+                .some-element.darker {
+                  --l: 20;
+                }
+            p Мы также можем сделать разные крутые штуки, например такие, как вычисление дополнительных цветов. <a href='https://blog.logrocket.com/how-to-create-better-themes-with-css-variables-5a3744105c74/'  target="_blank" rel="nofollow noopener noreferrer">Эту статью</a> я написала в прошлом году и она гораздо более детально описывает возможности по манипулированию цветом с применением кастомных переменных, и у <a href='https://www.sarasoueidan.com/blog/hex-rgb-to-hsl/'  target="_blank" rel="nofollow noopener noreferrer">Sara Soueidan</a> есть отличная статья на эту же тему.
+
+            h2.article-body__title Сокращенные свойства
+            p Если вы используете сокращенные свойства, такие как <i>animation</i>, и и вам нужно изменить одно значение для применения этого свойства к другому элементу, то повторная запись всех свойств чревата ошибками и добавляет дополнительную сложность при поддержке. Используя кастомные свойства мы можем очень легко изменять одно значение в сокращенном свойстве:
+            pre
+              code.language-css.
+                .some-element {
+                  animation: var(--animationName, pulse) var(--duration 2000ms) ease-in-out
+                    infinite;
+                }
+
+                .some-element.faster {
+                  --duration: 500ms;
+                }
+
+                .some-element.shaking {
+                  --animationName: shake;
+                }
+
+            h2.article-body__title Повторяющиеся значения
+            p Предположим, у нас есть элемент, который имеет одно значение для верхнего отступа (padding), но другие, одинаковые значения для всех остальных сторон. Написание подобного свойства может быть слегка утомительным, особенно, если мы хотим изменить значения отступов:
+            pre
+              code.language-css.
+                .some-element {
+                  padding: 150px 20px 20px 20px;
+                }
+
+                @media (min-width: 50em) {
+                  padding: 150px 60px 60px 60px;
+                }
+            p Использование кастомных свойств означает, что у нас может быть всего одно место в котором мы можем изменить сразу все значения для этого отступа. Более того, если это стандартное значение, которое используется на своем сайте, мы можем объявить его в качестве переменной в файле конфигурации или в <a href='https://css-tricks.com/what-are-design-tokens/'  target="_blank" rel="nofollow noopener noreferrer">токенах дизайна</a> нашего сайта.
+            pre
+              code.language-css.
+                :root {
+                  --pad: 20px;
+                }
+
+                @media (min-width: 50em) {
+                  &#58;root {
+                    --pad: 60px;
+                  }
+                }
+
+                .some-element {
+                  padding: 150px var(--pad) var(--pad) var(--pad);
+                }
+
+            h2.article-body__title Вычисленные значения
+            p Кастомные свойства могут быть очень удобны для хранения вычисленных значений (из функции <i>calc()</i>), которые в свою очередь тоже могут быть вычислены из других пользовательских свойств. Одним из примеров может послужить - расчет дополнительных цветов, как уже упоминалось ранее. Другой пример - когда вы хотите вычислить обратное свойство. Я недавно писала статью, для CSS Tricks про <a href='https://css-tricks.com/reversing-an-easing-curve/'  target="_blank" rel="nofollow noopener noreferrer">вычисление обратной кривой cubic-bezier</a> с помощью кастомных свойств.
+            p Я довольно часто использую кастомные свойства со свойством <i>clip-path</i>, если мне нужно вычислить один путь относительно другого, или относительно известной переменной. Следующий код, из демонстрации, вычисляет точки clip-path для двух псевдоэлементов, чтобы создать эффект  разрезанного пополам элемента.
+            pre
+              code.language-css.
+                .element {
+                  --top: 20%;
+                  --bottom: 80%;
+                  --gap: 1rem;
+                  --offset: calc(var(--gap) / 2);
+                }
+
+                .element::before {
+                  clip-path: polygon(
+                    calc(var(--top) + var(--offset)) 0,
+                    100% 0,
+                    100% 100%,
+                    calc(var(--bottom) + var(--offset)) 100%
+                  );
+                }
+
+                .element::after {
+                  clip-path: polygon(
+                    calc(var(--top) - var(--offset)) 0,
+                    calc(var(--bottom) - var(--offset)) 100%,
+                    0 100%,
+                    0 0
+                  );
+                }
+
+            .article-body__img
+              iframe(src="https://codepen.io/alvaromontoro/embed/WNbRYwV?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Последовательные анимации
+            p Если мы хотим сделать анимацию для нескольких дочерних элементов, мы можем сделать это очень просто и изящно, установив <i>animation-delay</i> для каждого элемента , определив кастомное свойство как индекс элемента:
+            pre
+              code.language-css.
+                .element {
+                  --delay: calc(var(--i, 0) * 500ms);
+                  animation: fadeIn 1000ms var(--delay, 0ms);
+                }
+
+                .element:nth-child(2) {
+                  --i: 2;
+                }
+
+                .element:nth-child(3) {
+                  --i: 3;
+                }
+
+            .article-body__img
+              iframe(src="https://codepen.io/alvaromontoro/embed/ExaZOgm?height=600&default-tab=css%2Cresult&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p К сожалению на данный момент мы должны назначать переменную явно, что может быть проблемой, если мы не знаем количество элементов которые нужно анимировать. <a href='https://splitting.js.org/'  target="_blank" rel="nofollow noopener noreferrer">Splitting JS</a> - это отличная JavaScript библиотека которая позаботится об этом, назначив индекс элемента в качестве переменной, и будет очень полезна для такого рода последовательной анимации. Но было бы очень здорово не использовать JS!
+            p Adam Argyle недавно <a href='https://github.com/w3c/csswg-drafts/issues/4559'  target="_blank" rel="nofollow noopener noreferrer">предложил</a> две новые CSS-функции, <i>sibling-count()</i> и  <i>sibling-index()</i>, которые сильно изменят правила игры, добавив множество новых возможностей в CSS. На данный момент они далеки от того, чтобы быть внедрены в какой-либо браузер, но это были бы невероятно мощные инструменты, так что нужно следить за их развитием.
+
+            h2.article-body__title Адаптивные гриды
+            p Я уже писала про них <a href='https://css-irl.info/super-powered-layouts/'  target="_blank" rel="nofollow noopener noreferrer">в этой статье</a>, но кастомные свойства могут помочь работать с макетами со сложной сеткой. Допустим у нас есть восьми-колоночная сетка, которую нам надо изменить на двенадцати-колоночную сетку при определенном разрешении:
+            pre
+              code.language-css.
+                :root {
+                  --noOfColumns: 8;
+                }
+
+                @media (min-width: 60em) {
+                  &#58;root {
+                    --noOfColumns: 12;
+                  }
+                }
+
+                .grid {
+                  display: grid;
+                  grid-template-columns: repeat(var(--noOfColumns), 1fr);
+                }
+            p Нам не нужно записывать полное значение свойства всякий раз, когда мы хотим обновить количество столбцов - мы можем использовать кастомные свойства. Это относительно простой пример, но пользы от такого подхода будет гораздо больше, если у нас будет более сложная сетка. И это способ также может применяться к таким вещам, как размер строк или размещение элементов.
+
+            h2.article-body__title Вендорные префиксы
+            p Некоторые свойства (например, <i>clip-path</i>) все еще требуют префиксы для определенных браузеров - хотя, к счастью, их число уменьшается. Если вам нужно написать префикс для свойства, а затем вы хотите изменить значение этого свойства, вы должны убедиться, что вы изменили его и в свойстве с префиксом.  С помощью пользовательских свойств мы могли бы вместо этого написать:
+            pre
+              code.language-css.
+                .some-element {
+                  --clip: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+
+                  -webkit-clip-path: var(--clip);
+                  clip-path: var(--clip);
+                }
+            p Теперь у нас есть только одно место в коде которое нам понадобится изменить.
+
+            h2.article-body__title Выводы
+            p Это далеко не полный список применения кастомных свойств, но эти семь примеров я регулярно использую для своего рабочего процесса и они помогут вам сделать код более эффективным и поддерживаемым.  Нет сомнений в том, что вы откроете для себя множество других применений!
+          //end article__body
+    //end content
