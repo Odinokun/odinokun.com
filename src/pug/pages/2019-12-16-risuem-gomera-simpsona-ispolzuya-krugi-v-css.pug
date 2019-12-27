@@ -1,9 +1,9 @@
 extends ../_template
 
 block variables
-  - var title       = 'Рисуем Гомера Симпсона используя круги в CSS | Odinokun.com'
-  - var description = 'Рисуем Гомера Симпсона используя круги в CSS | Odinokun.com'
-  - var ogtitle     = 'Рисуем Гомера Симпсона используя круги в CSS | Odinokun.com'
+  - var title       = 'Рисуем Гомера Симпсона используя круги в CSS | odinokun.com'
+  - var description = 'Рисуем Гомера Симпсона используя круги в CSS | odinokun.com'
+  - var ogtitle     = 'Рисуем Гомера Симпсона используя круги в CSS | odinokun.com'
   - var ogimage     = 'assets/img/articles/2019-12-16/homer-top.jpg'
 
   //- article variables
@@ -38,7 +38,7 @@ block content
 
             .article__info
               h1.article__title #{articleTitle}
-              .article__date
+              .article__date(title='Date of publication of the original article')
                 +svg('calendar')
                 time(datetime= articleDate) #{articleDate}
 
@@ -46,7 +46,7 @@ block content
               .article__origin
                 span.article__origin-text Перевод статьи:
                 a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
-              .article__origin
+              .article__origin(title='The author of the article')
                 span.article__origin-text Автор:
                 span.article__origin-author #{articleWriter}
               //end article__origin

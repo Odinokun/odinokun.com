@@ -1,0 +1,104 @@
+extends ../_template
+
+block variables
+  - var title       = 'Подчеркивание в виде движущейся радуги | odinokun.com'
+  - var description = 'Подчеркивание в виде движущейся радуги | odinokun.com'
+  - var ogtitle     = 'Подчеркивание в виде движущейся радуги | odinokun.com'
+  - var ogimage     = 'assets/img/articles/2019-12-27/rainbow.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2019-12-27/rainbow.svg'
+  - var imgAlt              = 'Rainbow'
+
+  - var articleTitle        = 'Подчеркивание в виде движущейся радуги'
+  - var articleDate         = '2019-12-23'
+
+  - var originArticleTitle  = 'Moving Rainbow Underlines'
+  - var originArticleLink   = 'https://css-tricks.com/moving-rainbow-underlines'
+
+  - var articleWriter       = 'Chris Coyier'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag animation
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Мне очень нравится дизайн сайта <a href='https://sandwich.co/' target="_blank" rel="nofollow noopener noreferrer">Sandwich</a>. Среди множества красивых эффектов, у них есть заголовки с подчеркиванием в виде радуги, которая <strong>сдвигается при прокрутке</strong>. И этот небольшой  эффект вычисляется не по скроллу, а его движение зависит от положения прокрутки.
+
+            .article-body__img
+              img(src="assets/img/articles/2019-12-27/rainbow-demo.gif" alt="Rainbow demo")
+
+            p Для того, чтобы нарисовать радугу, мы могли бы использовать <a href='https://css-tricks.com/snippets/css/css-linear-gradient/' target="_blank" rel="nofollow noopener noreferrer">линейный градиент</a>, с резкими переходами, тот же способ, что и при <a href='https://css-tricks.com/stripes-css/' target="_blank" rel="nofollow noopener noreferrer">рисовании полос в CSS</a>. Это довольно большой кусок проверенного CSS, который работает стабильно, но я вижу, что вместо этого они выбрали фоновое изображение. Это SVG изображение можно <a href='assets/img/articles/2019-12-27/rainbow.svg' target="_blank" rel="nofollow noopener noreferrer">посмотреть здесь</a>. Оно весит всего 661 байт и это очень мало. Мы можем сделать это изображение похожим на подчеркивание ограничив высоту с помощью <i>background-size</i> и расположив его под текстом с помощью свойства <i>background-position</i>.
+            p Мы будем делать это на вложенном инлайновом элементе, чтобы подчеркивание переносилось там, где переносятся слова.
+
+            pre
+              code.language-css.
+                h1 span {
+                  background-image: url(rainbow.svg);
+                  background-repeat: repeat-x;
+                  background-size: 100vw 0.2em;
+                  background-position: left bottom 5px;
+                }
+
+            p Чтобы получить анимацию, мы будем изменять значение <i>background-position-x</i>. Не самое производительное свойство для анимаций, но мы не анимируем изображение в полном смысле этого слова, а всего-лишь сдвигаем его в зависимости от положения прокрутки. Вместо того, чтобы вручную управлять свойством <i>background-position-x</i>, мы зададим его с помощью кастомного CSS свойства, а затем будем обрабатывать с помощью JavaScript.
+
+            pre
+              code.language-css.
+                background-position-x: var(--scrollPos);
+
+            p Обновлять эту переменную во время прокрутки страницы очень просто:
+
+            pre
+              code.language-js.
+                window.addEventListener("scroll", e => {
+                  let scrollTop = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop;
+                  let newPos = scrollTop + "px";
+                  document.documentElement.style.setProperty('--scrollPos', newPos);
+                });
+
+            p И это работает!
+
+            .article-body__img
+              iframe(src="https://codepen.io/alvaromontoro/embed/OJPgBNM?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Видите что-то вроде “артефактной” линии там, где я использую <i>document.body</i> или <i>document.documentElement</i>? Это дурацкий кроссбраузерный баг, из-за того, что реализация “элемента прокрутки” в Safari отличается от ее реализации в остальных браузерах.
+            p Пока я делал этот пример, я узнал, что можно использовать <i>document.scrollingElement</i>, что бы избежать этого бага. Я оставлю коментарий про это в коде, но сам код изменять не буду, чтобы сохранить первоначальный вариант.
+          //end article__body
+    //end content
