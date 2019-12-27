@@ -15,10 +15,10 @@
   .blog-article__info
     a(href= articleLink).blog-article__title #{articleTitle}
     .blog-article__info-header
-      .blog-article__date
+      .blog-article__date(title='Date of publication of the original article')
         +svg('calendar')
         time(datetime= articleDate) #{articleDate}
-      .blog-article__author
+      .blog-article__author(title='The author of the article')
         +svg('writer')
         span #{articleWriter}
     a(href= articleLink).blog-article__preview

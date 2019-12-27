@@ -38,7 +38,7 @@ block content
 
             .article__info
               h1.article__title #{articleTitle}
-              .article__date
+              .article__date(title='Date of publication of the original article')
                 +svg('calendar')
                 time(datetime= articleDate) #{articleDate}
 
@@ -46,7 +46,7 @@ block content
               .article__origin
                 span.article__origin-text Перевод статьи:
                 a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
-              .article__origin
+              .article__origin(title='The author of the article')
                 span.article__origin-text Автор:
                 span.article__origin-author #{articleWriter}
               //end article__origin
