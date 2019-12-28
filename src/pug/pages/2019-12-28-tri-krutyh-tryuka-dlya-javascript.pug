@@ -1,0 +1,144 @@
+extends ../_template
+
+block variables
+  - var title       = 'Три крутых трюка для JavaScript | odinokun.com'
+  - var description = 'Три крутых трюка для JavaScript | odinokun.com'
+  - var ogtitle     = 'Три крутых трюка для JavaScript | odinokun.com'
+  - var ogimage     = 'assets/img/articles/2019-12-18/js.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2019-12-28/js.jpg'
+  - var imgAlt              = 'JavaScript'
+
+  - var articleTitle        = 'Три крутых трюка для JavaScript'
+  - var articleDate         = '2019-07-31'
+
+  - var originArticleTitle  = 'Some cool and awesome JavaScript tricks'
+  - var originArticleLink   = 'https://medium.com/javascript-in-plain-english/some-cool-and-awesome-javascript-tricks-4bcb9af9b1d3?'
+
+  - var articleWriter       = 'Kunal Tandon'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag javascript
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p В этой статье мы рассмотрим несколько классных трюков, которые могут пригодиться вам при работе с JavaScript.
+
+            h2.article-body__title Шаг #1
+            p
+              strong Определение того, является переменная примитивным или не примитивным типом данных.
+
+            p В Javascript есть примитивные и не примитивные типы данных. Примитивные типы это: булевый тип (boolean), строки (string), числа (number), BigInt, null, Symbol и undefined. Не примитивный тип включает в себя только объекты (Objects).
+            p Зачастую нам надо определить какой тип значения хранится в переменной - примитивный или не примитивный?
+            p Создадим для примера переменную val:
+
+            pre
+              code.language-js.
+                var val; // переменная содержит примитивное или не примитивное значение
+
+            p Определить какой тип значения хранится в переменной можно с помощью всего нескольких строк кода:
+
+            pre
+              code.language-js.
+                function isPrimitive(val) {
+                    return Object(val) !== val;
+                }
+
+            p Мы используем конструктор объектов чтобы создать объект-обертку для значения переменной.
+            p Если значение переменной относится к примитивному типу данных, то конструктор объектов создаст новый объект-обертку для этого значения.
+            p Если значение не является примитивным типом данных, то это может быть только объект и конструктор объектов вернет его.
+            p Следовательно, строгая проверка (!== или ===) может помочь нам проверить  каким  типом является значение переменной, примитивным или не примитивным.
+
+            h2.article-body__title Шаг #2
+            p
+              strong Создание чистого объекта на javascript
+
+            p Перед созданием чистого объекта, давайте разберемся <i>"Что же такое чистый объект?"</i>
+            p
+              strong Чистый объект в Javascript - это объект который не содержит в своем прототипе никаких функций.
+            p Обычный объект создается со следующим синтаксисом:
+
+            pre
+              code.language-js.
+                var obj = {};
+
+            P После проверки obj.__proto__ мы получаем много функций содержащихся внутри него:
+
+            .article-body__img
+              img(src="assets/img/articles/2019-12-28/code-01.jpg" alt="code example")
+
+            p А что если мы хотим создать объект, который не имеет внутри себя ни одной функции-прототипа?
+            p Мы можем сделать это используя метод create для конструктора объектов.
+
+            pre
+              code.language-js.
+                var obj = Object.create(null);
+
+            p После проверки прототипа объекта мы получаем следующий результат:
+
+            .article-body__img
+              img(src="assets/img/articles/2019-12-28/code-02.jpg" alt="code example")
+
+            p Объект без прототипов, следовательно мы создали чистый объект.
+
+            h2.article-body__title Шаг #3
+            p
+              strong Удаление дубликатов из массива
+
+            p Рассмотрим следующий массив:
+
+            pre
+              code.language-js.
+                var arr = [1, 2, 3, 3, 4, 5, 6, 6, 7, 7, 7, 7];
+
+            p Как вы заметили в нем множество дублирующихся элементов. Чтобы удалить дубликаты элементов, мы можем использовать <strong>Set</strong>.
+            p Объекты <strong>Set</strong> позволяют вам сохранять уникальные значения любого типа, как примитивы, так и другие типы объектов. В Set не может быть повторяющегося значения. Почитать про это больше можно на <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set' target="_blank" rel="nofollow noopener noreferrer">MDN Web Docs</a>.
+            p Для удаления дубликатов из массива, мы напишем вот такой код:
+
+            pre
+              code.language-js.
+                const newArr = [...new Set(arr)];
+
+            p Мы создали новый <strong>Set</strong> содержащий в себе только уникальные значения массива, затем разместили их внутри нового массива.
+            p
+              strong Символ "…" - это спред-оператор. Почитать про них больше можно на <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax' target="_blank" rel="nofollow noopener noreferrer">MDN Web Docs.</a>
+            p В результате мы получили массив, содержащий в себе только уникальные значения.
+          //end article__body
+    //end content
