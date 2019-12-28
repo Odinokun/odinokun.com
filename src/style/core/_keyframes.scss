@@ -22,3 +22,21 @@
     opacity: 1;
   }
 }
+
+@keyframes leftToCenter {
+  from {
+    transform: translateX(-100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rightToCenter {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

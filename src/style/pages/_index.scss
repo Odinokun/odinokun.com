@@ -16,15 +16,30 @@
   bottom: 0;
   left: 0;
   display: flex;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   margin: auto;
   pointer-events: none;
   svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     fill: $light;
     width: 60vw;
     height: 90vh;
+    margin: auto;
     opacity: .08;
+    &:first-child {
+      transform: translateX(-100vw);
+      animation: .8s leftToCenter ease-in-out .1s forwards;
+    }
+    &:last-child {
+      transform: translateX(100vw);
+      animation: .8s rightToCenter ease-in-out .1s forwards;
+    }
   }
 }
 
@@ -41,7 +56,7 @@
   line-height: 1;
   margin-bottom: 0;
   user-select: none;
-  animation: .7s fadeIn ease .5s forwards;
+  animation: .7s fadeIn ease 1s forwards;
   letter-spacing: 3px;
   opacity: 0;
   color: $light;
@@ -56,7 +71,7 @@
   font-size: 3vw;
   margin-bottom: 50px;
   user-select: none;
-  animation: .7s fadeIn ease .7s forwards;
+  animation: .7s fadeIn ease 1.15s forwards;
   text-align: center;
   opacity: 0;
   color: $light;
@@ -69,6 +84,6 @@
 .index__btn {
   display: flex;
   justify-content: center;
-  animation: .7s fadeIn ease .9s forwards;
+  animation: .7s fadeIn ease 1.3s forwards;
   opacity: 0;
 }
