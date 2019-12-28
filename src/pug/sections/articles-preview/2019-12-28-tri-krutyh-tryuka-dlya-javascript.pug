@@ -1,0 +1,28 @@
+- var articleLink   = '2019-12-28-tri-krutyh-tryuka-dlya-javascript.html'
+- var imgPath       = 'assets/img/articles/2019-12-28/js.jpg'
+- var imgAlt        = 'JavaScript'
+- var articleTitle  = 'Три крутых трюка для JavaScript'
+- var articleDate   = '2019-07-31'
+- var articleWriter = 'Kunal Tandon'
+- var articleDescr  = 'В этой статье мы рассмотрим несколько классных трюков, которые могут пригодиться вам при работе с типами данных, объектами и массивами в JavaScript.'
+
+// *** don't forget to fix hashtags! ***
+
+//begin 2019-12-28
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date(title='Date of publication of the original article')
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #javascript
+//end 2019-12-28
