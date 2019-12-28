@@ -114,6 +114,7 @@ svg {
   @include print() {
     margin-left: 0;
   }
+
   @include max(500) {
     margin-left: 0;
   }
@@ -176,46 +177,115 @@ svg {
   }
 }
 
+//.btn {
+//  font-size: 16px;
+//  font-weight: 400;
+//  line-height: 46px;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  height: 50px;
+//  padding: 3px 40px 0 40px;
+//  user-select: none;
+//  transition: all .5s;
+//  white-space: nowrap;
+//  text-decoration: none;
+//  letter-spacing: 1px;
+//  text-transform: uppercase;
+//  border-radius: 25px;
+//
+//  @include max(767) {
+//    font-size: 15px;
+//    line-height: 40px;
+//    height: 44px;
+//  }
+//}
+//
+//.btn--light {
+//  color: $light;
+//  border: 2px solid $light;
+//  background-color: transparent;
+//  &:hover {
+//    color: $dark;
+//    background-color: $light;
+//  }
+//}
+//
+//.btn--dark {
+//  color: $dark;
+//  border: 2px solid $dark;
+//  background-color: transparent;
+//  &:hover {
+//    color: $light;
+//    background-color: $dark;
+//  }
+//}
+
 .btn {
   font-size: 16px;
   font-weight: 400;
-  line-height: 46px;
+  line-height: 1;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  padding: 3px 40px 0 40px;
+  min-height: 50px;
+  padding: 17px 45px 15px 45px;
   user-select: none;
   transition: all .5s;
   white-space: nowrap;
   text-decoration: none;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-radius: 25px;
 
   @include max(767) {
     font-size: 15px;
-    line-height: 40px;
-    height: 44px;
+    min-height: 42px;
+    padding: 14px 35px 11px 35px;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    content: '';
+    transition: transform .5s ease-in-out;
+  }
+  &:hover {
+    color: $highlight;
+    &::before {
+      transform: scaleY(0);
+    }
+    &::after {
+      transform: scaleX(0);
+    }
   }
 }
 
 .btn--light {
   color: $light;
-  border: 2px solid $light;
-  background-color: transparent;
-  &:hover {
-    color: $dark;
-    background-color: $light;
+  &::before {
+    border-right: 2px solid $light;
+    border-left: 2px solid $light;
+  }
+  &::after {
+    border-top: 2px solid $light;
+    border-bottom: 2px solid $light;
   }
 }
 
 .btn--dark {
   color: $dark;
-  border: 2px solid $dark;
-  background-color: transparent;
-  &:hover {
-    color: $light;
-    background-color: $dark;
+  &::before {
+    border-right: 2px solid $dark;
+    border-left: 2px solid $dark;
+  }
+  &::after {
+    border-top: 2px solid $dark;
+    border-bottom: 2px solid $dark;
   }
 }
