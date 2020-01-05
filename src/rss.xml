@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>Переводы свежих статей на тему вебразработки</title>
+        <link>http://odinokun.com/rss.xml</link>
+        <description>Последние переводы свежих статей на тему вебразработки с сайта odinokun.com</description>
+        <lastBuildDate>2020-01-05</lastBuildDate>
+
+
+        <item>
+            <title>Три крутых трюка для JavaScript</title>
+            <link>http://odinokun.com/2019-12-28-tri-krutyh-tryuka-dlya-js.html</link>
+            <pubDate>28 Dec 2019</pubDate>
+            <description>
+                Автор: Kunal Tandon
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 28 Дек 2019
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В этой статье мы рассмотрим несколько классных трюков, которые могут пригодиться вам при работе с типами данных, объектами и массивами в JavaScript.
+            </description>
+        </item>
+
+        <item>
+            <title>Подчеркивание в виде движущейся радуги</title>
+            <link>http://odinokun.com/2019-12-27-podcherkivanie-v-vide-dvizhushejsya-radugi.html</link>
+            <pubDate>27 Dec 2019</pubDate>
+            <description>
+                Автор: Chris Coyier
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 27 Дек 2019
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Мне очень нравится дизайн сайта Sandwich. Среди множества красивых эффектов, у них есть заголовки с подчеркиванием в виде радуги, которая сдвигается при прокрутке. И этот небольшой эффект вычисляется не по скроллу, а его движение зависит от положения прокрутки.
+            </description>
+        </item>
+
+        <item>
+            <title>Семь примеров использования кастомных CSS-свойств</title>
+            <link>http://odinokun.com/2019-12-18-7-primerov-ispolzovaniya-kastomnyh-css-svojstv.html</link>
+            <pubDate>18 Dec 2019</pubDate>
+            <description>
+                Автор: Michelle Barker
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 18 Дек 2019
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Кастомные свойства (которые также известны как CSS переменные) позволяют нам хранить значения свойств для их последующего переиспользования в наших таблицах стилей. Если вы недавно узнали про них, то можете задаваться вопросом, а чем они лучше обычных переменных препроцессора (если вы конечно используете какой-либо препроцессор).
+            </description>
+        </item>
+
+        <item>
+            <title>Рисуем Гомера Симпсона используя круги в CSS</title>
+            <link>http://odinokun.com/2019-12-16-risuem-gomera-simpsona-ispolzuya-krugi-v-css.html</link>
+            <pubDate>16 Dec 2019</pubDate>
+            <description>
+                Автор: Alvaro Montoro
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 16 Дек 2019
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Css рисунки, обычно, являются набором фигур, из которых в итоге составляют изображение. Мультипликационный персонаж, такой как Гомер Симпсон, не вписывается в эту категорию, из-за чего рисовать его на CSS - настоящий вызов.
+            </description>
+        </item>
+    </channel>
+</rss>
