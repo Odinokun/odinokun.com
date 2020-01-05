@@ -12,6 +12,7 @@ module.exports = function() {
     $.gulp.watch('./src/img/**/*.*', $.gulp.series('image:min'));
     $.gulp.watch('./src/sprite/*.svg', $.gulp.series('sprite:svg'));
     $.gulp.watch('./src/text/*.*', $.gulp.series('copy:text'));
+    $.gulp.watch('./src/*.xml', $.gulp.series('copy:xml'));
   });
 
 };

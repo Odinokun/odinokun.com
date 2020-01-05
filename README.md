@@ -1,4 +1,4 @@
-﻿# Front-end startup template
+﻿# My portfolio site
 
 Author: <a href="http://odinokun.com" target="_blank">Odinokun</a>
 
@@ -6,7 +6,7 @@ Author: <a href="http://odinokun.com" target="_blank">Odinokun</a>
 * Gulp 4.0
 * Pug(Jade)
 * Sass(Scss)
-* JS+jQuery
+* vanilla JS
 
 ## How to use:
 1. install node.js(8.9.4)
