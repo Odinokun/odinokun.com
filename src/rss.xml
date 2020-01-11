@@ -6,10 +6,30 @@
         <description>Последние переводы свежих статей на тему вебразработки с сайта odinokun.com</description>
         <language>ru</language>
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 16 Dec 2019 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Mon, 06 Jan 2020 00:10:00 +0200</lastBuildDate>
+        <lastBuildDate>Sat, 10 Jan 2020 00:00:01 GMT</lastBuildDate>
 
+
+        <item>
+            <title>10 лучших библиотек для CSS-анимации</title>
+            <link>http://odinokun.com/2020-01-10-10-luchshih-bibliotek-dlya-css-animaci.html</link>
+            <pubDate>Sat, 11 Jan 2020 00:00:01 GMT</pubDate>
+            <description>
+                Автор: Patrik Kiss
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 11 Янв 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-01-10/top-picture.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В этой статье, я покажу вам 10 лучших библиотек для CSS-анимаций, которые мне встречались на данный момент. В целом я перепробовал около тридцати библиотек. Некоторые были совсем маленькими, другие же довольно большими, но в итоге я отобрал десять самых лучших на мой взгляд.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-01-10-10-luchshih-bibliotek-dlya-css-animaci.html</guid>
+        </item>
 
         <item>
             <title>Три крутых трюка для JavaScript</title>

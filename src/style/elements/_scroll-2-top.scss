@@ -1,0 +1,44 @@
+.scroll-2-top {
+  position: fixed;
+  z-index: 10;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+  border: 2px solid $grey;
+
+  @include max(767) {
+    right: 15px;
+    bottom: 15px;
+    width: 26px;
+    height: 26px;
+  }
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  &:hover {
+    background-color: $grey;
+    svg {
+      fill: $light;
+    }
+  }
+  svg {
+    fill: $grey;
+    width: 20px;
+    height: 20px;
+    transition: fill .5s ease-in-out;
+
+    @include max(767) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

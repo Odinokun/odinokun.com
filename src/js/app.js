@@ -10,5 +10,8 @@ require('./modules/menu')();
 // begin contacts map
 require('./modules/map')();
 
-// begin contacts GSAP
-// require('./modules/gsap')();
+// begin scroll-2-anchor
+require('./modules/scroll-2-anchor')();
+
+// begin scroll-2-top
+require('./modules/scroll-2-top')();

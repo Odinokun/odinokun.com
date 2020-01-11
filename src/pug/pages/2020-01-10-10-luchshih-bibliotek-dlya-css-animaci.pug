@@ -1,0 +1,396 @@
+extends ../_template
+
+block variables
+  - var title       = '10 лучших библиотек для CSS-анимации | odinokun.com'
+  - var description = '10 лучших библиотек для CSS-анимации | odinokun.com'
+  - var ogtitle     = '10 лучших библиотек для CSS-анимации | odinokun.com'
+  - var ogimage     = 'assets/img/articles/2020-01-10/top-picture.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-01-10/top-picture.jpg'
+  - var imgAlt              = 'Animista'
+
+  - var articleTitle        = '10 лучших библиотек для CSS-анимации'
+  - var articleDate         = '2020-01-07'
+
+  - var originArticleTitle  = '10 of the best CSS animation libraries'
+  - var originArticleLink   = 'https://dev.to/weeb/10-of-the-best-css-animation-libraries-31d7#cssanimation'
+
+  - var articleWriter       = 'Patrik Kiss'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag animation
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p В этой статье, я покажу вам 10 лучших библиотек для CSS-анимаций, которые мне встречались на данный момент.
+            p В целом я перепробовал около тридцати библиотек. Некоторые были совсем маленькими, другие же довольно большими, но в итоге я отобрал десять самых лучших на мой взгляд. Обратите внимание, что ни одна из этих библиотек, для своей работы, не требует обязательного подключения JavaScript.
+
+            h2.article-body__title Список библиотек
+            ol
+              li
+                a(href="#animista").scroll-2-anchor Animista
+              li
+                a(href="#animate-css").scroll-2-anchor Animate CSS
+              li
+                a(href="#vivify").scroll-2-anchor Vivify
+              li
+                a(href="#magic-animation-css3").scroll-2-anchor Magic Animations CSS3
+              li
+                a(href="#cssanimation-io").scroll-2-anchor Cssanimation.io
+              li
+                a(href="#angrytools").scroll-2-anchor Angrytools
+              li
+                a(href="#hover-css").scroll-2-anchor Hover.css
+              li
+                a(href="#wickedcss").scroll-2-anchor WickedCSS
+              li
+                a(href="#three-dots").scroll-2-anchor Three Dots
+              li
+                a(href="#csshacke").scroll-2-anchor CSShake
+
+
+            //begin ANIMISTA
+            h2.article-body__title#animista
+              a(href="https://animista.net/" target="_blank" rel="nofollow noopener noreferrer") 1. Animista
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/01-animista.jpg" alt="animista")
+
+            p На самом деле этот сайт я обнаружил не так давно. но сразу же в него влюбился. Честно говоря я считаю, что он один заслуживает отдельного поста.
+            h3.article-body__subtitle Выбор анимации
+            p Вы можете выбрать какой тип анимации вам нужен (например анимация появления или исчезания элемента), кроме того что вы можете выбрать определенный вид анимации (например <i>scale-in</i>), вы также можете выбрать еще и различные варианты для этой анимации (например <i>scale-in-right</i>).
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/01-animista-01.jpg" alt="animista")
+
+            h3.article-body__subtitle Настройка
+            p Animista  также дает нам возможность настраивать и такие свойства анимации как:
+            ul
+              li  продолжительность (duration)
+              li задержка (delay)
+              li или направление анимации
+            p И что еще лучше, вы можете выбрать объект который нужно анимировать. <br> Это может быть:
+            ul
+              li простой центрированный блок
+              li отдельный символ
+              li фон
+              li или даже изображение
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/01-animista-02.jpg" alt="animista")
+
+            h3.article-body__subtitle Получение CSS кода
+            p После того, как вы выбрали анимацию, настроили ее так как вам нужно, вы можете получить готовый код прямо с сайта. Также есть возможность сразу минифицировать свой код.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/01-animista-03.jpg" alt="animista")
+
+            h3.article-body__subtitle Скачивание выбранной анимации
+            p Еще одна удивительная особенность в том, что вам может понравиться одна определенная анимация, которую вы можете выбрать и скачать только ее одну, без всего лишнего кода. Либо же скопировать код нескольких анимаций.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/01-animista-04.jpg" alt="animista")
+            p Но что еще лучше на этом сайте - это то, что он полностью адаптивен и если вы сейчас читаете эту статью с телефона, то вы можете сразу же попробовать его.
+            //end ANIMISTA
+
+            //begin ANIMATE CSS
+            h2.article-body__title#animate-css
+              a(href="https://daneden.github.io/animate.css/" target="_blank" rel="nofollow noopener noreferrer") 2. Animate CSS
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/02-animate-css.jpg" alt="animate css")
+
+            p Конечно же я не могу обделить вниманием Animate CSS, наверное одну из самых известных библиотек анимации. Рассмотрим вкратце ее использование.
+
+            h3.article-body__subtitle Использование
+            p Для запуска вам нужно добавлять класс <i>animated</i> элементу который вы хотите анимировать, а потом класс-имя анимации.
+
+            pre
+              code.language-html.
+                &lt;div class="animated slideInLeft">&lt;/div>
+            pre
+              code.language-js.
+                //Javascript
+                document.querySelector('.my-element').classList.add('animated', 'slideInLeft')
+            pre
+              code.language-js.
+                //Jquery
+                $(".my-element").addClass("animated slideInLeft")
+
+            p Если вы хотите зациклить анимацию, можно добавить класс <i>infinite</i>, чтобы анимация повторялась без остановки.
+
+            h3.article-body__subtitle Дополнительные возможности
+            p В Animate CSS есть несколько базовых классов для управления задержкой и скоростью анимации.
+            p <strong>delay</strong>
+            p Вы можете добавить задержку для своей анимации добавив класс <i>delay</i>
+            pre
+              code.language-html.
+                &lt;div class="animated slideInLeft delay-{1-5}">&lt;div>
+            p <strong>speed</strong>
+            p Также вы можете контролировать скорость анимации добавив один из перечисленных ниже классов
+
+            table.article__table.article__table--center
+              thead
+                tr
+                  th Class name
+                  th Speed time
+              tbody
+                tr
+                  td slow
+                  td 2s
+                tr
+                  td slower
+                  td 3s
+                tr
+                  td fast
+                  td 800ms
+                tr
+                  td faster
+                  td 500ms
+            pre
+              code.language-html.
+                &lt;div class="animated slideInLeft slow|slower|fast|faster">&lt;div>
+
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/daneden/animate.css" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/02-animate-css-github.jpg" alt="animate css")
+            //end ANIMATE CSS
+
+            //begin VIVIFY
+            h2.article-body__title#vivify
+              a(href="http://vivify.mkcreative.cz/" target="_blank" rel="nofollow noopener noreferrer") 3. Vivify
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/03-vivify.jpg" alt="vivify")
+
+            p Vivify - это библиотека анимации, которую я всегда считал улучшенной версией Animate CSS. Она работает точно также, содержит такие же классы, но расширена еще несколькими. Вместо добавления класса <i>animated</i>, надо добавлять <i>vivify</i>.
+            pre
+              code.language-html.
+                &lt;div class="vivify slideInLeft">&lt;/div>
+            pre
+              code.language-js.
+                //Javascript
+                document.querySelector('.my-element').classList.add('vivify', 'slideInLeft')
+            pre
+              code.language-js.
+                //Jquery
+                $(".my-element").addClass("vivify slideInLeft")
+
+            p Как и Animate CSS, Vivify также предоставляет классы для управления продолжительностью и задержкой анимации. Классы задержки и длительности доступны со следующим интервалом:
+            pre
+              code.language-html.
+                &lt;div class="delay|duration-{100|150|200|250...1000|1250|1500|1750...10750}">&lt;/div>
+
+            p <i>Обратите внимание, что эти значения в миллисекундах. 1000мс = 1с.</i>
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/Martz90/vivify" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/03-vivify-github.jpg" alt="vivify")
+            //end VIVIFY
+
+            //begin MAGIC ANIMATION
+            h2.article-body__title#magic-animation-css3
+              a(href="https://www.minimamente.com/project/magic/" target="_blank" rel="nofollow noopener noreferrer") 4. Magic Animations CSS3
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/04-magic.jpg" alt="magic animation")
+
+            P В этой библиотеке есть очень приятные и плавные анимации, особенно мне нравятся 3D анимации. <br> Но рассказывать мало, попробуйте сами поиграться с ними. <br> В этой  библиотеке надо добавлять класс <i>magictime</i> и класс-название анимации.
+            pre
+              code.language-html.
+                &lt;div class="magictime fadeIn">&lt;/div>
+            pre
+              code.language-js.
+                //Javascript
+                document.querySelector('.my-element').classList.add('magictime', 'fadeIn')
+            pre
+              code.language-js.
+                //Jquery
+                $(".my-element").addClass("magictime fadeIn")
+
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/Martz90/vivify" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/04-magic-github.jpg" alt="magic")
+            //end MAGIC ANIMATION
+
+            //begin CSSANIMATION
+            h2.article-body__title#cssanimation-io
+              a(href="http://cssanimation.io/index.html" target="_blank" rel="nofollow noopener noreferrer") 5. Cssanimation.io
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/05-cssanimation.jpg" alt="cssanimation")
+
+            p Cssanimation.io - это коллекция огромного количества различных анимаций, наверное около 200 штук и от этого просто захватывает дух.
+            p Принцип работы аналогичен Animista. Например, вы можете выбрать анимацию и получить код прямо на сайте, а также можете загрузить и всю библиотеку.
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/05-cssanimation-01.jpg" alt="cssanimation")
+
+            p Для запуска добавляем класс cssanimation и класс-название анимации своему элементу.
+
+            pre
+              code.language-html.
+                &lt;div class="cssanimation fadeIn">&lt;/div>
+            pre
+              code.language-js.
+                //Javascript
+                document.querySelector('.my-element').classList.add('cssanimation','fadeIn')
+            pre
+              code.language-js.
+                //Jquery
+                $(".my-element").addClass("cssanimation fadeIn")
+
+            p Вы можете добавить класс <i>infinite</i> если хотите, чтобы анимация была зациклена.
+            pre
+              code.language-html.
+                &lt;div class="cssanimation fadeIn infinite">&lt;/div>
+
+            p Кроме того, cssanimation.io предоставляет вам возможность анимации букв. Для этого вам понадобиться подключить файл <i>letteranimation.js</i>, а затем добавьте <i>le{animation_name}</i> текстовому элементу.
+            pre
+              code.language-html.
+                &lt;div class="cssanimation leSnake">&lt;/div>
+            p Для того, чтобы анимировать буквы последовательно добавьте класс <i>sequence</i>, чтобы анимировать их случайным образом добавьте класс <i>random</i>.
+            pre
+              code.language-html.
+                &lt;div class="cssanimation leSnake {sequence|random}">&lt;/div>
+            p <strong>Sequence</strong>
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/05-cssanimation-02.gif" alt="cssanimation")
+            p <strong>Random</strong>
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/05-cssanimation-03.gif" alt="cssanimation")
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/yesiamrocks/cssanimation.io" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/05-cssanimation-github.jpg" alt="cssanimation")
+            //end CSSANIMATION
+
+            //begin ANGRYTOOLS
+            h2.article-body__title#angrytools
+              a(href="https://angrytools.com/css/animation/" target="_blank" rel="nofollow noopener noreferrer") 6. Angrytools
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/06-angrytools.jpg" alt="angrytools")
+
+            p Angrytools на самом деле является коллекцией различных генераторов, в том числе и генератор CSS. Возможно, он не такой разнообразный как Animista, но кое-что мне в нем очень понравилось.
+            p Этот сайт, так же как и многие предыдущие, предоставляет нам возможности для настройки продолжительности или задержки анимации. Но в нем есть возможность самому добавлять ключевые точки (keyframes) на так называемую временную шкалу, а затем писать код прямо там. Кроме того, вы можете редактировать уже существующие ключевые точки.
+            p Когда вы закончите делать анимацию, вы сможете скопировать код или же скачать его.
+            //end ANGRYTOOLS
+
+            //begin HOVERCSS
+            h2.article-body__title#hover-css
+              a(href="http://ianlunn.github.io/Hover/" target="_blank" rel="nofollow noopener noreferrer") 7. Hover.css
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/07-hovercss.jpg" alt="hovercss")
+
+            p Hover.css включает в себя множество CSS-анимаций, которые, в отличие от приведенных выше, <strong>запускаются при каждом наведении на элемент</strong>.
+            p Это коллекция CSS3-эффектов которые активируются при наведении, и которые можно применить к ссылкам, кнопкам, логотипам, SVG, выбранным изображениям и т.д.
+            p У них есть действительно удивительные анимации. Более того, в hover.css также есть классы для анимации иконок, например, font awesome.
+            p Использовать hover.css очень просто. Надо просто добавить нужный класс к вашему элементу. Например так:
+            pre
+              code.language-html.
+                &lt;button class="hvr-fade">Hover me!&lt;/button>
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/IanLunn/Hover" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/07-hovercss-github.jpg" alt="hovercss")
+            //end HOVERCSS
+
+            //begin WICKEDCSS
+            h2.article-body__title#wickedcss
+              a(href="http://kristofferandreasen.github.io/wickedCSS" target="_blank" rel="nofollow noopener noreferrer") 8. WickedCSS
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/08-wickedcss.jpg" alt="wickedcss")
+
+            p.
+              WickedCSS - это небольшая библиотека CSS-анимации, в ней не так уж много вариантов анимаций, но те, которые у нее есть - великолепны.
+              <br> Используется просто - добавляем название анимации к вашему элементу и готово.
+
+            pre
+              code.language-html.
+                &lt;div class="bounceIn">&lt;/div>
+            pre
+              code.language-js.
+                //Javascript
+                document.querySelector('.my-element').classList.add('bounceIn')
+            pre
+              code.language-js.
+                //Jquery
+                $(".my-element").addClass("bounceIn")
+
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/kristofferandreasen/wickedCSS" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/08-wickedcss-github.jpg" alt="wickedcss")
+            //end WICKEDCSS
+
+            //begin THREE DOTS
+            h2.article-body__title#three-dots
+              a(href="https://nzbin.github.io/three-dots/" target="_blank" rel="nofollow noopener noreferrer") 9. Three Dots
+            .article-body__img.article-body__img--center
+              video(autoplay loop muted)
+                source(src="assets/img/articles/2020-01-10/09-three-dots.mp4 " type="video/mp4")
+
+            p Three Dots - это набор CSS-анимаций для прелоадера, созданных из трех точек, которые, на самом деле, являются одним элементом.
+            p Для запуска просто создаем элемент <i>div</i> и добавляем название анимации
+            pre
+              code.language-html.
+                &lt;div class="dot-elastic">&lt;/div>
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/nzbin/three-dots" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/09-three-dots-github.jpg" alt="three dots")
+            //end THREE DOTS
+
+            //begin CSSHAKE
+            h2.article-body__title#csshacke
+              a(href="https://elrumordelaluz.github.io/csshake/" target="_blank" rel="nofollow noopener noreferrer") 10. CSShake
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-10/10-csshake.jpg" alt="csshake")
+            p.
+              И в конце у нас "шейкерный коктейль".
+              <br>Как следует из названия, CSShake - это библиотека CSS-анимации, которая содержит различные типы анимаций встряхивания.
+              <br>Для запуска добавляем класс <i>shake</i> и класс-название анимации своему элементу.
+
+            pre
+              code.language-html.
+                &lt;div class="shake shake-hard">&lt;/div>
+            pre
+              code.language-js.
+                //Javascript
+                document.querySelector('.my-element').classList.add('shake','shake-hard')
+            pre
+              code.language-js.
+                //Jquery
+                $(".my-element").addClass("shake shake-hard")
+            .article-body__img.article-body__img--center
+              a(href="https://github.com/elrumordelaluz/csshake" target="_blank" rel="nofollow noopener noreferrer")
+                img(src="assets/img/articles/2020-01-10/10-csshake-github.jpg" alt="csshake")
+            //end CSSHAKE
+          //end article__body
+    //end content

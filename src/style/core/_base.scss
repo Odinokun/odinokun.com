@@ -114,7 +114,6 @@ svg {
   @include print() {
     margin-left: 0;
   }
-
   @include max(500) {
     margin-left: 0;
   }
@@ -176,50 +175,6 @@ svg {
     }
   }
 }
-
-//.btn {
-//  font-size: 16px;
-//  font-weight: 400;
-//  line-height: 46px;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  height: 50px;
-//  padding: 3px 40px 0 40px;
-//  user-select: none;
-//  transition: all .5s;
-//  white-space: nowrap;
-//  text-decoration: none;
-//  letter-spacing: 1px;
-//  text-transform: uppercase;
-//  border-radius: 25px;
-//
-//  @include max(767) {
-//    font-size: 15px;
-//    line-height: 40px;
-//    height: 44px;
-//  }
-//}
-//
-//.btn--light {
-//  color: $light;
-//  border: 2px solid $light;
-//  background-color: transparent;
-//  &:hover {
-//    color: $dark;
-//    background-color: $light;
-//  }
-//}
-//
-//.btn--dark {
-//  color: $dark;
-//  border: 2px solid $dark;
-//  background-color: transparent;
-//  &:hover {
-//    color: $light;
-//    background-color: $dark;
-//  }
-//}
 
 .btn {
   font-size: 16px;
