@@ -1,0 +1,31 @@
+- var articleLink   = '2020-01-14-kak-animirovat-svg-podpis.html'
+- var imgPath       = 'assets/img/articles/2020-01-14/top-image.jpg'
+- var imgAlt        = 'SVG signature'
+- var articleTitle  = 'Как анимировать SVG подпись'
+- var articleDate   = '2020-01-06'
+- var articleWriter = 'Silvestar Bistrović'
+- var articleDescr  = 'Давайте с вами попробуем анимировать подпись в формате SVG при помощи совсем небольшого количества CSS и Javascript. Я покажу вам, как написать на Javascript функцию для расчёта длины SVG path и как использовать CSS для анимирования SVG strokes.'
+
+// *** don't forget to fix hashtags! ***
+
+//begin 2019-12-28
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date(title='Date of publication of the original article')
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #css
+      .blog-article__tag #svg
+      .blog-article__tag #animation
+      .blog-article__tag #javascript
+//end 2019-12-28
