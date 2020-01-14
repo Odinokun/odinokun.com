@@ -1,0 +1,206 @@
+extends ../_template
+
+block variables
+  - var title       = 'Как анимировать SVG подпись'
+  - var description = 'Как анимировать SVG подпись'
+  - var ogtitle     = 'Как анимировать SVG подпись'
+  - var ogimage     = 'assets/img/articles/2020-01-14/top-image.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-01-14/top-image.jpg'
+  - var imgAlt              = 'SVG signature'
+
+  - var articleTitle        = 'Как анимировать SVG подпись'
+  - var articleDate         = '2020-01-06'
+
+  - var originArticleTitle  = 'How to animate SVG signature'
+  - var originArticleLink   = 'https://www.silvestar.codes/articles/how-to-animate-svg-signature'
+
+  - var articleWriter       = 'Silvestar Bistrović'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag svg
+                span.article__tag animation
+                span.article__tag javascript
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Давайте с вами попробуем анимировать подпись в формате SVG при помощи совсем небольшого количества CSS и Javascript. В этом демо я покажу вам, как написать на Javascript функцию для расчёта длины SVG path и как использовать CSS для анимирования SVG strokes. Результат можно увидеть на <a href='https://codepen.io/Odinokun/full/abzjoXo' target="_blank" rel="nofollow noopener noreferrer">CodePen</a>.
+
+            .article-body__img.article-body__img--center
+              video(autoplay loop muted)
+                source(src="assets/img/articles/2020-01-14/svg-signature.mp4 " type="video/mp4")
+
+            h2.article-body__title Создание SVG подписи
+
+            p Давайте же приступать к работе. И начнем мы с того, что создадим SVG подпись. Я использую Sketch для того, чтобы нарисовать SVG.<br>Вот как это выглядит в режиме редактирования:
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-01-14/svg-signature-sketch.jpg" alt="signature")
+
+            p Изображение содержит в себе восемь отдельных путей (path) для разных частей подписи. Например у нас отдельный путь для буквы “S”, отдельный путь для точки и так далее.
+            p.
+              После экспорта SVG из Sketch я переставил пути в коде в том порядке, в котором они будут должны анимироваться. Сначала буква “S”, затем точка, затем буква “B” и так далее. Кроме того, я добавил классы <i>autograph</i> и <i>autograph__path</i> для упрощения манипулирования с помощью Javascript и более удобной стилизации.
+              <br>Вот код который у меня в итоге получился:
+            pre
+              code.language-html.
+                &lt;svg class="autograph" height="103" viewBox="0 0 424 103" width="424" xmlns="http://www.w3.org/2000/svg">
+                  &lt;g fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" transform="translate(2 2)">
+                    &lt;path class="autograph__path" d="m52.9053119 30.5944651c4.4979146-5.981029 6.3597765-11.3263744 5.5855855-16.0360361-2.1621621-13.15315311-10.9863929-13.558429-15.4908974-13.558429-10.0900901 0-20 7.99987048-20.7253188 13.558429-3.0543891 23.4076405 31.8852386 28.5472234 30.7253188 52.441571-.9009009 18.5585586-12.9740033 27.7974004-25 29-12.6126126 1.2612613-28.33708674-6.8576105-27-18 .48048048-4.004004 5.81381381-7.6706707 16-11" />
+                    &lt;path class="autograph__path" d="m61.9059048 93.3815042c1.7863267-3.215388-4.287184-4.6444494-4.6444494-1.4290614-.3572653 2.143592 2.8581227 4.6444494 4.6444494 1.4290614z" />
+                    &lt;path class="autograph__path" d="m102 1c-1.633522 27.1862259-3.3001883 44.8528926-5 53s-7.033145 22.1471074-16 42" />
+                    &lt;path class="autograph__path" d="m100.288288 6.6036036c4.152508-3.963964 8.176532-5.945946 12.072072-5.945946 11.531532 0 17.63964 3.3423424 16.63964 14.3423424 0 13-12.06006 22.3543543-32 28 21.430945-5.8755744 31.400915 1.8721733 29.90991 23.2432432-1.081081 15.4954958-25.606607 24.6336338-48.90991 27.7567568 18.3783784-31.111111 44.546547-46.5975976 58-49 7.684578-1.3722461.201094 23.4415679-4 51 9.626744-23.6648293 10.754389-40.1268415 26.472991-48.7743243 3.062782-1.6849689 5.899902-2.8000991 9.527009-2.2256757 2.58117.4087788 5.287656.9554275 10 6-7-8-16.06468-6.1122883-19.527009-1.6121622-10.472991 13.6121622 15.527009 13.6121622 16.527009 29.6121622.666667 10.6666667-5.666667 16.3333333-19 17-16.664879 2.1642702 8.261928 6.47368 29-21 9.19448-12.1807945 18.19448-36.8474612 27-74-21.276288 33.987688-24.609621 65.6543547-10 95 21.886044-29.4751082 26.735893-49.2438774 35-51 9.609609-2.042042 6.726727 21.4504503 0 51 4.444444-39.2792794 18.42042-58.8078078 38-51-8.828829 2.1621621-15.315998 15.4560012-16.711712 28.1171176-1.126809 10.2217665 4.625073 22.8828824 11.711712 22.8828824 12.252252 0 19.279279-10.0010654 19.279279-20.5405401 0-23.0630631-9.234234-30.4594599-12.477477-30.4594599 12.432432 3.9639639 30.297297-6.8468469 31.198198 0 2.644012 20.0944903-19 51 5 51 22 0 19.936937-49.1981982 23-51 2.342343 8.6486486 18.480018-2.1232717 18 0-3.570281 15.7924726-11.376494 44.5410656-10 51 4.504505-13.1531532 17-47 45.900901-51.1711712 6.669031-.9625192 8.255066 5.4033441 3.963964 18.5585586 4.204205-13.3333334 2.882883-19.5195196-3.963964-18.5585586-13.059803 1.8329549-22.530745 8.0837151-28.69016 31.4759854-1.237235 12.5179014 1.692518 19.0829633 8.789259 19.6951858 4.616353.3982441 10.995909-1.7223734 19.138668-6.3618524" />
+                    &lt;path class="autograph__path" d="m178 30c11-4 54 6 73.734117 1.8554251" />
+                    &lt;path class="autograph__path" d="m419 1-21 27.333" />
+                    &lt;path class="autograph__path" d="m140.729905 31.3135042c1.786326-3.215388-4.287184-4.6444494-4.64445-1.4290614-.357265 2.1435921 2.858123 4.6444494 4.64445 1.4290614z" />
+                    &lt;path class="autograph__path" d="m360.729905 31.3135042c1.786326-3.215388-4.287184-4.6444494-4.64445-1.4290614-.357265 2.1435921 2.858123 4.6444494 4.64445 1.4290614z" />
+                  &lt;/g>
+                &lt;/svg>
+            p Очень важно использовать SVG strokes, так как мы будем анимировать именно их. Каждый path или stroke имеет свою длину. Мы воспользуемся этим, чтобы создать свою анимацию.
+
+            h2.article-body__title Вычисления на Javascript
+
+            p Мы можем рассчитывать длину stroke методом угадывания приблизительной длины. Для этого нам надо использовать два атрибута:
+            ul
+              li <i>stroke-dasharray</i> - который управляет видом пунктирной обводки
+              li <i>stroke-dashoffset</i> - который задает смещение пунктирной обводки относительно первоначального значения
+
+            p.
+              Эти два свойства должны быть равными, чтобы работать.
+              <br>Теперь мы можем попробовать угадать длину <i>stroke</i>. Но мы же программисты и нам не к лицу угадывать, поэтому будем вычислять длину с помощью Javascript. Вот принцип того, как это должно работать:
+            ul
+              li вначале мы задаем желаемую общую продолжительность анимации
+              li далее мы используем функцию getTotalLength() для высчитывания общей длины всех путей
+              li потом мы рассчитываем продолжительность анимации и задержки для каждого пути относительно общей длины пути
+              li потом мы задаем <i>stroke-dasharray</i> и <i>stroke-dashoffset</i>, которые будут позиционировать пунктирную обводку за пределами видимого пути
+              li и наконец мы запускаем анимацию добавляя класс <i>animated</i>
+
+            p Вот вся функция на Javascript (с комментариями):
+            pre
+              code.language-js.
+                const calcPaths = (totalDur) => {
+                  // задаем класс 'animated' для body, что приведет к перезагрузке анимации
+                  document.body.classList.add('animated')
+
+                  // выбираем все SVG элементы - линии и точки
+                  const paths = document.querySelectorAll('.autograph__path')
+
+                  // объявляем переменную для длины path
+                  let len = 0
+
+                  // задаем переменную для времени задержки анимации
+                  let delay = 0
+
+                  // выходим если ни одного элемента не найдено
+                  if (!paths.length) {
+                    return false
+                  }
+
+                  // устанавливаем длительность анимации в секундах (если она не задана)
+                  const totalDuration = totalDur || 7
+
+                  // высчитываем общую длину path
+                  paths.forEach((path) => {
+                    const totalLen = path.getTotalLength()
+                    len += totalLen
+                  })
+
+                  paths.forEach((path) => {
+                    const pathElem = path
+
+                    // получаем текущую длину path
+                    const totalLen = path.getTotalLength()
+
+                    // получаем текущую продолжительность анимации
+                    const duration = totalLen / len * totalDuration
+
+                    // задаем задержку и продолжительность анимации
+                    pathElem.style.animationDuration = `${duration < 0.2 ? 0.2 : duration}s`
+                    pathElem.style.animationDelay = `${delay}s`
+
+                    // устанавливаем значения dasharray и dashoffset равными длине path
+                    // таким образом мы прячем линию
+                    pathElem.setAttribute('stroke-dasharray', totalLen)
+                    pathElem.setAttribute('stroke-dashoffset', totalLen)
+
+                    // устанавливаем задержку для следующего path
+                    // сейчас добавлено 0,2 секунды для большей реалистичности
+                    delay += duration + 0.2
+                  })
+
+                  // задаем для body класс 'animated' который запустит анимацию
+                  document.body.classList.add('animated')
+                  return true
+                }
+                calcPaths(5)
+
+            p Обязательно обращайте внимание на браузерную совместимость, прежде чем использовать этот код.
+
+            h3.article-body__title CSS-анимация
+            p CSS-анимация заключается в задании окончательного значения <i>stroke-dashoffset</i> равного нулю.
+            p Я использовал значение <i>linear</i> для <i>animation-timing-function</i> и <i>forward</i> для <i>animation-fill-mode</i>. Первое свойство делает анимацию линейной, что, как мне кажется, выглядит более естественно. Второе значение говорит анимации оставаться в итоговом положении, а не возвращаться в изначальное.
+
+            pre
+              code.language-css.
+                .autograph__path {
+                  opacity: 0;
+                  animation-timing-function: linear;
+                  animation-fill-mode: forwards;
+
+                  .animated & {
+                    opacity: 1;
+                    animation-name: line;
+                  }
+                }
+
+                @keyframes line {
+                  100% {
+                    stroke-dashoffset: 0;
+                  }
+                }
+
+            p Я использовал прозрачность, чтобы предотвратить рывок во время загрузки. Это будет работать лучше всего, если поместить код в Critical CSS.
+
+            h3.article-body__title Выводы
+            p Вот мы и получили анимированную подпись на SVG. Использовав совсем немного SVG, Javascript и CSS вы можете создавать удивительную анимацию рисования. В интернете можно найти несколько плагинов которые делают анимацию подобного плана, но я всегда предпочитаю использовать минимально возможное количество кода. Для создания этого демо я написал менее 100 строк кода.
+
+            .article-body__img
+              iframe(src="https://codepen.io/alvaromontoro/embed/abzjoXo?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+          //end article__body
+    //end content
