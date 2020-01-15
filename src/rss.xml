@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Sat, 10 Jan 2020 00:00:01 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 15 Jan 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Как анимировать SVG подпись</title>
+            <link>http://odinokun.com/2020-01-14-kak-animirovat-svg-podpis.html</link>
+            <pubDate>Wed, 15 Jan 2020 00:00:01 GMT</pubDate>
+            <description>
+                Автор: Silvestar Bistrović
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 15 Янв 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-01-14/top-image.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Давайте с вами попробуем анимировать подпись в формате SVG при помощи совсем небольшого количества CSS и Javascript. Я покажу вам, как написать на Javascript функцию для расчёта длины SVG path и как использовать CSS для анимирования SVG strokes.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-01-14-kak-animirovat-svg-podpis.html</guid>
+        </item>
 
         <item>
             <title>10 лучших библиотек для CSS-анимации</title>
