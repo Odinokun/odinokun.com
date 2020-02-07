@@ -1,0 +1,33 @@
+- var articleLink   = '2020-02-07-kak-sdelat-animaciyu-v-vebe-s-pomoshyu-greensock.html'
+- var imgPath       = 'assets/img/articles/2020-02-07/top-img.jpg'
+- var imgAlt        = 'GSAP'
+- var articleTitle  = 'Как сделать анимацию в вебе с помощью GreenSock'
+- var articleDate   = '2020-01-18'
+- var articleWriter = 'Sarah Drasner'
+- var articleDescr  = 'В этой статье мы погрузимся в пошаговое руководство по одному из самых моих любимых способов сделать это - использование GreenSock.'
+
+// *** don't forget to fix hashtags! ***
+
+//begin 2020-02-07
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date(title='Date of publication of the original article')
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #javascript
+      .blog-article__tag #animation
+      .blog-article__tag #greensock
+      .blog-article__tag #GSAP
+      .blog-article__tag #SVG
+      .blog-article__tag #css
+//end 2020-02-07
