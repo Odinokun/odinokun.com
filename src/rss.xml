@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Wed, 15 Jan 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Jan 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Как использовать псевдокласс :root в CSS</title>
+            <link>http://odinokun.com/2020-01-28-kak-ispolzovat-selektor-psevdoklassa-root-v-css.html</link>
+            <pubDate>Wed, 29 Jan 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: William Le
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 28 Янв 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-01-28/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В этой статье мы узнаем, что такое псевдокласс :root и узнаем о том, как можно его использовать в своих проектах.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-01-28-kak-ispolzovat-selektor-psevdoklassa-root-v-css.html</guid>
+        </item>
 
         <item>
             <title>Как анимировать SVG подпись</title>

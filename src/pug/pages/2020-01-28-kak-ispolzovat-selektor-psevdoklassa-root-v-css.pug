@@ -1,0 +1,161 @@
+extends ../_template
+
+block variables
+  - var title       = 'Как использовать псевдокласс :root в CSS'
+  - var description = 'Как использовать псевдокласс :root в CSS'
+  - var ogtitle     = 'Как использовать псевдокласс :root в CSS'
+  - var ogimage     = 'assets/img/articles/2020-01-28/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-01-28/top-img.jpg'
+  - var imgAlt              = 'Selector root'
+
+  - var articleTitle        = 'Как использовать псевдокласс :root в CSS'
+  - var articleDate         = '2020-01-15'
+
+  - var originArticleTitle  = 'How to Use the CSS :root Pseudo-Class Selector'
+  - var originArticleLink   = 'https://alligator.io/css/root-pseudo-class/'
+
+  - var articleWriter       = 'William Le'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag svg
+                span.article__tag stylesheet
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p В этой статье мы с вами узнаем, что такое псевдокласс <i class='highlight-text'>:root</i> и разберемся в том, как можно его использовать в своих проектах.
+            p.
+              CSS селектор псевдокласса <i class='highlight-text'>:root</i> используется для выбора родителя самого высокого уровня. Например в HTML <i class='highlight-text'>:root</i> по сути эквивалентен тегу html.
+              <br>В приведенном ниже фрагменте CSS стили <i class='highlight-text'>:root</i> и <i class='highlight-text'>html</i> делают одно и то же:
+
+            pre
+              code.language-css.
+                :root {
+                  background-color: gray;
+                }
+
+                html {
+                  background-color: gray;
+                }
+
+            p Если вы обратили внимание, я сказал, что <i class='highlight-text'>:root</i> <strong>по сути эквивалентен</strong> тегу <i class='highlight-text'>html</i>. На самом деле <i class='highlight-text'>:root</i> имеет больший “вес” чем тег <i class='highlight-text'>html</i>. Так получается, потому что он считается селектором псевдокласса (например как <i class='highlight-text'>:first-child</i> или <i class='highlight-text'>:hover</i>) и соответственно обладает большей специфичностью (весомостью) чем просто селектор тега.
+
+            pre
+              code.language-css.
+                :root {
+                  background-color: blue;
+                  color: white;
+                }
+
+                html {
+                  background-color: red;
+                  color: white;
+                }
+
+            p Несмотря на то, что стили для тега <i class='highlight-text'>html</i> были заданы позднее, будут применены стили заданные для <i class='highlight-text'>:root</i> из-за его более высокой специфичности.
+            p Поскольку CSS разработан также для SVG и XML, вы можете использовать <i class='highlight-text'>:root</i> и там, только он будет соответствовать другому элементу. Например в SVG он будет эквивалентен тегу svg.
+
+            pre
+              code.language-css.
+                :root {
+                  fill: gold;
+                }
+
+                svg {
+                  fill: gold;
+                }
+
+            p Как и в  HTML, селекторы <i class='highlight-text'>:root</i> и <i class='highlight-text'>svg</i> выбирают один и тот же элемент, однако селектор <i class='highlight-text'>:root</i> будет иметь более высокую специфичность.
+
+            h2.article-body__subtitle Практическое применение
+            p Как же использовать <i class='highlight-text'>:root</i> на практике? Как мы уже говорили ранее - это безопасная замена для тега <i class='highlight-text'>html</i> и вы можете работать с <i class='highlight-text'>:root</i> как с обычным тегом <i class='highlight-text'>html</i>.
+
+            pre
+              code.language-css.
+                :root {
+                  margin: 0;
+                  padding: 0;
+                  color: #0000FF;
+                  font-family: "Helvetica", "Arial", sans-serif;
+                  line-height: 1.5;
+                }
+
+            p Если вы хотите, то можете изменить этот код чтобы использовать кастомные CSS-свойства для создания переменных на глобальном уровне!
+
+            pre
+              code.language-css.
+                :root {
+                  margin: 0;
+                  padding: 0;
+                  --primary-color: #0000FF;
+                  --body-fonts: "Helvetica", "Arial", sans-serif;
+                  --line-height: 1.5;
+                }
+
+                p {
+                  color: var(--primary-color);
+                  font-family: var(--body-fonts);
+                  line-height: var(--line-height);
+                }
+
+            p Дополнительным преимуществом использования <i class='highlight-text'>:root</i> вместо <i class='highlight-text'>html</i> является то, что вы можете стилизовать вашу SVG графику!
+
+            pre
+              code.language-css.
+                :root {
+                  margin: 0;
+                  padding: 0;
+                  --primary-color: #0000FF;
+                  --body-fonts: "Helvetica", "Arial", sans-serif;
+                  --line-height: 1.5;
+                }
+
+                svg {
+                  font-family: var(--body-fonts);
+                }
+
+                svg circle {
+                  fill: var(--primary-color);
+                }
+
+            p Подробную документацию по селектору корневых псевдоклассов можно найти в <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/:root' target="_blank" rel="nofollow noopener noreferrer">Mozilla Developer Network</a>.
+          //end article__body
+    //end content
