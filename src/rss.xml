@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Wed, 29 Jan 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Feb 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Как сделать анимацию в вебе с помощью GreenSock</title>
+            <link>http://odinokun.com/2020-02-07-kak-sdelat-animaciyu-v-vebe-s-pomoshyu-greensock.html</link>
+            <pubDate>Fri, 07 Feb 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Sarah Drasner
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 07 Фев 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-02-07/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В этой статье мы погрузимся в пошаговое руководство по одному из самых моих любимых способов сделать это - использование GreenSock.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-02-07-kak-sdelat-animaciyu-v-vebe-s-pomoshyu-greensock.html</guid>
+        </item>
 
         <item>
             <title>Как использовать псевдокласс :root в CSS</title>
