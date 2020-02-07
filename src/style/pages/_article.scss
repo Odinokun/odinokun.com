@@ -146,10 +146,10 @@
 }
 
 .article-body__youtube {
-  margin: 30px 0;
   position: relative;
   overflow: hidden;
   height: 0;
+  margin: 30px 0;
   padding-bottom: 56.25%; /* задаём высоту контейнера для 16:9 (если 4:3 — изменить на 75%) */
   iframe {
     position: absolute;
