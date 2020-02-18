@@ -9,7 +9,7 @@
   justify-content: space-between;
   margin-bottom: 80px;
 
-  @include max(767) {
+  @include max(1020) {
     flex-direction: column;
   }
 }
@@ -18,7 +18,7 @@
   width: calc(50% - 15px);
   box-shadow: $box-shadow;
 
-  @include max(767) {
+  @include max(1020) {
     width: 100%;
     margin-bottom: 25px;
   }
@@ -38,7 +38,7 @@
   flex-direction: column;
   width: calc(50% - 15px);
 
-  @include max(767) {
+  @include max(1020) {
     width: 100%;
   }
 }
@@ -86,6 +86,7 @@
     padding-right: 7px;
   }
   span {
+    white-space: nowrap;
     color: $dark;
   }
   a {

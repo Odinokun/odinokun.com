@@ -8,27 +8,27 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Fri, 07 Feb 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 17 Feb 2020 00:01:00 GMT</lastBuildDate>
 
 
         <item>
-            <title>Как сделать анимацию в вебе с помощью GreenSock</title>
-            <link>http://odinokun.com/2020-02-07-kak-sdelat-animaciyu-v-vebe-s-pomoshyu-greensock.html</link>
-            <pubDate>Fri, 07 Feb 2020 00:01:00 GMT</pubDate>
+            <title>Css свойства object-fit и object-position - адаптация картинок встроенных в HTML</title>
+            <link>http://odinokun.com/2020-02-17-css-svojstva-object-fit-i-object-position.html</link>
+            <pubDate>Tue, 17 Feb 2020 00:01:00 GMT</pubDate>
             <description>
-                Автор: Sarah Drasner
+                Автор: Martin Michalek
                 &lt;br /&gt;
                 Перевел статью: Дмитрий Гордиенко
                 &lt;br /&gt;
-                Публикация перевода: 07 Фев 2020
+                Публикация перевода: 17 Фев 2020
                 &lt;br /&gt;
                 &lt;br /&gt;
-                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-02-07/top-img.jpg&quot;&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-02-17/top-image.jpg&quot;&gt;
                 &lt;br /&gt;
                 &lt;br /&gt;
-                Описание: В этой статье мы погрузимся в пошаговое руководство по одному из самых моих любимых способов сделать это - использование GreenSock.
+                Описание: Мы познакомимся с двумя интересными свойствами для адаптации различного встроенного медиаконтента. Рассмотрим их значения, узнаем в каких случаях их использованиепринесет максимальную пользу, а так же рассмотрим поддержку этих свойств браузерами.
             </description>
-            <guid isPermaLink="true">http://odinokun.com/2020-02-07-kak-sdelat-animaciyu-v-vebe-s-pomoshyu-greensock.html</guid>
+            <guid isPermaLink="true">http://odinokun.com/2020-02-17-css-svojstva-object-fit-i-object-position.html</guid>
         </item>
 
         <item>

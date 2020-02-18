@@ -1,0 +1,28 @@
+- var articleLink   = '2020-02-17-css-svojstva-object-fit-i-object-position.html'
+- var imgPath       = 'assets/img/articles/2020-02-17/top-image.jpg'
+- var imgAlt        = 'cat'
+- var articleTitle  = 'Css свойства object-fit и object-position - адаптация картинок встроенных в HTML'
+- var articleDate   = '2020-02-12'
+- var articleWriter = 'Martin Michalek'
+- var articleDescr  = 'Мы познакомимся с двумя интересными свойствами для адаптации различного встроенного медиаконтента. Рассмотрим их значения, узнаем в каких случаях их использованиепринесет максимальную пользу, а так же рассмотрим поддержку этих свойств браузерами.'
+
+// *** don't forget to fix hashtags! ***
+
+//begin 2020-02-17
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date(title='Date of publication of the original article')
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #css
+//end 2020-02-17

@@ -22,7 +22,7 @@
   box-shadow: $box-shadow;
 
   @include max(1020) {
-    width: 100%;
+    width: fit-content;
     margin-bottom: 25px;
   }
   img {

@@ -1,0 +1,134 @@
+extends ../_template
+
+block variables
+  - var title       = 'Css свойства object-fit и object-position - адаптация картинок встроенных в HTML'
+  - var description = 'Css свойства object-fit и object-position - адаптация картинок встроенных в HTML'
+  - var ogtitle     = 'Css свойства object-fit и object-position - адаптация картинок встроенных в HTML'
+  - var ogimage     = 'assets/img/articles/2020-02-17/top-image.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-02-17/top-image.jpg'
+  - var imgAlt              = 'Cat'
+
+  - var articleTitle        = 'Css свойства object-fit и object-position - адаптация картинок встроенных в HTML'
+  - var articleDate         = '2020-02-12'
+
+  - var originArticleTitle  = 'CSS object-fit and object-position properties: Crop images embedded in HTML'
+  - var originArticleLink   = 'https://www.cssmine.com/blog/2020-02-12-css-object-fit-and-object-position-properties-crop-images-embedded-in-html'
+
+  - var articleWriter       = 'Martin Michalek'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Свойства <i class='highlight-text'>object-fit</i> и <i class='highlight-text'>object-position</i> используют для указания размеров и позиционирования медиа-контента указанного непосредственно в HTML. В основном это картинки выведенные с помощью тега <i class='highlight-text'>img</i>, но может быть и контент который выводится с помощью тегов <i class='highlight-text'>video</i>, <i class='highlight-text'>iframe</i> или <i class='highlight-text'>embed</i>.
+            p Эти свойства не поддерживаются в Internet Explorer, поэтому их можно использовать только на тех проектах, где его поддержка не нужна.
+            p Свойства <i class='highlight-text'>object-fit</i> и <i class='highlight-text'>object-position</i> в какой-то мере схожи со свойствами <i class='highlight-text'>background-size</i> и <i class='highlight-text'>background-position</i>, только они применяются не в фону, а элементам вставленным непосредственно в HTML.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-02-17/example-01.jpg" alt="example")
+              span <i>Свойства object-fit and object-position определяют как будет вести себя медиаконтент когда пространство выделенное под него будет становиться больше или меньше.</i>
+
+            p Давайте рассмотрим это на простом примере.<br>У нас есть следующий HTML и Css:
+            pre
+              code.language-html.
+                &lt;img class="img img--cut" src="image-300x300.jpg"
+                  width="300" height="200" alt="Image…">
+            pre
+              code.language-css.
+                .img--cut {
+                  object-fit: cover;
+                  object-position: bottom;
+                }
+
+            p Давайте разбираться:
+            ul
+              li наша картинка имеет исходный размер 300*300 пикселей, но в HTML указано, что она может занимать высоту 200 пикселей, при этом ее ширина задана в 300 пикселей.
+              li в css стилях <i class='highlight-text'>object-fit:cover</i> указывает, что изображение должно быть растянуто по всей области элемента <i class='highlight-text'>img</i> так, чтобы не осталось свободного места.
+              li а свойство <i class='highlight-text'>object-position:bottom</i> указывает, что при этом изображение должно выравниваться по нижнему краю элемента <i class='highlight-text'>img</i>
+
+            h2.article-body__subtitle Значения свойства object-fit
+            p Свойство <i class='highlight-text'>object-fit</i> указывает как именно нужно размещать встроенный медиа-контент в области размеры которой заданы свойствами в Css или HTML.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-02-17/example-02.jpg" alt="example")
+              span <i>Значения object-fit применяются к картинке размером 150*150 пикселей.</i>
+
+            p Это очень похоже на то, как мы применяем свойство <i class='highlight-text'>background-size</i> для того, чтобы задать расположение фона элемента.
+            p Вот варианты значений для свойства <i class='highlight-text'>object-fit</i>:
+            ul
+              li <i class='highlight-text'>fill (default)</i> - изображение заполняет всю выделенную область, при этом изображение может быть искажено, но не обрезано
+              li <i class='highlight-text'>contain</i> - изображение не всегда заполняет всю выделенную область, контент не обрезается и не искажается и отображается полностью
+              li <i class='highlight-text'>scale-down</i> - то же самое, что и свойство <i class='highlight-text'>contain</i>, но изображение никогда не будет увеличено больше. чем его реальный размер
+              li <i class='highlight-text'>cover</i> - заполняет всё выделенное пространство не оставляя свободного места, не искажая контент, только обрезая его
+              li <i class='highlight-text'>none</i> - сохраняет оригинальный размер и соотношение сторон, иногда обрезает изображение. иногда оставляет свободное пространство
+            p На практике чаще всего применяется значение <i class='highlight-text'>object-fit: cover</i>.
+
+            h2.article-body__subtitle Значения свойства object-position
+            p Свойство <i class='highlight-text'>object-position</i> определяет относительно чего будет позиционироваться изображение при применении свойства <i class='highlight-text'>object-fit</i>. Оно имеет те-же значения, что и свойство <i class='highlight-text'>background-size</i>.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-02-17/example-03.jpg" alt="example")
+              span <i>Варианты значений для свойства object-position.</i>
+
+            p Давайте рассмотрим значения с примеров:
+            ul
+              li <i class='highlight-text'>50% 50% (default)</i> - располагает изображение по центру контейнера
+              li <i class='highlight-text'>0 0</i> - располагает изображение в верхнем левом углу
+              li <i class='highlight-text'>0 -50px</i> - располагает изображение со смещением 0px относительно верха контейнера и смещает его влево на 50px за пределы контейнера
+              li <i class='highlight-text'>top right</i> - располагает изображение в верхнем правом углу
+              li <i class='highlight-text'>bottom</i> - располагает относительно нижнего края. Вторым значением берется значение по умолчанию, то есть <i class='highlight-text'>center</i>
+
+            h2.article-body__subtitle Использование на практике
+            p Оба свойства очень полезны для избежание искажений картинки, когда на сервере содержаться картинки с разным соотношением сторон и разных размеров.
+            p Свойство <i class='highlight-text'>object-fit</i> для тега <i class='highlight-text'>video</i> работает очень хорошо, что может очень пригодиться при использовании видео для фона на сайте. К сожалению для <i class='highlight-text'>iframe</i> оно не работает.
+
+            h2.article-body__subtitle Поддержка браузерами
+            p Поскольку Edge был обновлен и теперь работает на движке Chromium, на данный момент только Internet Explorer 11 не поддерживает эти свойства.
+            p На момент написания этой статьи, Internet Explorer все еще имеет существенную долю пользователей в некоторых странах (например здесь, в Чешской Республике), поэтому необходимо предусмотреть запасной вариант кода.
+            p <a href="https://caniuse.com/#feat=object-fit" target="_blank" rel="nofollow noopener noreferrer">caniuse.com/object-fit</a>
+
+            h2.article-body__subtitle Как решать проблемы с поддержкой свойств в Internet Explorer
+            ol
+              li Вместо использования <i class='highlight-text'>object-fit/object-position</i> для объекта, используйте изображение в качестве фона и примените к нему <i class='highlight-text'>background-size/background-position</i>. В качестве альтернативного варианта можн использвать свойства трансформации в сочетании с абсолютным позиционированием (<a href="https://stackoverflow.com/questions/37792720/ie-and-edge-fix-for-object-fit-cover/47450998#47450998" target="_blank" rel="nofollow noopener noreferrer">решение на StackOverflow</a>)
+              li Для IE11 можно использовать полифил <a href="https://github.com/fregante/object-fit-images" target="_blank" rel="nofollow noopener noreferrer">fregante/object-fit-images</a>. Но я не очень рекомендую использовать этот вариант, потому что это замедлит рендеринг в итак не самом быстром браузере.
+              li Определять браузеры, которые не поддерживают наши свойства (например с помощью библиотеки Modernizr) и применять к ним отдельный вариант кода. Например <a href="https://stackoverflow.com/questions/37792720/ie-and-edge-fix-for-object-fit-cover/37792830#37792830" target="_blank" rel="nofollow noopener noreferrer">на StackOverflow</a> есть решение, в котором предлагают изменять тег <i class='highlight-text'>img</i> на <i class='highlight-text'>svg</i> и решать проблему адаптации уже с ним.
+          //end article__body
+
+          include ../sections/article-footer
+    //end content
