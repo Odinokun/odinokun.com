@@ -1,0 +1,30 @@
+- var articleLink   = '2020-02-27-kak-sdelat-na-CSS-pryamougolnik-s-sohraneniem-proporcij.html'
+- var imgPath       = 'assets/img/articles/2020-02-27/top-img.jpg'
+- var imgAlt        = 'aspect ratio'
+- var articleTitle  = 'Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя'
+- var articleDate   = '2020-02-18'
+- var articleWriter = 'Chris Coyier'
+- var articleDescr  = 'У Andrew Welch, на днях, был небольшой CSS челлендж. В этой статье мы рассмотрим как с ним справились топовые разработчики и выберем лучший вариант решения челленжа.'
+
+// *** don't forget to fix hashtags! ***
+
+//begin 2020-02-17
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date(title='Date of publication of the original article')
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #css
+      .blog-article__tag #aspect ratio
+      .blog-article__tag #html
+//end 2020-02-17

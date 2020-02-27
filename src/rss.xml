@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Tue, 17 Feb 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Feb 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя</title>
+            <link>http://odinokun.com/2020-02-27-kak-sdelat-na-CSS-pryamougolnik-s-sohraneniem-proporcij.html</link>
+            <pubDate>Thu, 27 Feb 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Chris Coyier
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 27 Фев 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-02-27/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: У Andrew Welch, на днях, был небольшой CSS челлендж. В этой статье мы рассмотрим как с ним справились топовые разработчики и выберем лучший вариант решения челленжа.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-02-27-kak-sdelat-na-CSS-pryamougolnik-s-sohraneniem-proporcij.html</guid>
+        </item>
 
         <item>
             <title>Css свойства object-fit и object-position - адаптация картинок встроенных в HTML</title>

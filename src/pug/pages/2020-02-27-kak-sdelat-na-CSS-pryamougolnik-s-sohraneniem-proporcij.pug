@@ -1,0 +1,96 @@
+extends ../_template
+
+block variables
+  - var title       = 'Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя'
+  - var description = 'Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя'
+  - var ogtitle     = 'Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя'
+  - var ogimage     = 'assets/img/articles/2020-02-27/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-02-27/top-img.jpg'
+  - var imgAlt              = 'aspect ratio'
+
+  - var articleTitle        = 'Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя'
+  - var articleDate         = '2020-02-18'
+
+  - var originArticleTitle  = 'Centering a div That Maintains Aspect-Ratio When There’s Body Margin'
+  - var originArticleLink   = 'https://css-tricks.com/centering-a-div-that-maintains-aspect-ratio-when-theres-body-margin'
+
+  - var articleWriter       = 'Chris Coyier'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag aspect ratio
+                span.article__tag html
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p У Andrew Welch, на днях, был небольшой <a href="https://twitter.com/nystudio107/status/1227213129261756416?s=20" target="_blank" rel="nofollow noopener noreferrer">CSS челлендж</a>, в котором было нужно создать обычный <i class='highlight-text'>div</i> который:
+            ul
+              li отцентрирован по вертикали и горизонтали
+              li масштабируется по размеру области просмотра с отступами по периметру
+              li поддерживает произвольное соотношение сторон
+              li <b>Без JS</b>
+
+            p В твите, на который я давал ссылку выше, есть видео которое поможет вам визуализировать задание.
+            p Mark Huot стал фантазировать, применяя пропорции непосредственно к ширине/высоте div и создавая отступы отталкиваясь от разницы этих размеров.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/vYOmEKK?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Идея Amelia Wattenberger была задать единицы измерения <i class='highlight-text'>vw/vh</i> для <i class='highlight-text'>height/width</i> и  <i class='highlight-text'>max-height/max-width</i>, и отцентрировать <i class='highlight-text'>div</i> классическим трюком с <i class='highlight-text'>translate</i>:
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/WNvjboM?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Eric A. Meyer сделал <a href="https://codepen.io/meyerweb/pen/abOOgNV" target="_blank" rel="nofollow noopener noreferrer">также</a>, только отцентрировал <i class='highlight-text'>div</i> с помощью <i class='highlight-text'>flexbox</i>.
+
+            p Brian Hart использовал единицы измерения <i class='highlight-text'>vmin</i> для соотношения сторон и отцентрировал <i class='highlight-text'>div</i> с помощью <i class='highlight-text'>flexbox</i>:
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/KKpmwNe?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Benoît Rouleau сделал <a href="https://codepen.io/benface/pen/eYNNqvP" target="_blank" rel="nofollow noopener noreferrer">тоже самое</a> но использовал <i class='highlight-text'>calc()</i> для отступов.
+
+            p Andrew очень понравился подход Jonathan Melville. Правда большая часть элементов содержит классы Tailwind, которые мне трудновато понять, так как я не привык работать с этим фреймворком и читать его код.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/rNVmajR?height=600&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Andrew сказал, что в конечном итоге <a href="https://rgb.catering/center.html" target="_blank" rel="nofollow noopener noreferrer">он выбрал</a> вариант с использованием <i class='highlight-text'>vmin</i> - хотя я вижу, что в этом варианте используется <i class='highlight-text'>calc()</i> для вычитания единиц <i class='highlight-text'>vmin</i> друг из друга, а это в действительности не нужно, если вы конечно не хотите видеть излишние вычисления в коде.
+          //end article__body
+
+          include ../sections/article-footer
+    //end content
