@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Thu, 27 Feb 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Mar 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Создание аркадной игры на ванильном JavaScript</title>
+            <link>http://odinokun.com/2020-03-02-sozdanie-arkadnoj-igry-na-vanilnom-javascript.html</link>
+            <pubDate>Mon, 02 Mar 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Roberto Hernandez
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 02 Мар 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-03-02/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Мы рассмотрим как создать простую аркадную игру используя только ванильный JavaScript для манипуляции с DOM.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-02-sozdanie-arkadnoj-igry-na-vanilnom-javascript.html</guid>
+        </item>
 
         <item>
             <title>Как сделать на CSS прямоугольник с сохранением пропорций при изменении размера его родителя</title>

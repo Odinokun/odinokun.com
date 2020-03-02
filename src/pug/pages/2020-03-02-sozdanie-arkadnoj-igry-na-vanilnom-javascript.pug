@@ -1,0 +1,209 @@
+extends ../_template
+
+block variables
+  - var title       = 'Создание аркадной игры на ванильном JavaScript'
+  - var description = 'Создание аркадной игры на ванильном JavaScript'
+  - var ogtitle     = 'Создание аркадной игры на ванильном JavaScript'
+  - var ogimage     = 'assets/img/articles/2020-03-02/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-03-02/top-img.jpg'
+  - var imgAlt              = 'Arcade Game'
+
+  - var articleTitle        = 'Создание аркадной игры на ванильном JavaScript'
+  - var articleDate         = '2020-03-02'
+
+  - var originArticleTitle  = 'Build an Arcade Game With Vanilla JavaScript'
+  - var originArticleLink   = 'https://www.mullinstack.com/2020/02/22/build-arcade-game-vanilla-javascript-dom-manipulation'
+
+  - var articleWriter       = 'Roberto Hernandez'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag javascript
+                span.article__tag animation
+                span.article__tag css
+                span.article__tag dom
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Сегодня особенный день для тех, кто только начинает работать в мире JavaScript. Единственный способ освоить это ремесло -  тренироваться. И сегодня мы собираемся испачкать руки и начать совершенствовать свои навыки манипуляции с DOM. Как? Путем создания простой аркадной игры используя только ванильный JavaScript.
+            p Несмотря на то, что этот пост предназначен для начинающих и новичков, это не значит, что более опытные разработчики не найдут в нем ничего полезного.
+
+            h2.article-body__subtitle Что мы освоим
+            ul
+              li базовый Css и JavaScript
+              li базовый Flexbox на уровне раскладки страницы
+              li динамическое манипулирование DOM при помощи JavaScript
+              li прохождение
+
+            h2.article-body__subtitle Условия задания
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-03-02/img.gif" alt="example")
+              span <i>Демо аркадной игры на ванильном javaScript</i>
+
+            p Аркадная игра имеет следующие требования:
+            ul
+              li она должна содержать изображение как фон и кликабельное изображение утки
+              li когда пользователь кликает по утке должны происходить две вещи: 
+                ol
+                  li счетчик должен увеличиться на единицу; 
+                  li утка должна переместиться на случайную позицию
+              li Игра должна быть построена с использованием спецификации ES6
+              li Раскладка должна быть сверстана с использованием Flexbox
+
+            p Просто? Ну приступим.
+            p Первым делом при планировании решения поставленной задачи мы должны подумать о подходе который будем использовать и о последовательности своих действий. Это означает, что нам надо подробно продумать каждый шаг необходимый для выполнения всех требований. Давайте разбираться с этим.
+            p Чтобы решить проблему, мы будем выполнять следующие действия по порядку.
+            p Разделяй и властвуй!
+            ol
+              li Реализовать макет, используя ресурсы (фоновое изображение и утку), а также поле счетчика
+              li Что мне нужно в момент клика по утке? Мне нужно навесить на нее прослушиватель событий (<i class='highlight-text'>addEventListener</i>), который будет срабатывать при клике по утке
+              li Создать функцию которая будет увеличивать счет при клике на утке
+              li Создать функцию которая будет перемещать утку в случайное место на поле
+            p Приступаем без лишних раздумий.
+
+            h2.article-body__subtitle 1. Макет
+            p Наш макет (index.html) будет содержать в себе <i class='highlight-text'>div</i> в качестве контейнера, в котором будет находиться изображение фона и изображение утки. Также в нем будет элемент с классом <i class='highlight-text'>scoreContainer</i> который будет содержать в себе текст <i>Score</i> и непосредственно сам счетчик.
+            pre
+              code.language-html.
+                &lt;div class="container">
+                  &lt;img src="https://bit.ly/2Q4q14a" />
+                  &lt;img id="duck" src="https://bit.ly/2KQJVKc" alt="duck" />
+                  &lt;div class="scoreContainer">
+                    &lt;div id="score-text">Score&lt;/div>
+                    &lt;div id="score-counter">0&lt;/div>
+                  &lt;/div>
+                &lt;/div>
+            pre
+              code.language-css.
+                /*Make any img element responsive*/
+                img {
+                  max-width: 100%;
+                }
+                /*Set a fixed size for width and height and in an absolute position*/
+                #duck {
+                  margin: 50px;
+                  width: 100px;
+                  height: 100px;
+                  position: absolute;
+                  left: 100px;
+                  top: 100px;
+                }
+                /*Style for the Score container*/
+                .scoreContainer {
+                  background-color: black;
+                  width: 15%;
+                  height: 15%;
+                  color: #ffffff;
+                  top: 5%;
+                  right: 5%;
+                  border: 2px solid greenyellow;
+                  border-radius: 10px;
+                  display: flex;
+                  position: fixed;
+                  flex-direction: column;
+                  align-items: center;
+                }
+                #score-text {
+                  font-size: 1.5em;
+                }
+                #score-counter {
+                  font-size: 3.1em;
+                  font-weight: bold;
+                  color: #06e515;
+                }
+
+            h2.article-body__subtitle 2. JavaScript
+            h2.article-body__subtitle 2.1 Создаем прослушку событий
+            p Теперь мы собираемся создать прослушиватель событий на нашей  утке. Когда пользователь кликает по изображению утки, он запускает функцию.
+            pre
+              code.language-js.
+                //Get the target element
+                const duck = document.querySelector("#duck");
+                //Add the click event listener
+                duck.addEventListener("click", () => {
+                  //Dont forget call the functions here 
+                  increaseScore();
+                  moveDuck();
+                });
+
+            h2.article-body__subtitle 2.2 Создаем функцию для увеличения текущего счета
+            p Мы только что создали прослушиватель событий. Теперь мы собираемся создать функцию, которая будет  увеличивать счет нашего счетчика на единицу.
+            pre
+              code.language-js.
+                //Increase score by 1
+                const increaseScore = () => {
+                  //Get the content of the target element. The current value for score
+                  const score = document.querySelector("#score-counter").innerHTML;
+                  //Get the element to increase the value
+                  const scoreHTML = document.querySelector("#score-counter");
+                  //Cast the score value to Number type
+                  let count = Number(score);
+                  //Set the new score to the target element
+                  scoreHTML.innerHTML = count + 1;
+                };
+
+            h2.article-body__subtitle 2.3 Создаем функцию для перемещения утки в случайное место на поле
+            p Пришло время перемещать утку. Однако, поскольку утка будет перемещаться случайным образом, будет правильно создать вспомогательную функцию для получения случайного числа, которое мы позже будем использовать для установки случайного положения. Давайте создадим эту функцию:
+            pre
+              code.language-js.
+                //Get a random number
+                const getRandomNum = (num) => {
+                  return Math.floor(Math.random() * Math.floor(num));
+                }
+            p Теперь мы собираемся создать функцию непосредственно для перемещения утки. Мы используем свойство <i class='highlight-text'>innerWidth</i>, чтобы получить внутреннюю ширину окна в пикселях, а свойство <i class='highlight-text'>innerHeight</i> получает внутреннюю высоту окна в пикселях. Кроме того, мы используем функцию <i class='highlight-text'>getRandomNum</i>, чтобы установить случайное значение для свойств <i class='highlight-text'>top</i> и <i class='highlight-text'>left</i>, влияющих на вертикальное и горизонтальное положение утки.
+            pre
+              code.language-js.
+                //Move the duck randomly 
+                const moveDuck = () => {
+                  const w = window.innerWidth;
+                  const h = window.innerHeight;
+                  duck.style.top = getRandomNum(w) + "px";
+                  duck.style.left = getRandomNum(h) + "px";
+                };
+            p Это все на сегодня! Я надеюсь, что вы следовали этому простому руководству и получили представление о манипулировании DOM.
+
+            h2.article-body__subtitle Готовая программа
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/zYGdGZY?height=550&amp;default-tab=result&amp;embed-version=2" height="550" style="width: 100%;")
+            p Спасибо за то что прочли до конца! Я надеюсь, что этот пост был полезен для вас.
+          //end article__body
+
+          include ../sections/article-footer
+    //end content
