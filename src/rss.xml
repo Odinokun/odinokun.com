@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Mon, 02 Mar 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 05 Mar 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>4 способа анимировать цвет текстовой ссылки при наведении</title>
+            <link>http://odinokun.com/2020-03-05-4-sposoba-animirovat-cvet-tekstovoj-ssylki-pri-navedenii.html</link>
+            <pubDate>Thu, 05 Mar 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Katherine Kato
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 05 Мар 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-03-05/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Давайте создадим эффект на чистом Css, который будет менять цвет текстовой ссылки при наведении ... но будем заполнять ссылку цветом слева направо, а не как обычно просто изменять цвет.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-05-4-sposoba-animirovat-cvet-tekstovoj-ssylki-pri-navedenii.html</guid>
+        </item>
 
         <item>
             <title>Создание аркадной игры на ванильном JavaScript</title>
