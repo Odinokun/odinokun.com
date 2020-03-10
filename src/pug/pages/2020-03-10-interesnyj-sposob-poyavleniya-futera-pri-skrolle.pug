@@ -1,0 +1,85 @@
+extends ../_template
+
+block variables
+  - var title       = 'Интересный способ появления футера при скролле'
+  - var description = 'Интересный способ появления футера при скролле'
+  - var ogtitle     = 'Интересный способ появления футера при скролле'
+  - var ogimage     = 'assets/img/articles/2020-03-10/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-03-10/top-img.jpg'
+  - var imgAlt              = 'Footer'
+
+  - var articleTitle        = 'Интересный способ появления футера при скролле'
+  - var articleDate         = '2020-03-10'
+
+  - var originArticleTitle  = 'The Slideout Footer'
+  - var originArticleLink   = 'https://css-tricks.com/the-slideout-footer'
+
+  - var articleWriter       = 'Chris Coyier'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag animation
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Недавно был запущен новый, увлекательный сайт, под названием <a href='https://themarkup.org/' target="_blank" rel="nofollow noopener noreferrer">The Markup</a>. Их слоган: <i>Современные технологии следят за тобой. А мы следим за современными технологиями.</i> Отличная работа от <a href="https://twitter.com/upstatement/status/1232783078176759808" target="_blank" rel="nofollow noopener noreferrer">Upstatement</a>. Контент выглядит потрясающе, но нас больше интересует дизайн и техническая сторона. На сайте есть множество красивых и интересных вещей, от утонченной типографики, интересного расположения и интересного смещения блоков по диагонали при наведении на них, до изящных  точечных паттернов в качестве подложки.
+            p Футер также сделан очень интересно и необычно выскальзывает из под контента при прокрутке страницы до конца. Давайте повторим его реализацию!
+            .article-body__img.article-body__img--center
+              video(controls)
+                source(src="assets/img/articles/2020-03-10/slideout-footer.mp4" type="video/mp4")
+
+            p При создании этого эффекта мы будем использовать такие приемы:
+            ol
+              li Высота основной области контента не меньше 100vh. Большинство страниц сайтов в любом случае больше этого параметра, но зададим его для страниц с минимальным количеством контента.
+              li Фон основной области контента будет залит цветом, так как под контентом будет прятаться наш футер.
+              li Футер будет идти в HTML после основной области с контентом, поэтому, чтобы перекрыть его, нам потребуется задавать контенту относительное позиционирование и <i class='highlight-text'>z-index</i>.
+              li Для футера будем использовать свойство <i class='highlight-text'>position: sticky;</i>, чтобы "прилепить" его к низу.
+
+            p Последний из пунктов - самый оригинальный прием и он на самом деле даже оригинальнее, чем это делает The Markup. Они используют <i class='highlight-text'>position: fixed;</i> для футера и <a href="https://css-tricks.com/magic-numbers-in-css/" target="_blank" rel="nofollow noopener noreferrer">"магическое число"</a> для <i class='highlight-text'>margin-bottom</i> основного содержимого, чтобы все работало как надо. Никаких "магических чисел" не нужно, когда вы задаете <i class='highlight-text'>position: sticky;</i>.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/MWwrqja?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+              
+            p Тот факт, что это так просто сделать и без "магических чисел", очень радует. Спасибо <a href="https://codepen.io/shshaw/" target="_blank" rel="nofollow noopener noreferrer">Стивену Шоу</a> за трюк с "прилипанием"! Я изначально пробовал использовать фиксированное позиционирование и "магические числа", но без них гораздо удобнее.
+            p <i>Preethi</i> показала нам <a href="https://css-tricks.com/creating-sliding-effects-using-sticky-positioning/#article-header-id-3" target="_blank" rel="nofollow noopener noreferrer">очень похожую технику</a> в 2018 году. Основное отличие между ними заключается в использовании линейного градиента для фона, что является хорошим решением, если применение сплошного цвета ограничено дизайном.
+          //end article__body
+
+          include ../sections/article-footer
+    //end content

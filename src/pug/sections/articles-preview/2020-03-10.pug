@@ -1,0 +1,29 @@
+- var articleLink   = '2020-03-10-interesnyj-sposob-poyavleniya-futera-pri-skrolle.html'
+- var imgPath       = 'assets/img/articles/2020-03-10/top-img.jpg'
+- var imgAlt        = 'footer'
+- var articleTitle  = 'Интересный способ появления футера при скролле'
+- var articleDate   = '2020-03-10'
+- var articleWriter = 'Chris Coyier'
+- var articleDescr  = 'В этой статье мы повторим эффект появления футера при скролле, который реализован на новом сайте The Markup, а также слегка его улучшим.'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-03-10
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #css
+      .blog-article__tag #animation
+//end 2020-03-10

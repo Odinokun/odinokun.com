@@ -12,8 +12,28 @@
 
 
         <item>
+            <title>Интересный способ появления футера при скролле</title>
+            <link>http://odinokun.com/2020-03-10-interesnyj-sposob-poyavleniya-futera-pri-skrolle.html</link>
+            <pubDate>Tue, 10 Mar 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Chris Coyier
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 10 Мар 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-03-10/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В этой статье мы повторим эффект появления футера при скролле, который реализован на новом сайте The Markup, а также слегка его улучшим.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-10-interesnyj-sposob-poyavleniya-futera-pri-skrolle.html</guid>
+        </item>
+
+        <item>
             <title>4 способа анимировать цвет текстовой ссылки при наведении</title>
-            <link>http://odinokun.com/2020-03-05-4-sposoba-animirovat-cvet-tekstovoj-ssylki-pri-navedenii.html</link>
+            <link>http://odinokun.com/2020-03-05-4-sposoba-animirovat-cvet-tekstovoj-sсylki-pri-navedenii.html</link>
             <pubDate>Thu, 05 Mar 2020 00:01:00 GMT</pubDate>
             <description>
                 Автор: Katherine Kato
@@ -28,7 +48,7 @@
                 &lt;br /&gt;
                 Описание: Давайте создадим эффект на чистом Css, который будет менять цвет текстовой ссылки при наведении ... но будем заполнять ссылку цветом слева направо, а не как обычно просто изменять цвет.
             </description>
-            <guid isPermaLink="true">http://odinokun.com/2020-03-05-4-sposoba-animirovat-cvet-tekstovoj-ssylki-pri-navedenii.html</guid>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-05-4-sposoba-animirovat-cvet-tekstovoj-sсylki-pri-navedenii.html</guid>
         </item>
 
         <item>
