@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Thu, 05 Mar 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 Mar 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Умная анимация с кастомными Css-свойствами</title>
+            <link>http://odinokun.com/2020-03-13-umnaya-animaciya-s-kastomnymi-css-svojstvami.html</link>
+            <pubDate>Fri, 13 Mar 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Mattia Astorino
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 13 Мар 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-03-13/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Недавно, я разговаривал с другом о самых популярных CSS-библиотеках, которые используются для интеграции простых анимаций в проект. И меня поразило то, что некоторые из этих библиотек, особенно CSS, были написаны несколько лет назад. И я задал себе вопрос: "Имеет ли смысл подключать всю библиотеку, если мне нужно только 3 анимации?"
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-13-umnaya-animaciya-s-kastomnymi-css-svojstvami.html</guid>
+        </item>
 
         <item>
             <title>Интересный способ появления футера при скролле</title>
