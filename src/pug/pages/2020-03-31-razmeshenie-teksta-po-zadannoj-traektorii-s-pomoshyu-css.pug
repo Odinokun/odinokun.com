@@ -1,0 +1,105 @@
+extends ../_template
+
+block variables
+  - var title       = 'Размещение текста по заданной траектории с помощью CSS'
+  - var description = 'В этой статье будем разбираться со свойством offset-path, разместим текст по заданной нами траектории и анимируем его.'
+  - var ogtitle     = 'Размещение текста по заданной траектории с помощью CSS'
+  - var ogimage     = 'assets/img/articles/2020-03-31/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-03-31/top-img.jpg'
+  - var imgAlt              = 'circle text'
+
+  - var articleTitle        = 'Размещение текста по заданной траектории с помощью CSS'
+  - var articleDate         = '2020-03-31'
+
+  - var originArticleTitle  = 'Positioning Text Along a Path with CSS'
+  - var originArticleLink   = 'https://css-irl.info/positioning-text-along-a-path-with-css/'
+
+  - var articleWriter       = 'Michelle Barker'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag custom properties
+                span.article__tag animation
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p На протяжении пары последних месяцев я много экспериментировала с <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Motion_Path" target="_blank" rel="nofollow noopener noreferrer">CSS Motion Path</a> и получила массу удовольствия от <a href="https://codepen.io/collection/XOOoWv" target="_blank" rel="nofollow noopener noreferrer">создания демок</a>, некоторые из которых вы можете найти в <a href="https://codepen.io/collection/XOOoWv" target="_blank" rel="nofollow noopener noreferrer">этой коллекции Codepen</a>. Но название «Motion Path» немного вводит в заблуждение, поскольку оно относится не только к движению. Несмотря на то, что спецификация по-прежнему называется «Motion Path», свойство, используемое для определения траектории, было изменено с <i class='highlight-text'>motion-path</i> на <i class='highlight-text'>offset-path</i>. Легко понять, почему: элемент может быть размещен в любом месте пути, с движением или без движения - его положение (или <i class='highlight-text'>offset-distance</i>) не нужно анимировать.
+            p В следующей демке (версия <a href="https://twitter.com/beesandbombs" target="_blank" rel="nofollow noopener noreferrer">@beesandbombs</a> GIF) кажется, что масштаб и непрозрачность кругов анимированы, но на самом деле их положение неподвижно, несмотря на иллюзию движения. Тем не менее, каждый из них расположен по круговой траектории при помощи <i class='highlight-text'>offset-path</i> и <i class='highlight-text'>offset-distance</i>.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/LYVaNWB?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Есть также <i class='highlight-text'>conic-gradient</i> маска, анимированная с помощью <a href="https://developer.mozilla.org/en-US/docs/Web/Houdini" target="_blank" rel="nofollow noopener noreferrer">CSS Houdini</a> - но, полноценно, она работает только в Chrome.
+            p Возможность располагать элементы вдоль заданной траектории хорошо подходит для текста. В прошлом году я создала несколько демок, в которых использовала пользовательские свойства CSS для размещения текста по кругу, применяя трансформации. В этом примере используется <a href="https://splitting.js.org/" target="_blank" rel="nofollow noopener noreferrer">Splitting.js</a> (моя любимая библиотека JS!) Для задавания пользовательских свойств (подробнее об этом позже.)
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/xxGBVXj?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+            p Этот пример отлично работает с динамическим контентом - вы можете изменить текст, и положение каждого символа будет пересчитано, чтобы текст идеально подходил к окружности. Но есть и обратная сторона: текст нельзя выделить, потому что используется абсолютное позиционирование и трансформация.
+
+            h2.article-body__title Motion Path - спасение
+            p Если вместо этого мы используем <i class='highlight-text'>offset-path</i>, вычисляем значения <i class='highlight-text'>offset-distance</i> для каждого символа с используя пользовательские свойства, мы можем добиться того же эффекта с полностью выбираемым текстом! Класс!
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/ZEGPWrJ?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+            p К сожалению, на момент написания статьи, единственное поддерживаемое значение <i class='highlight-text'>offset-path</i> - это <i class='highlight-text'>path()</i> функция. Она не поможет нам с адаптацией, поскольку <i class='highlight-text'>path</i> не масштабируется. Но  можно, например, использовать медиазапросы для задавания  разных значений <i class='highlight-text'>path</i> при определенных разрешениях окна браузера. В качестве альтернативы мы могли бы использовать трансформации, чтобы уменьшить масштаб всего изображения на небольших экранах. Но ни один из этих вариантов не идеален. Если бы мы могли использовать URL пути SVG (как указано в спецификации), то это дало бы нам более точный контроль.
+
+            h2.article-body__subtitle Немного про определение траектории
+            p Мой любимый способ определения <i class='highlight-text'>offset-path</i> значения - нарисовать путь в Illustrator и сохранить его как SVG, прежде чем очистить его с помощью инструмента оптимизации и скопировать значение атрибута <i class='highlight-text'>d</i> у полученного пути . Если вы просто нарисуете круг, Illustrator сохранит его как <i class='highlight-text'>circle</i> элемент, а не как <i class='highlight-text'>path</i>. Один из способов избежать этого - сначала нарисовать круг, а затем с помощью инструмента-ножницы в Illustrator обрезать траекторию круга в нужном месте. После этого он будет сохранен как элемент  <i class='highlight-text'>path</i> а не как <i class='highlight-text'>circle</i>.
+            p Конечно, мы не ограничены только траекторией круга. Мы можем использовать любую траекторию.
+
+            h2.article-body__title Да, мы можем анимировать текст тоже
+            p Анимация - вот где эти методы действительно выглядят блестяще. Мы можем анимировать, <i class='highlight-text'>offset-distance</i> чтобы переместить строку текста вдоль заданной траектории. Один из моих любимых приемов - использовать значения <i class='highlight-text'>animation-delay</i>, рассчитанные на основе пользовательских свойств. Splitting.js присваивает каждому символу собственное свойство, которое соответствует его индексу. Передача значений в <i class='highlight-text'>calc()</i> функцию сделает движение более органичным и. Вы можете увидеть разницу в двух анимациях ниже. Вторая анимация реализует <i class='highlight-text'>animation-delay</i> для каждого символа, рассчитывая их с использованием пользовательских свойств:
+
+            pre
+              code.language-css.
+                .char {
+                  --delay: calc(var(--char-index) * 30ms);
+                }
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/LYVaNXM?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            p Это очень увлекательно. Следующая демка использует методы, описанные выше, чтобы создать эффект американских горок:
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/rNVRePd?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+            p Мы можем сделать анимацию еще более причудливой и добавить в нее некоторые 3D-трансформации:
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/oNXVxmV?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+            p Надеюсь, вам нравится играть с Motion Path так же, как и мне!
+
+          include ../sections/article-footer
+    //end content

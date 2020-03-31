@@ -1,0 +1,31 @@
+- var articleLink   = '2020-03-26-kak-vstavit-adaptivnoe-video-na-sajt.html'
+- var imgPath       = 'assets/img/articles/2020-03-26/top-img.jpg'
+- var imgAlt        = 'you tube'
+- var articleTitle  = 'Как вставить адаптивное видео на сайт'
+- var articleDate   = '2020-03-26'
+- var articleWriter = 'Chris Coyier'
+- var articleDescr  = 'В мире адаптивных и гибких макетов в Интернете, один единственный медиатип стоит на пути к идеальной гармонии - видео. Существует множество способов отображения видео на вашем сайте и сейчас мы рассмотрим лучшие из них.'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-03-26
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #css
+      .blog-article__tag #aspect ratio
+      .blog-article__tag #video
+      .blog-article__tag #responsive
+//end 2020-03-26

@@ -8,8 +8,48 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Fri, 13 Mar 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 31 Mar 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Размещение текста по заданной траектории с помощью CSS</title>
+            <link>http://odinokun.com/2020-03-31-razmeshenie-teksta-po-zadannoj-traektorii-s-pomoshyu-css.html</link>
+            <pubDate>Tue, 31 Mar 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Michelle Barker
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 31 Мар 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-03-31/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В этой статье будем разбираться со свойством offset-path, разместим текст по заданной нами траектории и анимируем его.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-31-razmeshenie-teksta-po-zadannoj-traektorii-s-pomoshyu-css.html</guid>
+        </item>
+
+        <item>
+            <title>Как вставить адаптивное видео на сайт</title>
+            <link>http://odinokun.com/2020-03-26-kak-vstavit-adaptivnoe-video-na-sajt.html</link>
+            <pubDate>Thu, 26 Mar 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Chris Coyier
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 26 Мар 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-03-26/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В мире адаптивных и гибких макетов в Интернете, один единственный медиатип стоит на пути к идеальной гармонии - видео. Существует множество способов отображения видео на вашем сайте и сейчас мы рассмотрим лучшие из них.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-03-26-kak-vstavit-adaptivnoe-video-na-sajt.html</guid>
+        </item>
 
         <item>
             <title>Умная анимация с кастомными Css-свойствами</title>
