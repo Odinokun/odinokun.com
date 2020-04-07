@@ -1,0 +1,249 @@
+extends ../_template
+
+block variables
+  - var title       = '5 полезных советов по использованию console.log()'
+  - var description = 'Дмитрий Павлютин предлагает 5 полезных советов, которые помогут повысить продуктивность при использовании console.log().'
+  - var ogtitle     = '5 полезных советов по использованию console.log()'
+  - var ogimage     = 'assets/img/articles/2020-04-07/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-04-07/top-img.jpg'
+  - var imgAlt              = 'console.log()'
+
+  - var articleTitle        = '5 полезных советов по использованию console.log()'
+  - var articleDate         = '2020-04-07'
+
+  - var originArticleTitle  = 'Handy Tips on Using console.log()'
+  - var originArticleLink   = 'https://dmitripavlutin.com/console-log-tips/'
+
+  - var articleWriter       = 'Dmitri Pavlutin'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag javascript
+                span.article__tag console
+                span.article__tag debugging
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Использовать <i class='highlight-text'>console.log(message)</i> очень просто - аргумент <i class='highlight-text'>message</i> выводится в консоль.
+            pre
+              code.language-js.
+                console.log('My message');
+                // logs "My message"
+
+                const myVar = 12;
+                console.log(myVar);
+                // logs 12
+            p В этой статье я расскажу вам 5 полезных советов, которые помогут вам повысить свою продуктивность при использовании <i class='highlight-text'>console.log()</i>.
+
+            h2.article-body__title 1. Именование выводимых переменных
+            p При выводе в консоль большого количества переменных, иногда трудно понять, к какой именно переменной относится то или иное значение выведенное в консоли.
+            p Например, давайте выведем некоторые переменные:
+            pre
+              code.language-js.
+                function sum(a, b) {
+                  console.log(b);
+                  return a + b;
+                }
+
+                sum(1, 2);
+                sum(4, 5);
+            p Когда приведенный выше код будет выполнен, вы увидите только выведенные числа:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-01.jpg" alt="DevTools")
+            p Чтобы связать между собой выводимую переменную и ее значение, оберните переменную в пару фигурных скобок <i class='highlight-text'>{b}</i>:
+            pre
+              code.language-js.
+                function sum(a, b) {
+                  console.log({ b });
+                  return a + b;
+                }
+
+                sum(1, 2);
+                sum(4, 5);
+            p Теперь, глядя в консоль, вы можете видеть, что именно выводится именно переменная <i class='highlight-text'>b</i>:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-02.jpg" alt="DevTools")
+
+
+            h2.article-body__title 2. Продвинутое форматирование
+            p Самый распространенный способ вывести что-либо в консоль - просто вызвать <i class='highlight-text'>console.log()</i> с одним аргументом:
+            pre
+              code.language-js.
+                console.log('My message');
+                // logs "My message"
+            p Иногда вам может понадобиться лог, содержащий несколько переменных. К счастью, <i class='highlight-text'>console.log()</i> может форматировать строку способом <i class='highlight-text'>sprintf()</i> с использованием спецификаторов, таких как <i class='highlight-text'>%s</i>, <i class='highlight-text'>%i</i> и тому подобных.
+            p Например, давайте отформатируем лог, который содержит в себе строку и целое число:
+            pre
+              code.language-js.
+                const user = 'john_smith';
+                const attempts = 5;
+
+                console.log('%s failed to login %i times', user, attempts);
+                // logs "john_smith failed to login 5 times"
+            p <i class='highlight-text'>%s</i> и <i class='highlight-text'>%i</i> заменяются значениями <i class='highlight-text'>user</i> и <i class='highlight-text'>attempts</i>. Спецификатор <i class='highlight-text'>%s</i> означает, что нужно преобразовать значение как строку, а <i class='highlight-text'>%i</i> - как число.
+            p Вот список доступных спецификаторов:
+            table.article__table
+              thead
+                th Спецификатор
+                th Значение
+              tr
+                td <i class='highlight-text'>%s</i>
+                td Элемент преобразуется в строку
+              tr
+                td <i class='highlight-text'>%d</i> или <i class='highlight-text'>%i</i>
+                td Элемент преобразуется в число
+              tr
+                td <i class='highlight-text'>%f</i>
+                td Элемент преобразуется в число с плавающей точкой
+              tr
+                td <i class='highlight-text'>%o</i>
+                td Элемент отображается с оптимальным форматированием
+              tr
+                td <i class='highlight-text'>%O</i>
+                td Элемент отображается с общим, для объекта JavaScript, форматированием
+              tr
+                td <i class='highlight-text'>%c</i>
+                td Применяется при использовании CSS
+
+            h2.article-body__title 3. Вывод логов с использованием стилей CSS
+            p Консоль браузера позволяет применять стили к выводимому  логу.
+            p Вы можете сделать это, используя спецификатор <i class='highlight-text'>%c</i> с соответствующими стилями CSS. Например, давайте выведем в консоль лог с увеличенным размером и жирностью шрифта:
+            pre
+              code.language-js.
+                console.log('%c Big message', 'font-size: 36px; font-weight: bold');
+            p Спецификатор <i class='highlight-text'>%c</i> применяет стили CSS <i class='highlight-text'>font-size: 36px;</i> и <i class='highlight-text'>font-weight: bold</i>.
+            p Вот как выглядит лог с примененными стилями в консоли Chrome:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-03.jpg" alt="DevTools")
+
+            h2.article-body__title 4. Интерактивные логи
+            p Стиль логов зависит от реализации консоли. Браузеры, такие как Chrome и Firefox, предлагают интерактивные логи объектов и массивов, а консоль Node выводит логи в виде текста.
+            p Давайте посмотрим, как Chrome выводит простые объекты, массивы и деревья DOM. Вы можете взаимодействовать с этими элементами, разворачивать и сворачивать их.
+
+            h3.article-body__subtitle 4.1 Объекты
+            pre
+              code.language-js.
+                const myObject = {
+                  name: 'John Smith',
+                  profession: 'agent'
+                };
+
+                console.log(myObject);
+            p В консоли Chrome лог <i class='highlight-text'>myObject</i> выглядит так:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-04.jpg" alt="DevTools")
+            p Вы можете развернуть и свернуть список свойств объекта. Также вы можете увидеть прототип объекта (<i class='highlight-text'>__proto__</i>).
+
+            h3.article-body__subtitle 4.2 Массивы
+            pre
+              code.language-js.
+                const characters = ['Neo', 'Morpheus', 'John Smith'];
+
+                console.log(characters);
+            p Chrome выводит массив символов в консоль следующим образом:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-05.jpg" alt="DevTools")
+
+            h3.article-body__subtitle 4.3 DOM дерево
+            p Вы можете напрямую взаимодействовать с элементом DOM, который отображается в консоли.
+            pre
+              code.language-js.
+                console.log(document.getElementById('root'));
+            p В консоли Chrome элемент DOM может быть развернут, а его содержимое может быть изучено полностью:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-06.jpg" alt="DevTools")
+
+            h3.article-body__subtitle 4.4 Интерактивные логи внутри сообщений
+            p Спецификатор <i class='highlight-text'>%o</i> (который отображает значение с оптимальным форматированием) может вставлять массивы, объекты, элементы DOM и обычный текст в текстовое сообщение без потери интерактивности.
+            p Следующий фрагмент кода выводит в консоль сообщение, содержащее объект:
+            pre
+              code.language-js.
+                const myObject = {
+                  name: 'John Smith',
+                  profession: 'agent'
+                };
+
+                console.log('Neo, be aware of %o', myObject);
+            p В консоли мы видим, что массив <i class='highlight-text'>myObject</i> не преобразуется в строку, а остается интерактивным.
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-07.jpg" alt="DevTools")
+
+            h2.article-body__title 5. Вывод больших объектов в консоли Node
+            p Логи в Node выводятся в виде простого текста. Однако <i class='highlight-text'>console.log()</i> в Node не отображает объекты с глубоким уровнем вложенности: объекты на третьем уровне отображаются как <i class='highlight-text'>[Object]</i>.
+            p Например, давайте исследуем следующий объект:
+            pre
+              code.language-js.
+                const myObject = {
+                  propA: {
+                    propB: {
+                      propC: {
+                        propD: 'hello'
+                      }
+                    }
+                  }
+                };
+
+                console.log(myObject);
+            p При запуске скрипта объект <i class='highlight-text'>propC</i> выводится как <i class='highlight-text'>[Object]</i>:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-08.jpg" alt="console")
+
+            p Чтобы увидеть полную структуру объекта, я выведу его с помощью JSON отображения объекта используя <i class='highlight-text'>JSON.stringify()</i>:
+            pre
+              code.language-js.
+                const myObject = {
+                  propA: {
+                    propB: {
+                      propC: {
+                        propD: 'hello'
+                      }
+                    }
+                  }
+                };
+
+                console.log(JSON.stringify(myObject, null, 2));
+            p <i class='highlight-text'>JSON.stringify(myObject, null, 2)</i> возвращает JSON-отображение объекта. Третий аргумент <i class='highlight-text'>2</i> устанавливает размер отступа в пробелах.
+            p Теперь объект выведен полностью и красиво отформатирован:
+            .article-body__img
+              img(src="assets/img/articles/2020-04-07/img-09.jpg" alt="console")
+            p Надеюсь, что эти 5 советов сделают ваш опыт работы с консолью в JavaScript более продуктивным.
+
+          include ../sections/article-footer
+    //end content

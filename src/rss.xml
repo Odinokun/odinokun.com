@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Tue, 31 Mar 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Apr 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>5 полезных советов по использованию console.log()</title>
+            <link>http://odinokun.com/2020-04-07-5-poleznyh-sovetov-po-ispolzovaniyu-console-log.html</link>
+            <pubDate>Tue, 07 Apr 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Dmitri Pavlutin
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 07 Апр 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-04-07/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Дмитрий Павлютин предлагает 5 полезных советов, которые помогут повысить продуктивность при использовании console.log().
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-04-07-5-poleznyh-sovetov-po-ispolzovaniyu-console-log.html</guid>
+        </item>
 
         <item>
             <title>Размещение текста по заданной траектории с помощью CSS</title>

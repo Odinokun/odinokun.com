@@ -1,0 +1,30 @@
+- var articleLink   = '2020-04-07-5-poleznyh-sovetov-po-ispolzovaniyu-console-log.html'
+- var imgPath       = 'assets/img/articles/2020-04-07/top-img.jpg'
+- var imgAlt        = 'console.log()'
+- var articleTitle  = '5 полезных советов по использованию console.log()'
+- var articleDate   = '2020-04-07'
+- var articleWriter = 'Dmitri Pavlutin'
+- var articleDescr  = 'Дмитрий Павлютин предлагает 5 полезных советов, которые помогут повысить продуктивность при использовании console.log().'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-04-07
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #javascript
+      .blog-article__tag #console
+      .blog-article__tag #debugging
+//end 2020-04-07
