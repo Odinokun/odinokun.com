@@ -1,0 +1,30 @@
+- var articleLink   = '2020-04-29-vy-uzhe-ispolzuete-ikonki-svg.html'
+- var imgPath       = 'assets/img/articles/2020-04-29/top-img.jpg'
+- var imgAlt        = 'svg icons'
+- var articleTitle  = 'Вы уже используете иконки SVG? Руководство для современных браузеров.'
+- var articleDate   = '2020-04-29'
+- var articleWriter = 'Antoine Boulanger'
+- var articleDescr  = 'Давайте посмотрим, какой абсолютный минимум требуется сделать, для того, что бы начать использовать иконки в формате SVG. И вы удивитесь тому, сколько кода можно не писать.'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-04-29
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #svg
+      .blog-article__tag #html
+      .blog-article__tag #icons
+//end 2020-04-29

@@ -1,0 +1,150 @@
+extends ../_template
+
+block variables
+  - var title       = 'Вы уже используете иконки SVG? Руководство для современных браузеров.'
+  - var description = 'Давайте посмотрим, какой абсолютный минимум требуется сделать, для того, что бы начать использовать иконки в формате SVG. И вы удивитесь тому, сколько кода можно не писать.'
+  - var ogtitle     = 'Вы уже используете иконки SVG? Руководство для современных браузеров.'
+  - var ogimage     = 'assets/img/articles/2020-04-29/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-04-29/top-img.jpg'
+  - var imgAlt              = 'svg icons'
+
+  - var articleTitle        = 'Вы уже используете иконки SVG? Руководство для современных браузеров.'
+  - var articleDate         = '2020-04-29'
+
+  - var originArticleTitle  = 'Are you using SVG favicons yet? A guide for modern browsers.'
+  - var originArticleLink   = 'https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df'
+
+  - var articleWriter       = 'Antoine Boulanger'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag svg
+                span.article__tag html
+                span.article__tag icons
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-04-29/img-01.jpg" alt="icons")
+
+            p Вы должны использовать фавиконки в SVG. Они уже поддерживаются во всех современных браузерах.
+            p Кроме того, вам не понадобятся куча ссылок на иконки разных размеров, которые вы копируете из проекта в проект. Давайте посмотрим, какой абсолютный минимум требуется сделать.
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-04-29/img-02.jpg" alt="icons")
+
+            h2.article-body__title Иконка
+            p Основным значком может быть SVG любого размера. Тип - <i class='highlight-text'>type="image / svg + xml"</i>, не требуется.
+            pre
+              code.language-html.
+                &lt;link rel="icon" href="favicon.svg">
+
+            h2.article-body__title Mask-icon
+            p Для Safari все немного по-другому. Вам нужно добавить <i class='highlight-text'>mask-icon</i>. Это тоже SVG, но он должен быть сделан при помощи только одного цвета и размещен на прозрачном фоне. Браузер добавляет цвет атрибута.
+            pre
+              code.language-html.
+                &lt;link rel=”mask-icon” href=”mask-icon.svg” color=”#000000">
+
+            h2.article-body__title Touch-иконка
+            p Иконка для устройств iOS, а также для избранного в браузере, для новой вкладки и многое другое. Вам нужен только размер <i class='highlight-text'>180 х 180</i>, а атрибут размеров, теперь, будет излишен.
+            pre
+              code.language-html.
+                &lt;link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+            h2.article-body__title Манифест
+            p Файл manifest.json предоставляет информацию о вашем веб-приложении или веб-сайте. Он обязателен для успешного прохождения тестирования в <a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="nofollow noopener noreferrer">Lighthouse</a>. Указанная иконка используется для Android и Chrome. Самый большой размер <i class='highlight-text'>512 х 512</i> является единственным необходимым.
+            pre
+              code.language-js.
+                {
+                   "name": "Starter",
+                   "short_name": "Starter",
+                   "icons": [{
+                       "src": "google-touch-icon.png",
+                       "sizes": "512x512"
+                   }],
+                   "background_color": "#ffffff",
+                   "theme_color": "#ffffff",
+                   "display": "fullscreen"
+                }
+            p Значение <i class='highlight-text'>theme-color</i> для тега <i class='highlight-text'>meta</i> по-прежнему требуется чтобы указать цвет для браузера Chrome Android.
+            pre
+              code.language-html.
+                &lt;meta name="theme-color" content="#ffffff">
+
+            h2.article-body__title Сделано
+            p Вот и все, все значки, которые вам нужны для современных браузеров, все остальное не нужно или не обязательно. Можно добавить <i class='highlight-text'>msapplication-TileImage</i>, если вы хотите использовать другой значок на “плитках” Windows, по умолчанию будет использован значок <i class='highlight-text'>apple-touch-icon</i>. <i class='highlight-text'>TileColor</i> больше не используется.
+
+            h2.article-body__title Остальные браузеры
+            p К сожалению, не все работают в современных браузерах, но это можно легко решить, добавив файл <i class='highlight-text'>32 x 32</i> <i class='highlight-text'>favicon.ico</i> в корень вашего сайта. Это работает везде, даже у вашей бабушки.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-04-29/img-03.jpg" alt="icons")
+
+            h2.article-body__title Темный режим
+            p На последок, вот совет для темного режима. Одним из преимуществ фавиконки в формате SVG, является то, что вы можете изменить ее цвет с помощью CSS. При помощи медиа-запроса <i class='highlight-text'>prefers-color-color</i> цвет вашей иконки меняется в зависимости от темного или светлого режима включенного у пользователя. Этот метод не работает с <i class='highlight-text'>mask-icon</i>, так как цвет иконки указан в атрибуте, но Safari добавляет белый фон, если контрастности недостаточно.
+            pre
+              code.language-html.
+                &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                  &lt;style>
+                    path {
+                      fill: #000;
+                    }
+                    @media (prefers-color-scheme: dark) {
+                      path {
+                        fill: #fff;
+                      }
+                    }
+                  &lt;/style>
+                  &lt;path fill-rule="evenodd" d="M0 0h16v16H0z"/>
+                &lt;/svg>
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-04-29/img-04.jpg" alt="icons")
+
+            h2.article-body__title Результат
+            p Вот итоговый результат. Скопируйте это в <i class='highlight-text'>head</i> вашего сайта и не забудьте поместить <i class='highlight-text'>favicon.ico</i> в корневой каталог.
+            pre
+              code.language-html.
+                &lt;meta name="theme-color" content="#ffffff">
+                &lt;link rel="icon" href="favicon.svg">
+                &lt;link rel="mask-icon" href="mask-icon.svg" color="#000000">
+                &lt;link rel="apple-touch-icon" href="apple-touch-icon.png">
+                &lt;link rel="manifest" href="manifest.json">
+
+          include ../sections/article-footer
+    //end content

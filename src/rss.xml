@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Tue, 07 Apr 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Apr 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Вы уже используете иконки SVG? Руководство для современных браузеров.</title>
+            <link>http://odinokun.com/2020-04-29-vy-uzhe-ispolzuete-ikonki-svg.html</link>
+            <pubDate>Wed, 29 Apr 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Antoine Boulanger
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 29 Апр 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-04-29/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Давайте посмотрим, какой абсолютный минимум требуется сделать, для того, что бы начать использовать иконки в формате SVG. И вы удивитесь тому, сколько кода можно не писать.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-04-29-vy-uzhe-ispolzuete-ikonki-svg.html</guid>
+        </item>
 
         <item>
             <title>5 полезных советов по использованию console.log()</title>
