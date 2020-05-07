@@ -12,6 +12,26 @@
 
 
         <item>
+            <title>На каком языке программирования пишут самые счастливые разработчики?</title>
+            <link>http://odinokun.com/2020-05-07-na-kakom-yazyke-programmirovaniya-pishut-samye-schastlivye-razrabotchiki.html</link>
+            <pubDate>Thu, 07 May 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Ing. Jan Jileček
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 07 Мая 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-05-07/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: В мире ИТ существует множество стереотипов, например такой как "PHP - худший язык" или "Python для начинающих". К счастью, мы можем выяснить правду, используя github и данные опросов разработчиков.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-05-07-na-kakom-yazyke-programmirovaniya-pishut-samye-schastlivye-razrabotchiki.html</guid>
+        </item>
+
+        <item>
             <title>А вы уже используете SVG-фавиконки? Руководство для современных браузеров.</title>
             <link>http://odinokun.com/2020-04-29-vy-uzhe-ispolzuete-ikonki-svg.html</link>
             <pubDate>Wed, 29 Apr 2020 00:01:00 GMT</pubDate>

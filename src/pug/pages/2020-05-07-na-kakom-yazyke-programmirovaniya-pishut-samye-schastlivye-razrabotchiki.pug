@@ -1,0 +1,117 @@
+extends ../_template
+
+block variables
+  - var title       = 'На каком языке программирования пишут самые счастливые разработчики?'
+  - var description = 'В мире ИТ существует множество стереотипов, например такой как "PHP - худший язык" или "Python для начинающих". К счастью, мы можем выяснить правду, используя github и данные опросов разработчиков.'
+  - var ogtitle     = 'На каком языке программирования пишут самые счастливые разработчики?'
+  - var ogimage     = 'assets/img/articles/2020-05-07/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-05-07/top-img.jpg'
+  - var imgAlt              = 'median'
+
+  - var articleTitle        = 'На каком языке программирования пишут самые счастливые разработчики?'
+  - var articleDate         = '2020-05-07'
+
+  - var originArticleTitle  = 'What programming language has the happiest developers?'
+  - var originArticleLink   = 'https://medium.com/swlh/what-programming-language-has-the-happiest-developers-f0636b08e898'
+
+  - var articleWriter       = 'Ing. Jan Jileček'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag surveys
+                span.article__tag programming
+                span.article__tag webdev
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-05-07/img-01.jpg" alt="girl")
+
+            p В мире ИТ существует множество стереотипов, например такой как "PHP - худший язык" или "Python для начинающих". К счастью, мы можем выяснить правду, используя Github и данные опросов разработчиков.
+
+            h2.article-body__title Получение данных
+            p Github - платформа, знакомая любому разработчику. Его можно использовать не только как инструмент контроля версий, но также для сбора статистики по репозиториям и проектам, статистики данных профилей пользователей и комментариев. Мы можем получить доступ к информации о возрасте, поле и фотографиях профиля. Microsoft Face API - это как раз то, что нужно для этого.
+            p Github предоставляет список 25 самых популярных репозиториев и отображает 5 лучших участников. Приложение Eigencoder, которое я буду использовать, обнаруживает 30–80 фотографий профиля из каждого репозитория и анализирует их.
+
+            h2.article-body__title Пол
+            p Face API имеет возможность определять пол по структуре лица. Результаты здесь весьма однозначные. В языках AI и Webdev присутствует лишь небольшая часть женской аудитории.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-05-07/img-02.jpg" alt="median")
+
+            h2.article-body__title Возраст
+            p Метрика возраста оказалась интересной. Старые языки, вероятно, должны использоваться более старыми программистами, но Java используют самые молодые разработчики.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-05-07/img-03.jpg" alt="median")
+
+            h2.article-body__title Улыбчивость
+            p У каждого программиста есть язык, который он не любит, настолько, что он даже не может улыбнуться для своей аватарки в профиле. Face API измеряет сумму, которую вы улыбаетесь, используя значение от 0 до 1.
+            p Похоже, что разработчики R самые счастливые, за ними следуют Go, C# и Python. А вот разработчики Java, судя по всему, меньше всего наслаждаются своей работой.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-05-07/img-04.jpg" alt="median")
+
+            h2.article-body__title Анализ комментариев
+            p Тобиас Херманн анализирует комментарии и слова, которые используют разработчики каждого <a href="https://github.com/Dobiasd/programming-language-subreddits-and-their-choice-of-words" target="_blank" rel="nofollow noopener noreferrer">соответствующего языка</a>.
+
+            h2.article-body__title Счастье
+            p Наиболее счастливыми являются разработчики Clojure, Lisp и Scala.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-05-07/img-05.jpg" alt="median")
+
+            h2.article-body__title Ругань
+            p Большинство ругательств вы услышите среди сообществ PHP (я думаю, это неудивительно). Вторым "лучшим" является Javascript, за которым следует Java на третьем месте. Разработчики языка Mathematica, как мне кажется, чувствуют себя наиболее всего расслабленно.
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-05-07/img-06.jpg" alt="median")
+
+            h2.article-body__title Опрос разработчиков CodinGame 2020
+            p И в качестве вишенки на торте, посмотрим на уровень счастья разработчиков в каждой отрасли. ТОП-3 по результатам опроса <a href="https://www.codingame.com/work/codingame-developer-survey-2020/#page1" target="_blank" rel="nofollow noopener noreferrer">CodinGame</a>:
+            ol
+              li Специалисты по данным / специалисты по машинному обучению
+              li Разработчики игр / Инженеры
+              li Учителя в сфере разработки и академические исследователи
+
+            h2.article-body__title Подводя итоги...
+            p Наш анализ данных, конечно, не дал очень точных, научных результатов, но благодаря ему, мы имеем некоторый уровень понимания ситуации в целом.
+            p Такие языки, как PHP и R, в основном используются женщинами, C и C ++, а затем почти исключительно мужчинами.
+            p В языке C ++ самые старые разработчики, а в Java самые молодые.
+            p И самыми счастливыми кажутся те, кто использует R, Go, C# и Python.
+            p Но конечно же, все счастье и весь смысл, которые вы найдете в своей работе, зависит от только от вас, поставленных вами перед собой задач и целе. Кто-то может процветать в индустрии машинного обучения, кто-то предпочитает разработку игр за постоянную новизну и так далее.
+
+          include ../sections/article-footer
+    //end content

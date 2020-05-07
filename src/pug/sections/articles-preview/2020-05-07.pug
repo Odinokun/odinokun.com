@@ -1,0 +1,30 @@
+- var articleLink   = '2020-05-07-na-kakom-yazyke-programmirovaniya-pishut-samye-schastlivye-razrabotchiki.html'
+- var imgPath       = 'assets/img/articles/2020-05-07/top-img.jpg'
+- var imgAlt        = 'median'
+- var articleTitle  = 'На каком языке программирования пишут самые счастливые разработчики?'
+- var articleDate   = '2020-05-07'
+- var articleWriter = 'Ing. Jan Jileček'
+- var articleDescr  = 'В мире ИТ существует множество стереотипов, например такой как "PHP - худший язык" или "Python для начинающих". К счастью, мы можем выяснить правду, используя github и данные опросов разработчиков.'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-05-07
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #surveys
+      .blog-article__tag #programming
+      .blog-article__tag #webdev
+//end 2020-05-07
