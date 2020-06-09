@@ -1,0 +1,29 @@
+- var articleLink   = '2020-06-09-target-blank-silno-nedoocenennaya-uyazvimost-v-bezopasnosti.html'
+- var imgPath       = 'assets/img/articles/2020-06-09/top-img.jpg'
+- var imgAlt        = 'target blank is dangerous'
+- var articleTitle  = 'target = "_blank" - сильно недооцененная уязвимость в безопасности'
+- var articleDate   = '2020-06-09'
+- var articleWriter = 'Manjula Dube'
+- var articleDescr  = 'Разберемся с тем, что в действительности происходит, когда вы открываете ссылку в новом окне, указав target="_blank" и чем это может обернуться для пользователя.'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-06-09
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #links
+      .blog-article__tag #target="_blank"
+//end 2020-06-09

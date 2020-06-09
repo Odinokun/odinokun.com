@@ -8,7 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Sat, 06 Jun 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 09 Jun 2020 00:01:00 GMT</lastBuildDate>
+
+
+        <item>
+            <title>target = “_blank” - сильно недооцененная уязвимость в безопасности</title>
+            <link>http://odinokun.com/2020-06-09-target-blank-silno-nedoocenennaya-uyazvimost-v-bezopasnosti.html</link>
+            <pubDate>Sat, 06 Jun 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Manjula Dube
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 09 Июня 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-06-09/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Разберемся с тем, что в действительности происходит, когда вы открываете ссылку в новом окне, указав target="_blank" и чем это может обернуться для пользователя.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-06-09-target-blank-silno-nedoocenennaya-uyazvimost-v-bezopasnosti.html</guid>
+        </item>
 
 
         <item>
