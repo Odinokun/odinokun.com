@@ -1,0 +1,135 @@
+extends ../_template
+
+block variables
+  - var title       = '13 способов стилизации списков'
+  - var description = 'Chris Coyier разбирает различные варианты стилизации упорядоченных и неупорядоченных списков, от самых базовых до очень необычных способов. Я уверен, что каждый сможет подчерпнуть для себя что-то новое.'
+  - var ogtitle     = '13 способов стилизации списков'
+  - var ogimage     = 'assets/img/articles/2020-06-06/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-06-06/top-img.jpg'
+  - var imgAlt              = 'lists'
+
+  - var articleTitle        = '13 способов стилизации списков'
+  - var articleDate         = '2020-06-06'
+
+  - var originArticleTitle  = 'List Style Recipes'
+  - var originArticleLink   = 'https://css-tricks.com/list-style-recipes/'
+
+  - var articleWriter       = 'Chris Coyier'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag list
+                span.article__tag list-style
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Списки - это фундаментальная часть HTML! Их используют в статьях при описании этапов или шагов, для перечисления ингредиентов  в рецептах, для элементов в меню сайта и многих других местах. Списки не только позволяют стилизовать их в соответствии с дизайном, но и сохраняют при этом свою доступность. Например, количество элементов в списке объявляется в программе чтения с экрана, чтобы придать некоторый контекст списку.
+            p Давайте сосредоточимся в этой статье  на стилях списков, в основном только на упорядоченных и неупорядоченных списках, и разберем несколько необычных ситуаций стилизации.
+
+            h2.article-body__title Стили по умолчанию
+            p Прежде чем “изобретать колесо”, знайте, что существует несколько значений для свойства <i class='highlight-text'>list-style-type</i>, которые, возможно, смогут закрыть минимальные потребности в стилизации списков.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/gOPprVK?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Разделение нумерованного списка по середине
+            p Упорядоченные списки могут начинаться с любого числа, которое вы можете задать вручную.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/abdOZom?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Вложенные упорядоченные списки
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/wvMaWwQ?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Список с нумерацией от большего к меньшему
+            p Атрибут <i class='highlight-text'>reversed</i> позволяет "развернуть" список.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/mdVJEdx?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Маркеры-картинки
+            p В этом случае, лучше всего использовать свойство <i class='highlight-text'>background-image</i> для псевдоэлемента.
+            p Вы можете подумать, что свойство <i class='highlight-text'>list-style-image</i> будет более уместным, но оно имеет ряд ограничений. Например, вы не можете сместить картинку и даже изменить её размер.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/GRoJqgG?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Маркеры-emoji
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/ExPjybm?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Список нумерованный в случайном порядке вручную
+            p Атрибут <i class='highlight-text'>value</i> установит в качестве маркера списка указанное для этого пункта значение.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/wvMaWPb?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Текст + номер
+            p Как вариант, можно для этого варианта использовать псевдоэлементы для большей свободы в стилизации, но есть и <i class='highlight-text'>list-style-type: '-';</i>
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/gOPpMoq?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Нумерация внутри и снаружи списка
+            p Маркеры позиционируются лучше при использовании <i class='highlight-text'>list-style-position: outside;</i> (значение по умолчанию), но при этом они отображаются вне поля, поэтому вам следует быть осторожным, чтобы не обрезать их. Маркеры могут вылезти за края окна браузера или используя <i class='highlight-text'>overflow: hidden;</i> вы скроете их полностью. В следующих примерах есть хитрость для имитации качественного выравнивания при рендеринге маркеров внутри элемента.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/VweLjQd?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Цветные маркеры
+            p Есть три варианта изменения цвета:
+            ol
+              li <i class='highlight-text'>::marker</i>  (самый новый и самый простой)
+              li Классический вариант со стилизацией псевдоэлемента
+              li <i class='highlight-text'>background-image</i> (мы экспортируем SVG с помощью URL и в таком случае можно управлять цветом из CSS)
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/JjGdKLO?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Список в несколько колонок
+            p Количество колонок рассчитывается автоматически.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/mdVJExQ?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Цветные нумерованные маркеры
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/WNrvxJN?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+
+            h2.article-body__title Заданные вручную, повторяющиеся символы
+            p Можно создать список маркеров с помощью <i class='highlight-text'>list-style: symbols();</i> и использовать их повторно при помощи <i class='highlight-text'>@counter-style</i>.
+            p Обратите внимание, что это <a href='https://caniuse.com/#feat=mdn-css_properties_list-style_symbols'>поддерживается только в Firefox</a> на момент написания.
+            .article-body__img
+              iframe(src="https://codepen.io/Odinokun/embed/RwrPRyq?height=500&amp;default-tab=result&amp;embed-version=2" height="500" style="width: 100%;")
+          include ../sections/article-footer
+    //end content

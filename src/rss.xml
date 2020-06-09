@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Wed, 29 Apr 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 06 Jun 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>13 способов стилизации списков</title>
+            <link>http://odinokun.com/2020-06-06-13-sposobov-stilizacii-spiskov.html</link>
+            <pubDate>Sat, 06 Jun 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Chris Coyier
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 06 Июня 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-06-06/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Chris Coyier разбирает различные варианты стилизации упорядоченных и неупорядоченных списков, от самых базовых до очень необычных способов. Я уверен, что каждый сможет подчерпнуть для себя что-то новое.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-06-06-13-sposobov-stilizacii-spiskov.html</guid>
+        </item>
 
         <item>
             <title>На каком языке программирования пишут самые счастливые разработчики?</title>
