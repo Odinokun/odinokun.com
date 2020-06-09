@@ -1,0 +1,105 @@
+extends ../_template
+
+block variables
+  - var title       = 'target = "_blank" - сильно недооцененная уязвимость в безопасности'
+  - var description = 'Разберемся с тем, что в действительности происходит, когда вы открываете ссылку в новом окне, указав target="_blank" и чем это может обернуться для пользователя.'
+  - var ogtitle     = 'target = "_blank" - сильно недооцененная уязвимость в безопасности'
+  - var ogimage     = 'assets/img/articles/2020-06-09/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-06-09/top-img.jpg'
+  - var imgAlt              = 'Homer Simpson'
+
+  - var articleTitle        = 'target = "_blank" - сильно недооцененная уязвимость в безопасности'
+  - var articleDate         = '2019-12-11'
+
+  - var originArticleTitle  = 'target="_blank" - the most underrated security vulnerability'
+  - var originArticleLink   = 'https://www.manjuladube.dev/target-blank-security-vulnerability'
+
+  - var articleWriter       = 'Manjula Dube\n'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date(title='Date of publication of the original article')
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag links
+                span.article__tag target="_blank"
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Недавно, работая над своим сайтом, я наткнулась на любопытную вещь когда использовала атрибут <i class='highlight-text'>target="_blank"</i> для ссылок.
+            p <strong>Что в действительности происходит, когда вы открываете ссылку в новом окне, указав target="_blank"?</strong>
+            ul
+              li Страница, на которую мы ссылаемся, получает ограниченный доступ к текущей странице через объект <i class='highlight-text'>window.opener</i>
+              li Недавно открытая страница теперь может изменить <i class='highlight-text'>window.opener.location</i> на любую фишинговую страницу. При таком сценарии использования пользователь доверяет странице на которую переходит с вашего сайта и будет относится к ней без подозрения.
+
+            h2.article-body__title Рассмотрим сценарий возможной атаки
+            p Создайте поддельную "фишинговую" страницу с изображениями милых котиков, который всем понравятся, поделитесь ей на Facebook (который будет открывать вашу ссылку через _blank).
+            p Создайте "фишинговый" сайт например по такому адресу <strong><i>https://phishingwebsite/facebook.com/page.html</i></strong> и разместите следующий код на вашей "фишинговой" странице.
+
+            pre
+              code.language-js.
+                window.opener.location = 'https://phishingwebsite/facebook.com/page.html';
+
+            p Этот код перенаправит с Facebook на вашу фишинговую страницу, попросив пользователя повторно ввести свой пароль Facebook, и теперь пользователь находится на Facebook, а на этой поддельной веб-странице, похожей на Facebook. Эта фальшивая страница выглядит точно так же, как Facebook, и она просит войти, потому что вы по какой-то причине вышли из системы. Пользователь, не слишком задумываясь об этом, вводит свои учетные данные и отправляет форму.
+
+            h3.article-body__subtitle Что же произошло?
+            p Вы только что отправили свои личные учетные данные кому-то, кто теперь может войти в вашу учетную запись Facebook и делать в ней все что захочет, например, может изменить учетные данные.
+
+            h3.article-body__subtitle Давайте посмотрим, как мы можем это исправить
+            p Добавьте для ссылки атрибут <i class='highlight-text'>rel</i> с значением <i class='highlight-text'>noopener</i>.
+
+            pre
+              code.language-html.
+                &lt;a href= '/share' rel="noopener" target="_blank"/>
+
+            p Совсем старые браузеры, например такие как IE11, не поддерживают значение <i class='highlight-text'>"noopener"</i> и для них придется добавить еще одно значение для атрибута <i class='highlight-text'>rel</i> - <i class='highlight-text'>"noreferrer"</i>
+
+            pre
+              code.language-html.
+                &lt;a href= '/share' rel="noopener noreferrer" target="_blank"/>
+
+            .article-body__img.article-body__img--center
+              img(src="assets/img/articles/2020-06-09/img-01.jpg" alt="caniuse")
+              span <i>поддержка rel="noopener" браузерами</i>
+
+            p Подытоживая все вышесказанное, для ссылок с <i class='highlight-text'>target="_blank"</i>, всегда следует добавлять <i class='highlight-text'>rel="noopener noreferrer"</i>, как меру предосторожности против фишинга. Это гарантирует, что значение <i class='highlight-text'>window.opener</i> будет null, в Chrome и Firefox. В Safari Technology Preview 68, для <i class='highlight-text'>target="_blank"</i> задается <i class='highlight-text'>rel="noopener"</i> по умолчанию.
+            p Спасибо, что прочитали мои мысли по этой теме.
+          //end article__body
+
+          include ../sections/article-footer
+    //end content
