@@ -8,7 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Tue, 09 Jun 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 July 2020 00:01:00 GMT</lastBuildDate>
+
+
+        <item>
+            <title>Кастомные CSS-свойства не работают без фолбека</title>
+            <link>http://odinokun.com/2020-07-06-kastomnye-css-svojstva-ne-rabotayut-bez-folbeka.html</link>
+            <pubDate>Mon, 06 July 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Matthias Ott
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко
+                &lt;br /&gt;
+                Публикация перевода: 06 Июля 2020
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-07-06/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Matthias Ott рассказывает о том, как правильно объявлять пользовательские свойства и указывать для них фолбеки.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-07-06-kastomnye-css-svojstva-ne-rabotayut-bez-folbeka.html</guid>
+        </item>
 
 
         <item>
@@ -30,7 +51,6 @@
             </description>
             <guid isPermaLink="true">http://odinokun.com/2020-06-09-target-blank-silno-nedoocenennaya-uyazvimost-v-bezopasnosti.html</guid>
         </item>
-
 
         <item>
             <title>13 способов стилизации списков</title>

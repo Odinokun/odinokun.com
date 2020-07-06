@@ -1,0 +1,131 @@
+extends ../_template
+
+block variables
+  - var title       = 'Кастомные CSS-свойства не работают без фолбека'
+  - var description = 'Matthias Ott рассказывает о том, как правильно объявлять пользовательские свойства и указывать для них фолбеки.'
+  - var ogtitle     = 'Кастомные CSS-свойства не работают без фолбека'
+  - var ogimage     = 'assets/img/articles/2020-07-06/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-07-06/top-img.jpg'
+  - var imgAlt              = 'custom properties'
+
+  - var articleTitle        = 'Кастомные CSS-свойства не работают без фолбека'
+  - var articleDate         = '2020-07-06'
+
+  - var originArticleTitle  = 'CSS Custom Properties Fail Without Fallback'
+  - var originArticleLink   = 'https://matthiasott.com/notes/css-custom-properties-fail-without-fallback'
+
+  - var articleWriter       = 'Matthias Ott'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag custom properties
+                span.article__tag variables
+                span.article__tag css
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Сегодня я узнал интересную вещь! Jeremy Keith <a href="https://adactio.com/journal/16993" target="_blank" rel="nofollow noopener noreferrer">описал интересный момент</a> в использовании кастомных свойств CSS, также известных как CSS-переменные, который он узнал от Lea Verou: если значение CSS-переменной некорректно, то она перестает поддерживать каскад стилей. Или, как пишет Lea в своей статье <a href="https://lea.verou.me/2020/06/hybrid-positioning-with-css-variables-and-max/" target="_blank" rel="nofollow noopener noreferrer">"Гибридное позиционирование с переменными CSS и max()"</a>:
+            .article__blockquote
+              blockquote Браузер не знает валидно ли значение переменной до тех пор, пока она не объявлена, и к тому времени, как он дойдет до нее, уже отбрасывает все потенциальные фолбеки.
+
+            p Далее Jeremy объясняет, что по этой причине использование функции <i class='highlight-text'>color()</i> может привести к ошибке, если вы будете использовать ее следующим образом:
+            p При таком использовании функции color(), фолбек выполнится успешно:
+            pre
+              code.language-css.
+                /* CSS */
+                p {
+                  background-color: red;
+                  background-color: color(display-p3 1 0 0);
+                }
+
+            p А если использовать переменную вот так - код сработает некорректно:
+            pre
+              code.language-css.
+                /* CSS */
+                &#58;root {
+                  --myvariable: color(display-p3 1 0 0);
+                }
+                p {
+                  background-color: red;
+                  background-color: var(--myvariable);
+                }
+
+            p Так получается потому, что <i><strong>браузер сначала определяет каскад, а затем "просматривает" кастомные свойства</strong></i>. Если свойство некорректно, то у нас не будет фолбека, так как браузер уже отбросил другие значения. Таким образом, во втором примере, браузер не будет отображать красный цвет фона, а вместо этого отключит его.
+            p В последнее время, многие люди переходят от Sass к использованию кастомных свойств. И если вам не нужно поддерживать IE11, вы можете делать это безбоязненно, так как их поддержка другими браузерами <a href="https://caniuse.com/#feat=css-variables" target="_blank" rel="nofollow noopener noreferrer">вполне надежна</a>. Так что повсеместное использование кастомных свойств - это лишь вопрос времени. Однако важно понимать как они работают, что бы не не допускать ошибок. Особенно, если вы используете переменные для функций, которые поддерживаются только отдельными браузерами, например такие функции как <i class='highlight-text'>color()</i>, <i class='highlight-text'>lab()</i>, или <i class='highlight-text'>lch()</i>.
+            p Что же делать? Надо подождать и пока что не использовать CSS-переменные для значений в которых они могут работать не стабильно? На самом деле - нет.  Как я писал в своем <a href="https://matthiasott.com/notes/world-wide-gamut-web" target="_blank" rel="nofollow noopener noreferrer">недавнем посте</a>, про новые цветовые функции (color functions), которые появились в CSS, вы можете использовать свойство <i class='highlight-text'>supports()</i> для проверки поддержки кастомных свойств браузером:
+            pre
+              code.language-css.
+                /* CSS */
+                &#58;root {
+                  --myvariable: red;
+                }
+
+                @supports (color: color(display-p3 1 0 0)) {
+                  &#58;root {
+                  --myvariable: color(display-p3 1 0 0);
+                  }
+                }
+
+                p {
+                  background-color: var(--myvariable);
+                }
+
+            p Еще, как вариант, можно использовать <a href="https://www.sarasoueidan.com/blog/style-settings-with-css-variables/" target="_blank" rel="nofollow noopener noreferrer">медиа-запрос</a>, например <i class='highlight-text'>color-gamut</i>. Но, если вам нужно задать сразу несколько значений в одном наборе правил, <i class='highlight-text'>supports()</i> будет более правильным решением. Sara Soueidan на днях написала, как она объявляет <a href="https://www.sarasoueidan.com/blog/style-settings-with-css-variables/" target="_blank" rel="nofollow noopener noreferrer">глобальные и компонентные настройки стиля с помощью CSS-переменных</a>. В этом случае, вы можете точно уверенными в том, что с помощью <i class='highlight-text'>supports()</i>, пользовательские свойства будут корректно обработаны всеми браузерами.
+            pre
+              code.language-css.
+                /* CSS */
+                &#58;root {
+                  /* UI Colors */
+                  --color--primary: rgb(217,0,189);
+                  --color--secondary: rgb(242,199,0);
+                }
+
+                @supports (color: lch(50% 132 334)) {
+                  &#58;root {
+                    /* UI Colors for browsers that support LCH colors */
+                    --color--primary: lch(50% 132 334);
+                    --color--secondary: lch(82% 132 86);
+                  }
+                }
+          //end article__body
+
+          include ../sections/article-footer
+    //end content

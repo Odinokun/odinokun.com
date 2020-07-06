@@ -1,0 +1,30 @@
+- var articleLink   = '2020-07-06-kastomnye-css-svojstva-ne-rabotayut-bez-folbeka.html'
+- var imgPath       = 'assets/img/articles/2020-07-06/top-img.jpg'
+- var imgAlt        = 'custom properties'
+- var articleTitle  = 'Кастомные CSS-свойства не работают без фолбека'
+- var articleDate   = '2020-07-06'
+- var articleWriter = 'Matthias Ott'
+- var articleDescr  = 'Matthias Ott рассказывает о том, как правильно объявлять пользовательские свойства и указывать для них фолбеки'
+
+//- *** don't forget to fix hashtags! ***
+
+//begin 2020-07-06
+.blog__article.blog-article
+  a(href= articleLink).blog-article__img
+    img(src= imgPath alt= imgAlt)
+  .blog-article__info
+    a(href= articleLink).blog-article__title #{articleTitle}
+    .blog-article__info-header
+      .blog-article__date
+        +svg('calendar')
+        time(datetime= articleDate) #{articleDate}
+      .blog-article__author(title='The author of the article')
+        +svg('writer')
+        span #{articleWriter}
+    a(href= articleLink).blog-article__preview
+      p #{articleDescr}
+    .blog-article__tags
+      .blog-article__tag #custom properties
+      .blog-article__tag #variables
+      .blog-article__tag #css
+//end 2020-07-06

@@ -211,3 +211,14 @@
 .article__table td {
   font-size: 18px;
 }
+
+.article__blockquote {
+  max-width: 700px;
+  padding: 15px 0 15px 30px;
+  blockquote {
+    font-weight: 500;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+  }
+}

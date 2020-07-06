@@ -11,7 +11,7 @@ block variables
   - var imgAlt              = 'Homer Simpson'
 
   - var articleTitle        = 'target = "_blank" - сильно недооцененная уязвимость в безопасности'
-  - var articleDate         = '2019-12-11'
+  - var articleDate         = '2019-06-09'
 
   - var originArticleTitle  = 'target="_blank" - the most underrated security vulnerability'
   - var originArticleLink   = 'https://www.manjuladube.dev/target-blank-security-vulnerability'
@@ -39,7 +39,7 @@ block content
 
             .article__info
               h1.article__title #{articleTitle}
-              .article__date(title='Date of publication of the original article')
+              .article__date
                 +svg('calendar')
                 time(datetime= articleDate) #{articleDate}
 
