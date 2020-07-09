@@ -1,0 +1,259 @@
+extends ../_template
+
+block variables
+  - var title       = 'Необычные CSS-свойства'
+  - var description = 'Вместе с Ahmad Shadeed, мы рассмотрим некоторые CSS-свойства, которые, я надеюсь, покажутся  вам интересными. Для некоторых свойств посмотрим браузерную поддержку и применим подход прогрессивного улучшения, чтобы их можно было использовать, не боясь того, что свойство не поддерживается в браузере X.'
+  - var ogtitle     = 'Необычные CSS-свойства'
+  - var ogimage     = 'assets/img/articles/2020-07-09/top-img.jpg'
+
+  //- article variables
+  - var imgPath             = 'assets/img/articles/2020-07-09/top-img.jpg'
+  - var imgAlt              = 'css properties'
+
+  - var articleTitle        = 'Необычные CSS-свойства'
+  - var articleDate         = '2020-07-09'
+
+  - var originArticleTitle  = 'Uncommon CSS Properties'
+  - var originArticleLink   = 'https://ishadeed.com/article/uncommon-css/'
+
+  - var articleWriter       = 'Ahmad Shadeed'
+
+  //- *** don't forget to fix hashtags! ***
+
+block content
+  .main-wrap#main-wrap
+    include ../sections/aside
+
+    //begin content
+    .main.article-page
+      include ../elements/burger
+      include ../elements/scroll-2-top
+
+      .container
+        article.article
+          //begin article__header
+          header.article__header
+
+            .article__top-img
+              img(src= imgPath alt= imgAlt)
+
+            .article__info
+              h1.article__title #{articleTitle}
+              .article__date
+                +svg('calendar')
+                time(datetime= articleDate) #{articleDate}
+
+              //begin article__origin
+              .article__origin
+                span.article__origin-text Перевод статьи:
+                a(href= originArticleLink target="_blank" rel="nofollow noopener noreferrer").article__origin-article #{originArticleTitle}
+              .article__origin(title='The author of the article')
+                span.article__origin-text Автор:
+                span.article__origin-author #{articleWriter}
+              //end article__origin
+
+              //begin article__tags
+              .article__tags
+                span.article__tag css
+                span.article__tag background
+                span.article__tag object-fit
+                span.article__tag grid
+                span.article__tag flexbox
+              //end article__tags
+          //end article__header
+
+          //begin article__body
+          .article__body.article-body
+            p Есть много CSS-свойств, о которых некоторые разработчики не знают, или знают о них, но забывают применять на практике. Некоторые из этих свойств могут позволить вам не использовать JavaScript для достижения определенного результата, некоторые могут позволить писать меньше CSS. Как фронтенд-разработчик, я время от времени сталкивался с такими вещами и подумал, почему бы не перечислить все эти малоиспользуемые и интересные свойства в статье?
+            p Мы рассмотрим некоторые CSS-свойства, которые, я надеюсь, покажутся  вам интересными. Для некоторых свойств посмотрим браузерную поддержку и применим подход прогрессивного улучшения, так что вы сможете использовать их, не боясь того, что свойство не поддерживается в браузере X.
+            p Вы готовы? Тогда вперед! :)
+
+            h2.article-body__title Использование place-items вместе с CSS Grid
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-01.jpg" alt="example")
+            p Я узнал об этом трюке от <a href="https://twitter.com/bdc/status/901530956624015361" target="_blank" rel="nofollow noopener noreferrer">Benjamin De Cock</a>. Вы можете центрировать элемент по горизонтали и вертикали с помощью двух строк CSS.
+            pre
+              code.language-html.
+                &lt;div class="hero">
+                  &lt;div class="hero-wrapper">
+                    &lt;h2>CSS is awesome&lt;/h2>
+                    &lt;p>Yes, this is a hero section made for fun.&lt;/p>
+                    &lt;a href="#">See more&lt;/a>
+                  &lt;/div>
+                &lt;/div>
+            pre
+              code.language-css.
+                .hero {
+                    display: grid;
+                    place-items: center;
+                }
+            p Прежде чем углубляться в детали, стоит упомянуть, что <i class='highlight-text'>place-items</i> - это сокращенное свойство, которое объединяет <i class='highlight-text'>justify-items</i> и <i class='highlight-text'>align-items</i>. Вот как может выглядеть приведенный выше код:
+            pre
+              code.language-css.
+                .hero {
+                    display: grid;
+                    justify-items: center;
+                    align-items: center;
+                }
+            p Вы можете спросить, как же это работает? Хорошо, позвольте мне объяснить. Когда мы используем свойство <i class='highlight-text'>place-items</i>, оно применяется к <strong>каждой ячейке</strong> в сетке. Это означает, что оно будет центрировать содержимое ячейки. Также это означает, что такая техника может работать с несколькими ячейками. Если мы увеличим количество столбцов, сможем в этом убедиться.
+            pre
+              code.language-css.
+                .hero {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    place-items: center;
+                }
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-02.jpg" alt="example")
+
+
+            h2.article-body__title Старый добрый margin: auto вместе с flexbox
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-03.jpg" alt="example")
+            p Сочетая flexbox со свойством <i class='highlight-text'>margin: auto;</i> можно очень легко центрировать дочерний элемент по горизонтали и вертикали.
+            pre
+              code.language-html.
+                &lt;div class="parent">
+                    &lt;div class="child">&lt;/div>
+                &lt;/div>
+            pre
+              code.language-css.
+                .parent {
+                    width: 300px;
+                    height: 200px;
+                    background: #ccc;
+                    display: flex;
+                }
+
+                .child {
+                    width: 50px;
+                    height: 50px;
+                    background: #000;
+                    margin: auto;
+                }
+            p Разве это не круто?
+
+            h2.article-body__title Стилизация маркеров у списка
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-04.jpg" alt="example")
+            p Во-первых, позвольте мне прояснить, что я не знал, что маленький кружок по умолчанию рядом с каждым элементом списка называется <strong>маркером</strong>. Прежде чем я узнал о псевдоэлементе <i class='highlight-text'>::marker</i>, процесс стилизации заключался в том, чтобы сбросить стили у списка, а затем добавить кружок в качестве псевдоэлемента <i class='highlight-text'>::before</i> или <i class='highlight-text'>::after</i>. Это не самый удачный способ стилизовать маркеры:
+            pre
+              code.language-css.
+                ul {
+                    list-style: none;
+                    padding: 0;
+                }
+
+                li {
+                    color: #222;
+                }
+
+                li::before {
+                    content: "•";
+                    color: #ccc;
+                    margin-right: 0.5em;
+                }
+            p Как видите, для элементов <i class='highlight-text'>li</i>  задан цвет <i class='highlight-text'>#222</i>, а для псевдоэлемента <i class='highlight-text'>::before</i> - <i class='highlight-text'>#ccc</i>. Если для <i class='highlight-text'>li</i> и <i class='highlight-text'>::before</i> задан одинаковый цвет, то цвет для маркера будет наследоваться по умолчанию, и, таким образом, псевдоэлемент вообще не нужен.
+            p Давайте посмотрим на более классный способ изменить цвет маркера:
+            pre
+              code.language-css.
+                li {
+                    color: #222;
+                }
+
+                li::marker {
+                    color: #ccc;
+                }
+            p У нас получилось! Так намного проще, правда?
+            p <i class='highlight-text'>::marker</i> <a href="https://caniuse.com/#search=%3A%3Amarker" target="_blank" rel="nofollow noopener noreferrer">поддерживается</a> в Firefox 68+ и Safari 11.1+. И поддерживается за флагом в Chrome и Edge 80+.
+
+
+            h2.article-body__title Свойство text-align
+            p С растущей популярностью flexbox и grid, для тех, кто только начал работать с CSS, стало привычным использовать современные методы центрирования и выравнивания вместо свойства <i class='highlight-text'>text-align</i>. Однако старые методы все еще работают.
+            p Использование <i class='highlight-text'>text-align: center</i>, в некоторых случаях, может решить проблему проще и быстрее. Рассмотрим следующий пример.
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-05.jpg" alt="example")
+            p Текстовое содержимое должно быть отцентрировано. Стоит ли использовать flexbox или grid? С помощью свойства <i class='highlight-text'>text-align</i> это можно сделать одной строкой кода.
+            p Думаю мне не нужно говорить про поддержку браузерами свойства <i class='highlight-text'>text-align</i>, вы и сами наверняка догадываетесь =)
+
+
+            h2.article-body__title Свойство display: inline-flex
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-06.jpg" alt="example")
+            p Если вам нужно отобразить список значков в один ряд, и при этом каждый из них должен быть flex-элементом, то как нельзя кстати будет свойство <i class='highlight-text'>inline-flex</i>.
+            pre
+              code.language-html.
+                &lt;span class="badge">&lt;svg>&lt;/svg>&lt;/span>
+                &lt;span class="badge">&lt;svg>&lt;/svg>&lt;/span>
+                &lt;span class="badge">&lt;svg>&lt;/svg>&lt;/span>
+                &lt;span class="badge">&lt;svg>&lt;/svg>&lt;/span>
+            pre
+              code.language-css.
+                .badge {
+                    display: inline-flex; /* тут происходит магия */
+                    justify-content: center;
+                    align-items: center;
+                }
+
+
+            h2.article-body__title Свойство column-rule
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-07.jpg" alt="example")
+            p Обычно, это свойство используется для того, чтобы разделить текстовое содержание абзаца на несколько колонок. Гораздо реже при этом мы добавляем границы между столбцами. Я узнал об этом из статьи <a href="https://www.matuzo.at/blog/heres-what-i-didnt-know-about-color/" target="_blank" rel="nofollow noopener noreferrer">Manuel Matuzovic</a>.
+            pre
+              code.language-css.
+                p {
+                    columns: 3;
+                    column-rule: solid 2px #222;
+                }
+            p Название <i class='highlight-text'>column-rule</i> не слишком понятно дает представление о назначении свойства, но для себя мы можем представлять его как <i class='highlight-text'>border-right</i>. Свойство хорошо поддерживается во всех браузерах (IE 10+, Firefox 3.5+, Chrome 4+, Safari 3.1+, Edge 12+).
+
+
+            h2.article-body__title Background-repeat: round
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-08.jpg" alt="example")
+            p Недавно я узнал об этом из твита <a href="https://twitter.com/addyosmani/status/1275322697933881344" target="_blank" rel="nofollow noopener noreferrer">Addy Osmani</a>. Существует значение, для <i class='highlight-text'>background-repeat</i> при котором предотвращается отсечение фона.
+            pre
+              code.language-css.
+                .element {
+                  background-size: contain;
+                  background-repeat: round;
+                }
+
+
+            h2.article-body__title Object-fit
+            .article-body__img
+              img(src="assets/img/articles/2020-07-09/img-09.jpg" alt="example")
+            p CSS-свойство <i class='highlight-text'>object-fit</i> - это настоящая магия. Когда я узнал о нем, многие задачи стало существенно легче решать. Недавно я работал над разделом, в котором есть сетка логотипов. Подобные вещи сложно делать из-за слишком разных размеров логотипов. Зачастую, некоторые из них имеют горизонтальную форму, а некоторые - вертикальную.
+            p При использовании <i class='highlight-text'>object-fit: contain;</i>, я могу задать им определенные значения <i class='highlight-text'>width</i> и <i class='highlight-text'>height</i> и заставить изображение придерживаться этих размеров.
+            pre
+              code.language-html.
+                &lt;ul class="brands">
+                    &lt;li class="brands__item">
+                        &lt;a href="#">
+                            &lt;img src="img/logo.png" alt="">
+                        &lt;/a>
+                    &lt;/li>
+                    &lt;li> &lt;!-- остальные логотипы --> &lt;/li>
+                &lt;/ul>
+            pre
+              code.language-css.
+                img {
+                    width: 130px;
+                    height: 75px;
+                    object-fit: contain;
+                }
+
+            p Более того, мы можем обернуть этот код в <i class='highlight-text'>@supports</i>, чтобы избежать растягивания изображения логотипа в браузерах, которые не поддерживают свойство <i class='highlight-text'>object-fit</i>.
+            pre
+              code.language-css.
+                @supports (object-fit: contain) {
+                  img {
+                    object-fit: contain;
+                    height: 75px;
+                  }
+                }
+          //end article__body
+
+          include ../sections/article-footer
+    //end content

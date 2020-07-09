@@ -8,7 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Mon, 06 July 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 09 July 2020 00:01:00 GMT</lastBuildDate>
+
+
+        <item>
+            <title>Необычные CSS-свойства</title>
+            <link>http://odinokun.com/2020-07-09-neobychnye-css-svojstva.html</link>
+            <pubDate>Thu, 09 July 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Ahmad Shadeed.
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко.
+                &lt;br /&gt;
+                Публикация перевода: 09 Июля 2020.
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-07-09/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Вместе с Ahmad Shadeed, мы рассмотрим некоторые CSS-свойства, которые, я надеюсь, покажутся  вам интересными. Для некоторых свойств посмотрим браузерную поддержку и применим подход прогрессивного улучшения, чтобы их можно было использовать, не боясь того, что свойство не поддерживается в браузере X.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-07-09-neobychnye-css-svojstva.html</guid>
+        </item>
 
 
         <item>
@@ -30,7 +51,6 @@
             </description>
             <guid isPermaLink="true">http://odinokun.com/2020-07-06-kastomnye-css-svojstva-ne-rabotayut-bez-folbeka.html</guid>
         </item>
-
 
         <item>
             <title>target = “_blank” - сильно недооцененная уязвимость в безопасности</title>
