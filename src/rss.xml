@@ -8,8 +8,28 @@
         <atom:link href="http://odinokun.com/rss.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 17 Dec 2019 00:00:00 GMT</pubDate>
 
-        <lastBuildDate>Thu, 09 July 2020 00:01:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 24 September 2020 00:01:00 GMT</lastBuildDate>
 
+
+        <item>
+            <title>Почему псевдоэлементы ::before и ::after не работают для полей ввода и картинок</title>
+            <link>http://odinokun.com/2020-09-24-pochemu-psevdoelementy-before-i-after-ne-rabotayut-dlya-polej-vvoda-i-kartinok.html</link>
+            <pubDate>Thu, 24 September 2020 00:01:00 GMT</pubDate>
+            <description>
+                Автор: Chris Coyier.
+                &lt;br /&gt;
+                Перевел статью: Дмитрий Гордиенко.
+                &lt;br /&gt;
+                Публикация перевода: 24 Сентября 2020.
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;img src=&quot;http://odinokun.com/assets/img/articles/2020-09-24/top-img.jpg&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                Описание: Попробуем разобраться почему псевдоэлементы ::before и ::after нельзя добавить к таким элементам как input, img, iframe и еще ряду элементов и в чем отличие этих элементов от остальных.
+            </description>
+            <guid isPermaLink="true">http://odinokun.com/2020-09-24-pochemu-psevdoelementy-before-i-after-ne-rabotayut-dlya-polej-vvoda-i-kartinok.html</guid>
+        </item>
 
         <item>
             <title>Необычные CSS-свойства</title>
@@ -30,7 +50,6 @@
             </description>
             <guid isPermaLink="true">http://odinokun.com/2020-07-09-neobychnye-css-svojstva.html</guid>
         </item>
-
 
         <item>
             <title>Кастомные CSS-свойства не работают без фолбека</title>
