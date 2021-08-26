@@ -1,6 +1,12 @@
 module.exports = function () {
 
   // begin map
+    const contactsMap = document.getElementById('contacts-map');
+    if (contactsMap) {
+      google.maps.event.addDomListener(window, "load", initialize);
+    }
+
+
   function initialize() {
     const mapDiv = document.getElementById("contacts-map");
 
@@ -10,13 +16,71 @@ module.exports = function () {
       zoom: 14,
       disableDefaultUI: false,
       center: {lat: 50.456219, lng: 30.540762},
+      //Shades of Grey https://snazzymaps.com/style/38/shades-of-grey
       styles: [
         {
-          "featureType": "administrative",
-          "elementType": "all",
+          "featureType": "all",
+          "elementType": "labels.text.fill",
           "stylers": [
             {
-              "visibility": "simplified"
+              "saturation": 36
+            },
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 40
+            }
+          ]
+        },
+        {
+          "featureType": "all",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 16
+            }
+          ]
+        },
+        {
+          "featureType": "all",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 20
+            }
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 17
+            },
+            {
+              "weight": 1.2
             }
           ]
         },
@@ -25,10 +89,10 @@ module.exports = function () {
           "elementType": "geometry",
           "stylers": [
             {
-              "visibility": "simplified"
+              "color": "#000000"
             },
             {
-              "color": "#fcfcfc"
+              "lightness": 20
             }
           ]
         },
@@ -37,22 +101,37 @@ module.exports = function () {
           "elementType": "geometry",
           "stylers": [
             {
-              "visibility": "simplified"
+              "color": "#000000"
             },
             {
-              "color": "#fcfcfc"
+              "lightness": 21
             }
           ]
         },
         {
           "featureType": "road.highway",
-          "elementType": "geometry",
+          "elementType": "geometry.fill",
           "stylers": [
             {
-              "visibility": "simplified"
+              "color": "#000000"
             },
             {
-              "color": "#dddddd"
+              "lightness": 17
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 29
+            },
+            {
+              "weight": 0.2
             }
           ]
         },
@@ -61,10 +140,10 @@ module.exports = function () {
           "elementType": "geometry",
           "stylers": [
             {
-              "visibility": "simplified"
+              "color": "#000000"
             },
             {
-              "color": "#dddddd"
+              "lightness": 18
             }
           ]
         },
@@ -73,10 +152,22 @@ module.exports = function () {
           "elementType": "geometry",
           "stylers": [
             {
-              "visibility": "simplified"
+              "color": "#000000"
             },
             {
-              "color": "#eeeeee"
+              "lightness": 16
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 19
             }
           ]
         },
@@ -85,10 +176,10 @@ module.exports = function () {
           "elementType": "geometry",
           "stylers": [
             {
-              "visibility": "simplified"
+              "color": "#000000"
             },
             {
-              "color": "#dddddd"
+              "lightness": 17
             }
           ]
         }
@@ -96,10 +187,6 @@ module.exports = function () {
     });
   }
 
-  const contactsMap = document.getElementById('contacts-map');
-  if (contactsMap) {
-    google.maps.event.addDomListener(window, "load", initialize);
-  }
   // end map
 
 };
