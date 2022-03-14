@@ -19,7 +19,12 @@ block content
         +svg('logo-01')
         +svg('logo-02')
       .index__block
-        h1.index__title Dmitry Gordienko
+        h1.index__title#index__title Dmitry Gordienko
+        svg.index__filter
+          filter#distortionFilter
+            feturbulence(type='fractalNoise' baseFrequency='2.01 .01' numOctaves='5' seed='2' stitchTiles='noStitch' x='0%' y='0%' width='100%' height='100%' result='noise')
+            fedisplacementmap(in='SourceGraphic' in2='noise' scale='0' xChannelSelector='R' yChannelSelector='B' x='0%' y='0%' width='100%' height='100%' filterUnits='userSpaceOnUse')
+
         h2.index__subtitle front-end developer
         .index__btn
           a(href="assets/text/front-end_developer_Dmitry_Gordienko.pdf" target='_blank').btn.btn--light Download CV
