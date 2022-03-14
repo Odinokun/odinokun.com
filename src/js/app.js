@@ -15,3 +15,6 @@ require('./modules/scroll-2-anchor')();
 
 // begin scroll-2-top
 require('./modules/scroll-2-top')();
+
+// begin gsap title effects
+require('./modules/gsap-title')();
